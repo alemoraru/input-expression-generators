@@ -1,0 +1,9 @@
+image: haskell:8.10.4
+
+stages:
+  - build
+
+stack_build:
+  stage: build
+  script:
+    - stack build
