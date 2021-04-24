@@ -1,4 +1,4 @@
-# test-quickcheck
+# Testing QuickCheck Functionality
 
 This repository is used to check QuickCheck functionality as mentioned in the official QuickCheck paper by Koen Claessen & John Hughes.
 The concepts that will be tested here are as follows:
