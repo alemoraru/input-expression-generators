@@ -8,12 +8,12 @@ cabal-version: 1.12
 
 name:           test-quickcheck
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/test-quickcheck#readme>
-homepage:       https://github.com/githubuser/test-quickcheck#readme
-bug-reports:    https://github.com/githubuser/test-quickcheck/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+description:    Please see the README on GitHub at <https://github.com/alemoraru/test-quickcheck#readme>
+homepage:       https://github.com/alemoraru/test-quickcheck#readme
+bug-reports:    https://github.com/alemoraru/test-quickcheck/issues
+author:         Alexandru Radu Moraru
+maintainer:     A.R.Moraru-1@student.tudelft.nl
+copyright:      2021 Alexandru Radu Moraru
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -23,7 +23,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/test-quickcheck
+  location: https://github.com/alemoraru/test-quickcheck
 
 library
   exposed-modules:
@@ -45,7 +45,9 @@ executable test-quickcheck-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , test-quickcheck
+      , containers >= 0.5.11 && < 0.7
+      , QuickCheck >= 2.13.2 && < 2.15
+      , test-quickcheck
   default-language: Haskell2010
 
 test-suite test-quickcheck-test
@@ -57,6 +59,8 @@ test-suite test-quickcheck-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
-    , test-quickcheck
+     base >=4.7 && <5
+      , containers >= 0.5.11 && < 0.7
+      , QuickCheck >= 2.13.2 && < 2.15
+      , test-quickcheck
   default-language: Haskell2010
