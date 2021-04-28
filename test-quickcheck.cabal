@@ -32,6 +32,15 @@ library
       Arithmetic.Interp2
       Arithmetic.InterpFaulty1
 
+      BTrees.Grammar
+      BTrees.Interp1
+      BTrees.Interp2
+
+      Conditional.Grammar
+      Conditional.Interp1
+      Conditional.Interp2
+      Conditional.InterpFaulty1
+
       Lib
 
   other-modules:

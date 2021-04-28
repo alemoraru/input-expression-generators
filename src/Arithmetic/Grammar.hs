@@ -18,7 +18,7 @@ instance Show Expr where
   show (Div left right) = show left ++ " / " ++ show right
 
 instance Arbitrary Expr where  
-  arbitrary = sized arbExpr 
+  arbitrary = sized arbExpr   
 
 arbExpr :: Int -> Gen Expr
 arbExpr 0 = undefined 
