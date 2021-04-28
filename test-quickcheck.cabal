@@ -35,6 +35,7 @@ library
       BTrees.Grammar
       BTrees.Interp1
       BTrees.Interp2
+      BTrees.InterpFaulty1
 
       Conditional.Grammar
       Conditional.Interp1
@@ -69,7 +70,7 @@ executable test-quickcheck-exe
 
 test-suite test-quickcheck-test
   type: exitcode-stdio-1.0
-  main-is: Spec.hs
+  main-is: SpecTrees.hs
   other-modules:
       Paths_test_quickcheck
   hs-source-dirs:
