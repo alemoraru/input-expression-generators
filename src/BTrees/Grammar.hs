@@ -15,5 +15,5 @@ instance Arbitrary a => Arbitrary (Tree a) where
 arbTree 0 = fmap Leaf arbitrary
 arbTree n = frequency
   [ (1, fmap Leaf arbitrary)
-  , (4, liftM2 Branch (arbTree (n `div` 2))
+  , (8, liftM2 Branch (arbTree (n `div` 2))
                       (arbTree (n `div` 2)))]

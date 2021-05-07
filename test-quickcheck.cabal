@@ -42,6 +42,11 @@ library
       Conditional.Interp2
       Conditional.InterpFaulty1
 
+      Booleans.Grammar
+      Booleans.Interp1
+      Booleans.Interp2
+      Booleans.InterpFaulty1
+
       Lib
 
   other-modules:
