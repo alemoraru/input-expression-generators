@@ -14,7 +14,7 @@ prop_interp_trees :: Tree Int -> Bool
 prop_interp_trees tree = B1.interp tree == B2.interp tree
 
 prop_faulty_tree :: Tree Int -> Bool 
-prop_faulty_tree tree = B1.interp tree == BF1.interp tree
+prop_faulty_tree tree = B1.interp tree /= BF1.interp tree
 
 prop_interp_arithmetic :: Expr -> Bool 
 prop_interp_arithmetic expr = undefined 
@@ -27,7 +27,7 @@ main = do
     putStrLn "Checking interp trees correct: "
     quickCheck prop_interp_trees
 
-    putStrLn "Checking interp tree incorrect: "
-    quickCheck prop_faulty_tree
+    -- putStrLn "Checking interp tree incorrect: "
+    -- quickCheck prop_faulty_tree
 
     return ()
