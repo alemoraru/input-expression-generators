@@ -30,11 +30,4 @@ main = do
     putStrLn "Checking interp tree incorrect: "
     quickCheck prop_faulty_tree
 
-    -- deprecated
-    -- putStrLn "Checking interp arith correct: "
-    -- quickCheck prop_interp_arithmetic
-
-    -- putStrLn "Checking interp arith incorrect: "
-    -- quickCheck prop_interp_faulty_arithmetic
-
     return ()

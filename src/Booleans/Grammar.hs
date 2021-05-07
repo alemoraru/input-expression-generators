@@ -15,9 +15,9 @@ instance Show Expr where
   show (Or left right)  = show left ++ " - " ++ show right
   show (Not expr)       = show expr
 
--- instance Arbitrary Expr where  
---   arbitrary = sized arbExpr   
+instance Arbitrary Expr where  
+  arbitrary = sized arbExpr   
 
--- arbExpr :: Int -> Gen Expr
--- arbExpr 0 = undefined 
--- arbExpr n = undefined 
+arbExpr :: Int -> Gen Expr
+arbExpr 0 = undefined 
+arbExpr n = undefined 
