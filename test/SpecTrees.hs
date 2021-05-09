@@ -27,7 +27,7 @@ main = do
     putStrLn "Checking interp trees correct: "
     quickCheck prop_interp_trees
 
-    -- putStrLn "Checking interp tree incorrect: "
-    -- quickCheck prop_faulty_tree
+    putStrLn "Checking interp tree incorrect: "
+    quickCheck prop_faulty_tree
 
     return ()
