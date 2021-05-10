@@ -1,10 +1,39 @@
 module Arithmetic.Interp2 where
   
-import Arithmetic.Grammar
+import Arithmetic.Grammar ( Expr(..) )
 
-interp :: Expr -> Int
-interp (Val x) = x
-interp (Add left right) = interp right + interp left
-interp (Sub left right) = interp left - interp right
-interp (Mul left right) = interp right * interp left
-interp (Div left right) = interp left `div` interp right
+interp :: Expr -> Either String Int
+interp (Val x)          = Right x
+interp (Add left right) = 
+  case interp right of
+      Left err   -> Left err
+      Right valL ->
+           case interp left of
+               Left err   -> Left err
+               Right valR -> Right (valL + valR)
+          
+interp (Sub left right) = 
+  case interp right of
+      Left err   -> Left err
+      Right valR ->
+           case interp left of
+               Left err   -> Left err
+               Right valL -> Right (valL - valR)
+
+interp (Mul left right) = 
+  case interp right of
+      Left err   -> Left err
+      Right valR ->
+           case interp left of
+               Left err   -> Left err
+               Right valL -> Right (valL * valR)
+
+interp (Div left right) = 
+  case interp left of
+      Left err   -> Left err
+      Right valL ->
+           case interp right of
+               Left err   -> Left err
+               Right valR -> if valR == 0 
+                   then Left "Cannot divide by zero" 
+                   else Right (valL `div` valR)
