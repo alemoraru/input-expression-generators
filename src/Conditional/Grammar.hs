@@ -1,5 +1,7 @@
 module Conditional.Grammar ( Expr ( .. ), Val ( .. ), Environment ) where
 
+import Test.QuickCheck
+
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
   deriving ( Eq, Show )
   
@@ -22,15 +24,15 @@ data Expr =
   deriving ( Eq )
   
 instance Show Expr where
-  show (EInt x) = show x
+  show (EInt x)  = show x
   show (EBool b) = show b
-  show (Id s) = s
+  show (Id s)    = s
 
   show (Add left right) = "(" ++ show left ++ " + " ++ show right ++ ")" 
   show (Mul left right) = "(" ++ show left ++ " * " ++ show right ++ ")"
 
-  show (Not e) = "(not " ++ show e ++ ")"
-  show (Or left right) = "(" ++ show left ++ " || " ++ show right ++ ")"
+  show (Not e)          = "(not " ++ show e ++ ")"
+  show (Or left right)  = "(" ++ show left ++ " || " ++ show right ++ ")"
   show (And left right) = "(" ++ show left ++ " && " ++ show right ++ ")"
   
   show (Eq left right) = "(" ++ show left ++ " == " ++ show right ++ ")"
@@ -38,6 +40,15 @@ instance Show Expr where
   show (Gt left right) = "(" ++ show left ++ " > " ++ show right ++ ")"
 
   show (Lambda s e) = "(λ (" ++ s ++ ") " ++ show e ++ ")"
-  show (App f e) = "(" ++ show f ++ " " ++ show e ++ ")"
+  show (App f e)    = "(" ++ show f ++ " " ++ show e ++ ")"
 
   show (If i t e) = "(if " ++ show i ++ " then " ++ show t ++ " else " ++ show e ++ ")"
+
+instance Arbitrary Expr where
+  arbitrary = sized arbExpr   
+
+arbExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary] 
+arbExpr n = frequency 
+  [ 
+    (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary])
+  ] 
