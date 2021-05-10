@@ -17,7 +17,7 @@ interp (Id str) nv  = findId str nv
 -- basic operations on ints
 interp (Add e1 e2) nv =
   case (interp e1 nv, interp e2 nv) of
-    (Right (VInt v1), Right (VInt v2)) -> Right (VInt (v1 + v2))
+    (Right (VInt v1), Right (VInt v2)) -> Right (VInt (v1 + v1)) -- introduced error
     _ -> Left $ InterpError "Cannot perform addition on non-ints."
 interp (Mul e1 e2) nv =
   case (interp e1 nv, interp e2 nv) of
@@ -68,5 +68,5 @@ interp (App e1 e2) nv =
 -- conditionals
 interp (If e1 e2 e3) nv =
   case interp e1 nv of
-    Right (VBool bool) -> if bool then interp e3 nv else interp e2 nv
+    Right (VBool bool) -> if bool then interp e2 nv else interp e3 nv
     _ -> Left $ InterpError "Cannot interpret non-boolean condition."
