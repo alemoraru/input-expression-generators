@@ -26,7 +26,7 @@ data Expr =
   deriving ( Eq )
 
 instance Show Expr where
-  show (EInt x)  = show x
+  show (EInt x)  = if x < 0 then "(" ++ show x ++ ")" else show x
   show (EBool b) = show b
   show (Id s)    = s
 

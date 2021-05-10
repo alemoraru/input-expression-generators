@@ -5,11 +5,18 @@ import qualified Conditional.InterpFaulty1 as IF1
 
 import Test.QuickCheck
 
-prop_correct_interp :: Expr -> Bool 
-prop_correct_interp expr = I1.interp expr [] == I2.interp expr []
+-- Pre-condition basically type-checks input expressions
+preConditionInterp :: Expr -> Bool 
+preConditionInterp expr = 
+    case I1.interp expr [] of 
+        Left err -> False 
+        Right _  -> True
 
-prop_faulty_interp :: Expr -> Bool 
-prop_faulty_interp expr = I1.interp expr [] == IF1.interp expr []
+prop_correct_interp :: Expr -> Property  
+prop_correct_interp expr = preConditionInterp expr ==> I1.interp expr [] == I2.interp expr []
+
+prop_faulty_interp :: Expr -> Property 
+prop_faulty_interp expr = preConditionInterp expr ==> I1.interp expr [] == IF1.interp expr []
 
 main :: IO ()
 main = do
