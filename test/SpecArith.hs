@@ -9,7 +9,7 @@ prop_correct_interp :: Expr -> Bool
 prop_correct_interp expr = I1.interp expr == I2.interp expr
 
 prop_faulty_interp :: Expr -> Bool 
-prop_faulty_interp expr = I2.interp expr /= IF1.interp expr -- need check on correct examples
+prop_faulty_interp expr = I1.interp expr == IF1.interp expr
 
 main :: IO ()
 main = do

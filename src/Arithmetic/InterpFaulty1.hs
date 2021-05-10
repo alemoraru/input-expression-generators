@@ -8,7 +8,7 @@ interp (Add left right) =
   case interp left of
       Left err   -> Left err
       Right valL ->
-           case interp right of
+           case interp left of  -- introduced error here
                Left err   -> Left err
                Right valR -> Right (valL + valR)
           
