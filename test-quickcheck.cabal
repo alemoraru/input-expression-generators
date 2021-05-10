@@ -75,7 +75,7 @@ executable test-quickcheck-exe
 
 test-suite test-quickcheck-test
   type: exitcode-stdio-1.0
-  main-is: SpecTrees.hs
+  main-is: SpecArith.hs
   other-modules:
       Paths_test_quickcheck
   hs-source-dirs:
