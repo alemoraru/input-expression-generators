@@ -1,10 +1,10 @@
-name:                test-quickcheck
+name:                generators
 version:             0.1.0.0
-github:              "githubuser/test-quickcheck"
+github:              "alemoraru/input-expression-generators"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2021 Author name here"
+author:              "Alexandru Radu Moraru"
+maintainer:          "A.R.Moraru-1@student.tudelft.nl"
+copyright:           "2021 Alexandru Radu Moraru"
 
 extra-source-files:
 - README.md
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/test-quickcheck#readme>
+description:         Please see the README on GitHub at <https://github.com/githubuser/input-expression-generators#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -26,7 +26,7 @@ library:
   source-dirs: src
 
 executables:
-  test-quickcheck-exe:
+  generators-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -34,10 +34,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - test-quickcheck
+    - generators
 
 tests:
-  test-quickcheck-test:
+  generators-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -45,4 +45,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - test-quickcheck
+    - generators

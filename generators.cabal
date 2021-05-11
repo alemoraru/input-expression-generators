@@ -6,11 +6,11 @@ cabal-version: 1.12
 --
 -- hash: 5402f18a29617a5c2477edd90ac37e9e275e0c9a4728d134560d0ed3f2996c5c
 
-name:           test-quickcheck
+name:           generators
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/alemoraru/test-quickcheck#readme>
-homepage:       https://github.com/alemoraru/test-quickcheck#readme
-bug-reports:    https://github.com/alemoraru/test-quickcheck/issues
+description:    Please see the README on GitHub at <https://github.com/alemoraru/input-expression-generators#readme>
+homepage:       https://github.com/alemoraru/input-expression-generators#readme
+bug-reports:    https://github.com/alemoraru/input-expression-generators/issues
 author:         Alexandru Radu Moraru
 maintainer:     A.R.Moraru-1@student.tudelft.nl
 copyright:      2021 Alexandru Radu Moraru
@@ -23,7 +23,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/alemoraru/test-quickcheck
+  location: https://github.com/alemoraru/input-expression-generators
 
 library
   exposed-modules:
@@ -50,7 +50,7 @@ library
       Lib
 
   other-modules:
-      Paths_test_quickcheck
+      Paths_generators
   hs-source-dirs:
       src
   build-depends:
@@ -59,10 +59,10 @@ library
       , QuickCheck >= 2.13.2 && < 2.15
   default-language: Haskell2010
 
-executable test-quickcheck-exe
+executable generators-exe
   main-is: Main.hs
   other-modules:
-      Paths_test_quickcheck
+      Paths_generators
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -70,14 +70,14 @@ executable test-quickcheck-exe
       base >=4.7 && <5
       , containers >= 0.5.11 && < 0.7
       , QuickCheck >= 2.13.2 && < 2.15
-      , test-quickcheck
+      , generators
   default-language: Haskell2010
 
-test-suite test-quickcheck-test
+test-suite generators-test
   type: exitcode-stdio-1.0
   main-is: SpecArith.hs
   other-modules:
-      Paths_test_quickcheck
+      Paths_generators
   hs-source-dirs:
       test/quickcheck
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -85,5 +85,5 @@ test-suite test-quickcheck-test
      base >=4.7 && <5
       , containers >= 0.5.11 && < 0.7
       , QuickCheck >= 2.13.2 && < 2.15
-      , test-quickcheck
+      , generators
   default-language: Haskell2010
