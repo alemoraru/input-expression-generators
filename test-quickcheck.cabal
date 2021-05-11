@@ -79,7 +79,7 @@ test-suite test-quickcheck-test
   other-modules:
       Paths_test_quickcheck
   hs-source-dirs:
-      test
+      test/quickcheck
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
      base >=4.7 && <5
