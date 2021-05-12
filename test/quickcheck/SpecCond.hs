@@ -1,3 +1,5 @@
+module QuickCheck.SpecCond where
+
 import Conditional.Grammar (Expr (..))
 import qualified Conditional.Interp1 as I1
 import qualified Conditional.Interp2 as I2

@@ -53,11 +53,13 @@ library
       Paths_generators
   hs-source-dirs:
       src
+      test
   build-depends:
       base >=4.7 && <5
       , containers >= 0.5.11 && < 0.7
       , QuickCheck >= 2.13.2 && < 2.15
       , smallcheck <1.1.6 || >1.1.6
+      , hspec >= 2.0
   default-language: Haskell2010
 
 executable generators-exe
@@ -80,6 +82,15 @@ test-suite generators-test
   main-is: MainSpec.hs
   other-modules:
       Paths_generators
+
+      -- Testing modules
+      QuickCheck.SpecArith
+      QuickCheck.SpecBools
+      QuickCheck.SpecCond
+      QuickCheck.SpecTrees
+
+      SmallCheck.SpecArith
+
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -88,5 +99,6 @@ test-suite generators-test
       , containers >= 0.5.11 && < 0.7
       , QuickCheck >= 2.13.2 && < 2.15
       , smallcheck <1.1.6 || >1.1.6
+      , hspec >= 2.0
       , generators
   default-language: Haskell2010

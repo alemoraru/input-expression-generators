@@ -1,3 +1,5 @@
+module QuickCheck.SpecTrees where
+
 import BTrees.Grammar
 import qualified BTrees.Interp1 as B1
 import qualified BTrees.Interp2 as B2

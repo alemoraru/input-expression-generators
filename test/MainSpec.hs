@@ -1,4 +1,12 @@
+import Test.Hspec
+
+import qualified SmallCheck.SpecArith
+
 main :: IO ()
-main = do
-    putStrLn "Test suite to be executed separately, for now."
-    return ()
+main = return ()
+
+-- main :: IO ()
+-- main = hspec spec
+
+-- spec :: Spec 
+-- spec = undefined 

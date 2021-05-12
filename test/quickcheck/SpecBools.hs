@@ -1,3 +1,5 @@
+module QuickCheck.SpecBools where
+
 import Booleans.Grammar (Expr (..))
 import qualified Booleans.Interp1 as I1
 import qualified Booleans.Interp2 as I2
