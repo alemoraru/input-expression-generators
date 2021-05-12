@@ -77,12 +77,11 @@ executable generators-exe
 
 test-suite generators-test
   type: exitcode-stdio-1.0
-  main-is: SpecArith.hs
+  main-is: MainSpec.hs
   other-modules:
       Paths_generators
   hs-source-dirs:
-      test/quickcheck
-      test/smallcheck
+      test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
      base >=4.7 && <5
