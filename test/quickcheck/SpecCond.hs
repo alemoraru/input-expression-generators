@@ -7,6 +7,8 @@ import qualified Conditional.InterpFaulty1 as IF1
 
 import Test.QuickCheck
 
+import Test.Hspec
+
 -- Pre-condition basically type-checks input expressions
 preConditionInterp :: Expr -> Bool 
 preConditionInterp expr = 
@@ -41,11 +43,12 @@ depth (App l r)    = 1 + max (depth l) (depth r)
 depth (If b t f)   = 1 + max (depth b) (max (depth t) (depth f))
 
 main :: IO ()
-main = do
-    putStrLn "Testing correct intepretation:"
-    quickCheck prop_correct_interp
+main = hspec spec
 
-    putStrLn "Testing incorrect interpretation:"
-    quickCheck prop_faulty_interp
-
-    return ()
+spec :: Spec
+spec = do
+    describe "QuickCheck Arithmetic Testing:" $ do
+        it "Equivalent interpreters:" $
+            property prop_correct_interp
+        it "Non-equivalent interpreters:" $
+            property prop_faulty_interp
