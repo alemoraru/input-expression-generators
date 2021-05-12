@@ -1,6 +1,10 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module Booleans.Grammar ( Expr ( .. ) ) where
 
 import Test.QuickCheck
+
+import qualified Test.SmallCheck.Series as SC
 
 import Control.Monad
 
@@ -30,3 +34,6 @@ arbExpr n = frequency
                   (arbExpr (n `div` 2)))
   , (2, fmap Not (arbExpr (n `div` 2))) 
   ]
+
+instance (Monad m) => SC.Serial m Expr where
+  series = SC.cons1 Val SC.\/ SC.cons2 And SC.\/ SC.cons2 Or SC.\/ SC.cons1 Not

@@ -92,6 +92,7 @@ test-suite generators-test
       QuickCheck.SpecTrees
 
       SmallCheck.SpecArith
+      SmallCheck.SpecBools
 
   hs-source-dirs:
       test
