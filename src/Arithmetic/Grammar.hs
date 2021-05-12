@@ -1,6 +1,11 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+
 module Arithmetic.Grammar ( Expr ( .. ) ) where
 
 import Test.QuickCheck
+
+import qualified Test.SmallCheck.Series as SC
 
 import Control.Monad
 
@@ -33,3 +38,6 @@ arbExpr n = frequency
   , (2, liftM2 Div (arbExpr (n `div` 2))
                    (arbExpr (n `div` 2)))
   ] 
+
+instance (Monad m) => SC.Serial m Expr where
+  series = SC.cons1 Val SC.\/ SC.cons2 Add SC.\/ SC.cons2 Sub SC.\/ SC.cons2 Mul SC.\/ SC.cons2 Div

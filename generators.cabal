@@ -82,6 +82,7 @@ test-suite generators-test
       Paths_generators
   hs-source-dirs:
       test/quickcheck
+      test/smallcheck
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
      base >=4.7 && <5
