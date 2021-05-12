@@ -47,7 +47,7 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-    describe "QuickCheck Arithmetic Testing:" $ do
+    describe "QuickCheck Conditional Testing:" $ do
         it "Equivalent interpreters:" $
             property prop_correct_interp
         it "Non-equivalent interpreters:" $

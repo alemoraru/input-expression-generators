@@ -14,3 +14,4 @@ spec = do
     describe "QuickArith" QuickCheck.SpecArith.spec 
     describe "QuickBools" QuickCheck.SpecBools.spec
     describe "QuickCond" QuickCheck.SpecCond.spec
+    -- describe "SmallArith" SmallCheck.SpecArith.spec 

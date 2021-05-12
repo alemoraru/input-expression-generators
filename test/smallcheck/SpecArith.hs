@@ -7,6 +7,13 @@ import qualified Arithmetic.InterpFaulty1 as IF1
 
 import Test.SmallCheck
 
+import Test.Hspec
+
+import qualified Test.Hspec.Core.Spec as H
+import qualified Test.Hspec.Runner as H
+
+import Test.Hspec.SmallCheck
+
 prop_correct_interp :: Expr -> Bool 
 prop_correct_interp expr = I1.interp expr == I2.interp expr
 
@@ -22,3 +29,14 @@ main = do
     smallCheck 3 prop_faulty_interp    
 
     return ()
+
+-- main :: IO ()
+-- main = H.hspecWith (H.defaultConfig { H.configSmallCheckDepth = 3} ) spec
+
+-- spec :: Spec
+-- spec = do
+--     describe "QuickCheck Arithmetic Testing:" $ do
+--         it "Equivalent interpreters:" $
+--             property prop_correct_interp
+--         it "Non-equivalent interpreters:" $
+--             property prop_faulty_interp
