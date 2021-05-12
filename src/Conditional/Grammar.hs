@@ -53,19 +53,19 @@ arbExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary]
 arbExpr n = frequency
   [
     (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary]) -- Leaf generation
-  , (2, liftM2 Add (arbExpr (n `div` 2))
+  , (4, liftM2 Add (arbExpr (n `div` 2))
                    (arbExpr (n `div` 2)))
-  , (2, liftM2 Mul (arbExpr (n `div` 2))
+  , (4, liftM2 Mul (arbExpr (n `div` 2))
                    (arbExpr (n `div` 2)))
-  , (2, Not <$> arbExpr (n `div` 2))
-  , (2, liftM2 Or (arbExpr (n `div` 2))
+  , (4, Not <$> arbExpr (n `div` 2))
+  , (4, liftM2 Or (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
-  , (2, liftM2 And (arbExpr (n `div` 2))
+  , (4, liftM2 And (arbExpr (n `div` 2))
                    (arbExpr (n `div` 2)))
-  , (2, liftM2 Eq (arbExpr (n `div` 2))
+  , (4, liftM2 Eq (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
-  , (2, liftM2 Lt (arbExpr (n `div` 2))
+  , (4, liftM2 Lt (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
-  , (2, liftM2 Gt (arbExpr (n `div` 2))
+  , (4, liftM2 Gt (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
   ]
