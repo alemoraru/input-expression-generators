@@ -47,6 +47,8 @@ library
       Booleans.Interp2
       Booleans.InterpFaulty1
 
+      Lambda.Grammar
+
       Lib
 
   other-modules:
