@@ -1,7 +1,7 @@
 module Conditional.Interp2 where
 
 import Conditional.Grammar
-import Lib
+import Util
 
 interp :: Expr -> Environment -> Either Error Val
 interp (EInt x) nv  = Right (VInt x)

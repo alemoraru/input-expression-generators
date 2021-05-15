@@ -1,4 +1,4 @@
-module Lib ( someFunc, Error ( .. ) ) where
+module Util ( someFunc, Error ( .. ) ) where
 
 -- not newtype because we might add unsafe head and tail once we try a grammar with lists
 data Error = TypeError String

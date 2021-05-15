@@ -1,7 +1,7 @@
 module Conditional.Interp1 where
 
 import Conditional.Grammar
-import Lib
+import Util
 
 findId :: String -> Environment -> Either Error Val
 findId str [] = Left $ InterpError $ "Variable " ++ str ++ " not found."

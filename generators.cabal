@@ -49,7 +49,7 @@ library
 
       UntypedLambda.Grammar
 
-      Lib
+      Util
 
   other-modules:
       Paths_generators
