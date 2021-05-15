@@ -1,4 +1,4 @@
-module Lambda.Grammar where
+module UntypedLambda.Grammar where
 
 type Var = String
 
