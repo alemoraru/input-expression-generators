@@ -5,7 +5,7 @@ import Util
 
 findId :: String -> Environment -> Either Error Val
 findId str [] = Left $ InterpError "Variable not found."
-findId str ((name, val) : envRest) = if name == str then Right val else findId name envRest
+findId str ((name, val) : envRest) = if name == str then Right val else findId str envRest
 
 interp :: Expr -> Environment -> Either Error Val
 
