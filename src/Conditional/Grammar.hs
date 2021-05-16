@@ -5,7 +5,12 @@ import Test.QuickCheck
 import Control.Monad
 
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
-  deriving ( Eq, Show )
+  deriving ( Eq )
+
+instance Show Val where
+    show (VInt x)  = show x
+    show (VBool x) = show x
+    show (VClos arg body env) = "\\" ++ arg ++ ".(" ++ show body ++ ")"
 
 type Environment = [(String, Val)]
 
@@ -52,7 +57,7 @@ instance Arbitrary Expr where
 arbExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary]
 arbExpr n = frequency
   [
-    (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary]) -- Leaf generation
+    (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary, arbVar sampleEnvironment]) -- Leaf generation (lowest prob to generate)
   , (4, liftM2 Add (arbExpr (n `div` 2))
                    (arbExpr (n `div` 2)))
   , (4, liftM2 Mul (arbExpr (n `div` 2))
@@ -71,4 +76,22 @@ arbExpr n = frequency
   , (4, liftM3 If (EBool <$> arbitrary)
                   (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
+  ]
+
+-- Get an arbitrary variable from the available environment
+arbVar :: Environment -> Gen Expr
+arbVar nv = 
+  do 
+    (key, val) <- elements nv
+    return (Id key) 
+
+sampleEnvironment :: Environment 
+sampleEnvironment = 
+  [
+    ("zero", VInt 0),
+    ("one", VInt 1),
+    ("two", VInt 2),
+    ("three", VInt 3),
+    ("tru", VBool True),
+    ("fls", VBool False)
   ]
