@@ -48,6 +48,9 @@ library
       Booleans.InterpFaulty1
 
       UntypedLambda.Grammar
+      UntypedLambda.Interp
+
+      Types.Grammar
 
       Util
 
