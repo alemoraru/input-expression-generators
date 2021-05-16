@@ -29,12 +29,28 @@ sampleEnv =
         ("y", VInt 2),
         ("tru", VClos "t" (Lambda "f" (Id "t")) []),
         ("fls", VClos "t" (Lambda "f" (Id "t")) []),
-        -- ("pair", VClos "f" (Lambda ) []),
         ("and", VClos "b" (Lambda "c" (App (App (Id "b") (Id "c")) (Id "fls"))) []),
         ("fst", VClos "a" (Lambda "b" (Id "a")) []),
         ("snd", VClos "a" (Lambda "b" (Id "b")) [])
     ] 
 
+-- Sample lambda functions
+ltrue :: Expr
+ltrue = Lambda "t" (Lambda "f" (Id "t"))
+
+lfalse :: Expr 
+lfalse = Lambda "t" (Lambda "f" (Id "f"))
+
+land :: Expr
+land = Lambda "b" (Lambda "c" (App (App (Id "b") (Id "c")) (Id "fls")))
+
+lfst :: Expr 
+lfst = Lambda "a" (Lambda "b" (Id "a"))
+
+lsnd :: Expr 
+lsnd = Lambda "a" (Lambda "b" (Id "b"))
+
+-- Examples to interp
 sample1 :: Expr
 sample1 = Id "x"
 
