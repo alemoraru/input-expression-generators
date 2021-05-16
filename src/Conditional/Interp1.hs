@@ -4,7 +4,7 @@ import Conditional.Grammar
 import Util
 
 findId :: String -> Environment -> Either Error Val
-findId str [] = Left $ InterpError $ "Variable " ++ str ++ " not found."
+findId str [] = Left $ InterpError "Variable not found."
 findId str ((name, val) : envRest) = if name == str then Right val else findId name envRest
 
 interp :: Expr -> Environment -> Either Error Val

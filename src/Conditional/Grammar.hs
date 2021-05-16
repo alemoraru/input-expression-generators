@@ -41,7 +41,7 @@ instance Show Expr where
   show (Lt left right) = "(" ++ show left ++ " < " ++ show right ++ ")"
   show (Gt left right) = "(" ++ show left ++ " > " ++ show right ++ ")"
 
-  show (Lambda s e) = "(λ (" ++ s ++ ") " ++ show e ++ ")"
+  show (Lambda s e) = "(\\ (" ++ s ++ ") " ++ show e ++ ")"
   show (App f e)    = "(" ++ show f ++ " " ++ show e ++ ")"
 
   show (If i t e) = "(if " ++ show i ++ " then " ++ show t ++ " else " ++ show e ++ ")"
