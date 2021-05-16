@@ -3,7 +3,12 @@ module UntypedLambda.Grammar where
 type Var = String
 
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
-  deriving ( Eq, Show )
+  deriving (Eq)
+
+instance Show Val where
+    show (VInt x)  = show x
+    show (VBool x) = show x
+    show (VClos arg body env) = "\\" ++ arg ++ ".(" ++ show body ++ ")"
 
 type Environment = [(String, Val)]
 
@@ -29,6 +34,7 @@ sampleEnv =
         ("y", VInt 2),
         ("tru", VClos "t" (Lambda "f" (Id "t")) []),
         ("fls", VClos "t" (Lambda "f" (Id "t")) []),
+        ("pair", VClos "f" (Lambda "s" (Lambda "b" (Id "b"))) []), -- faulty
         ("and", VClos "b" (Lambda "c" (App (App (Id "b") (Id "c")) (Id "fls"))) []),
         ("fst", VClos "a" (Lambda "b" (Id "a")) []),
         ("snd", VClos "a" (Lambda "b" (Id "b")) [])
@@ -42,13 +48,17 @@ lfalse :: Expr
 lfalse = Lambda "t" (Lambda "f" (Id "f"))
 
 land :: Expr
-land = Lambda "b" (Lambda "c" (App (App (Id "b") (Id "c")) (Id "fls")))
+land = Lambda "b" (Lambda "c" (App (App (Id "b") (Id "c")) lfalse))
+
+-- faulty
+lpair :: Expr
+lpair = Lambda "f" (Lambda "s" (Lambda "b" (App (App (Id "b") (Id "f")) (Id "s")))) 
 
 lfst :: Expr 
-lfst = Lambda "a" (Lambda "b" (Id "a"))
+lfst = Lambda "p" (Lambda "p" ltrue)
 
 lsnd :: Expr 
-lsnd = Lambda "a" (Lambda "b" (Id "b"))
+lsnd = Lambda "p" (Lambda "p" lfalse)
 
 -- Examples to interp
 sample1 :: Expr

@@ -18,3 +18,4 @@ interp (App fun param) env   =
                 Right interpParam -> interp body ((arg, interpParam) : newEnv)
                 _                 -> Left $ InterpError "Cannot interpret body of lambda."
         _  -> Left $ InterpError "Cannot apply to non-closure type."
+        
