@@ -68,4 +68,7 @@ arbExpr n = frequency
                   (arbExpr (n `div` 2)))
   , (4, liftM2 Gt (arbExpr (n `div` 2))
                   (arbExpr (n `div` 2)))
+  , (4, liftM3 If (EBool <$> arbitrary)
+                  (arbExpr (n `div` 2))
+                  (arbExpr (n `div` 2)))
   ]
