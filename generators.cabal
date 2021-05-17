@@ -51,6 +51,7 @@ library
       UntypedLambda.Interp
 
       Types.Grammar
+      Types.Interp
 
       Util
 
