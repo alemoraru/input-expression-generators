@@ -20,8 +20,15 @@ arbRule = frequency
 
 instance Arbitrary Expr where
     arbitrary = do
-        genTy <- arbitrary :: Gen Type
-        genVar genTy sampleTypeEnvironment
+        genRule <- arbitrary :: Gen GenRule
+        arbExpr genRule
+
+arbExpr :: GenRule -> Gen Expr 
+arbExpr GenVar = do
+    genTy <- arbitrary :: Gen Type
+    genVar genTy sampleTypeEnvironment
+arbExpr GenApp = genApp sampleTypeEnvironment
+arbExpr GenLam = undefined
 
 instance Arbitrary Type where
     arbitrary = getRandomType 2
@@ -52,6 +59,10 @@ getRandomType n =
                     retTy <- getRandomType (n - 1)
                     return (TClos argTy retTy)
 
+-- Get the argument type of a lambda
+getArgType :: Type -> Gen Type 
+getArgType (TClos argTy _) = return argTy
+
 -- Variable generation rule
 genVar :: Type -> TEnvironment -> Gen Expr 
 genVar reqTy nv = 
@@ -64,9 +75,16 @@ genLam :: Type -> TEnvironment -> Gen Expr
 genLam = undefined 
 
 -- Function application generation rule
-genApp :: Type -> TEnvironment -> Gen Expr 
-genApp = undefined 
-
+genApp :: TEnvironment -> Gen Expr 
+genApp nv = 
+    do
+        lamTy   <- getRandomType 2
+        pLamTy  <- getArgType lamTy
+        do 
+            lamExpr   <- genVar lamTy nv
+            paramExpr <- genVar pLamTy nv
+            return $ App lamExpr paramExpr
+        
 -- A sample type environment to use for testing purposes
 sampleTypeEnvironment :: TEnvironment 
 sampleTypeEnvironment = 
@@ -84,4 +102,21 @@ sampleTypeEnvironment =
     ("abs", TClos TInt TInt),
     ("addOne", TClos TInt TInt)
   ]
-  
+
+sampleEnvironment :: Environment  
+sampleEnvironment = 
+  [
+    ("tru", VBool True),
+    ("fls", VBool False),
+    ("zero", VInt 0),
+    ("one", VInt 1)
+    -- ("not", TClos TBool TBool),
+    -- ("and", TClos TBool (TClos TBool TBool)),
+    -- ("or", TClos TBool (TClos TBool TBool)),
+    -- ("isNeg", TClos TInt TBool),
+    -- ("isZero", TClos TInt TBool),
+    -- ("isTrue", TClos TBool TBool),
+    -- ("abs", TClos TInt TInt),
+    -- ("addOne", TClos TInt TInt)
+  ]
+
