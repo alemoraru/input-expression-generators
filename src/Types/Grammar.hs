@@ -12,8 +12,8 @@ data Type = TInt | TBool | TClos Type Type
   deriving ( Eq )
   
 instance Show Type where
-  show TInt  = "type: Int"
-  show TBool = "type: Bool"
+  show TInt  = "Int"
+  show TBool = "Bool"
   show (TClos argTy retTy) = show argTy ++ " -> " ++ show retTy 
 
 type Environment  = [(String, Val)]
