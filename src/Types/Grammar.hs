@@ -14,7 +14,7 @@ data Type = TInt | TBool | TClos Type Type
 instance Show Type where
   show TInt  = "type: Int"
   show TBool = "type: Bool"
-  show (TClos argTy retTy) = "from " ++ show argTy ++ " to " ++ show retTy 
+  show (TClos argTy retTy) = show argTy ++ " -> " ++ show retTy 
 
 type Environment  = [(String, Val)]
 type TEnvironment = [(String, Type)]
