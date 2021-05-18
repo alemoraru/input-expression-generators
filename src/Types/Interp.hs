@@ -42,29 +42,29 @@ typeOf (Or left right) nv =
 
 -- comparisons
 
-typeOf (Eq left right) env = 
-    case (typeOf left env, typeOf right env) of
+typeOf (Eq left right) nv = 
+    case (typeOf left nv, typeOf right nv) of
         (Right TInt, Right TInt) -> Right TBool
         _ -> Left $ TypeError "Cannot check equality on non-int types."
-typeOf (Lt left right) env = 
-    case (typeOf left env, typeOf right env) of
+typeOf (Lt left right) nv = 
+    case (typeOf left nv, typeOf right nv) of
         (Right TInt, Right TInt) -> Right TBool
         _ -> Left $ TypeError "Cannot check less-than on non-int types."
-typeOf (Gt left right) env = 
-    case (typeOf left env, typeOf right env) of
+typeOf (Gt left right) nv = 
+    case (typeOf left nv, typeOf right nv) of
         (Right TInt, Right TInt) -> Right TBool
         _ -> Left $ TypeError "Cannot check greater-than on non-int types."
 
 -- functions
 
-typeOf (Lambda arg body) env = 
-    case typeOf body (replace (fst arg) (snd arg) env) of
+typeOf (Lambda arg body) nv = 
+    case typeOf body (replace (fst arg) (snd arg) nv) of
         Right t -> Right $ TClos (snd arg) t
         _ -> Left $ TypeError "Cannot typecheck body of the lambda."
-typeOf (App f param) env = 
-    case typeOf f env of
+typeOf (App f param) nv = 
+    case typeOf f nv of
         Right (TClos arg t) ->
-            case typeOf param env of
+            case typeOf param nv of
                 Right paramType -> 
                     if arg == paramType 
                         then Right t
@@ -100,8 +100,8 @@ interp (Id str) nv  =
         _ -> Left $ InterpError $ "Variable " ++ str ++ " does not have a binding"
 
 -- basic operations on ints
-interp (Add left right) env = 
-    case (interp left env, interp right env) of
+interp (Add left right) nv = 
+    case (interp left nv, interp right nv) of
         (Right (VInt l), Right (VInt r)) -> Right $ VInt (l + r)
         _ -> Left $ TypeError "Cannot perform addition on non-int types."
 
@@ -128,16 +128,16 @@ interp (And left right) nv =
 
 -- comparisons
 
-interp (Eq left right) env = 
-    case (interp left env, interp right env) of
+interp (Eq left right) nv = 
+    case (interp left nv, interp right nv) of
         (Right (VInt l), Right (VInt r)) -> Right $ VBool $ l == r
         _ -> Left $ TypeError "Cannot check equality on non-int types."
-interp (Lt left right) env = 
-    case (interp left env, interp right env) of
+interp (Lt left right) nv = 
+    case (interp left nv, interp right nv) of
         (Right (VInt l), Right (VInt r)) -> Right $ VBool $ l < r
         _ -> Left $ TypeError "Cannot check less-than on non-int types."
-interp (Gt left right) env = 
-    case (interp left env, interp right env) of
+interp (Gt left right) nv = 
+    case (interp left nv, interp right nv) of
         (Right (VInt l), Right (VInt r)) -> Right $ VBool $ l > r
         _ -> Left $ TypeError "Cannot check greater-than on non-int types."
 

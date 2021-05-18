@@ -52,6 +52,7 @@ library
 
       Types.Grammar
       Types.Interp
+      Types.Generator
 
       Util
 
