@@ -91,7 +91,6 @@ test-suite generators-test
       QuickCheck.SpecArith
       QuickCheck.SpecBools
       QuickCheck.SpecCond
-      QuickCheck.SpecTrees
 
       SmallCheck.SpecArith
       SmallCheck.SpecBools
