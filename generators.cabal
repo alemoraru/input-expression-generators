@@ -32,11 +32,6 @@ library
       Arithmetic.Interp2
       Arithmetic.InterpFaulty1
 
-      BTrees.Grammar
-      BTrees.Interp1
-      BTrees.Interp2
-      BTrees.InterpFaulty1
-
       Conditional.Grammar
       Conditional.Interp1
       Conditional.Interp2
