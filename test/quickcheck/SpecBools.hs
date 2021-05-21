@@ -16,14 +16,7 @@ prop_faulty_interp :: Expr -> Bool
 prop_faulty_interp expr = I1.interp expr == IF1.interp expr
 
 main :: IO ()
-main = do
-    putStrLn "Testing correct intepretation:"
-    quickCheck prop_correct_interp
-
-    putStrLn "Testing incorrect interpretation:"
-    quickCheck prop_faulty_interp
-
-    return ()
+main = hspec spec
 
 spec :: Spec
 spec = do
