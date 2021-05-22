@@ -85,3 +85,23 @@ sized (f :$: a) k = EmptySet -- needs change
 -- Indexing function on spaces
 indexSized :: Space a -> Int -> Integer -> Maybe a
 indexSized s k i = indexFin (sized s k) i
+
+
+----------------------------------------------------
+--            PREDICATE-GUIDED INDEXING           --
+----------------------------------------------------
+
+-- Determines whether a given predicate needs to investigate
+-- its argument or not in order to produce its result
+valid :: (a -> Bool) -> Maybe Bool
+valid = undefined 
+
+-- The main indexing function
+index :: (a -> Bool) -> Space a -> Int -> Integer -> Space a
+index p (f :$: a) k i = 
+    case valid p' of 
+        Just _  -> f :$: a
+        Nothing -> f :$: index p' a k i 
+        where p' = p . f
+index p _ k i = undefined -- needs check for other cases
+
