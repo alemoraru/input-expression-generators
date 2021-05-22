@@ -49,6 +49,8 @@ library
       Types.Interp
       Types.Generator
 
+      Spaces.Definition
+
       Util
 
   other-modules:
