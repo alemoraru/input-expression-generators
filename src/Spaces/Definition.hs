@@ -1,7 +1,9 @@
 {-# LANGUAGE GADTs #-}
 
 module Spaces.Definition where
-    
+
+import Data.Maybe
+
 data Nat = Z | Suc Nat deriving (Show, Eq)
 data ListNat = Nill | Cons Nat ListNat deriving (Show, Eq)
 
@@ -18,13 +20,13 @@ data Space a where
     Empty :: Space a
     Pure  :: a -> Space a
     (:+:) :: Space a -> Space a -> Space a
-    (:∗:) :: Space a -> Space b -> Space (a,b)
+    (:*:) :: Space a -> Space b -> Space (a,b)
     Pay   :: Space a -> Space a
     (:$:) :: (a -> b) -> Space a -> Space b
 
 -- Produce a space of all applications of functions to params
 (<∗>) :: Space (a -> b) -> Space a -> Space b
-s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :∗: s2)
+s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
 
 -- Space for Nats
 spaceNat :: Space Nat
@@ -63,11 +65,23 @@ indexFin (DisjointSet x y)  i | i < card x = indexFin x i
 indexFin (CartesianSet x y) i = undefined --(indexFin x (i `div` card y), indexFin y (i `mod` card y))
 
 -- extracts the finite set of values of a given size k from a space
-sized :: Space a -> Integer -> FinSet a
-sized Empty k    = EmptySet
-sized (Pure x) k | k == 0    = SingletonSet x
-                 | otherwise = EmptySet
-sized _ _ = undefined 
+sized :: Space a -> Int -> FinSet a
+sized Empty k     = EmptySet
+sized (Pure a) k  | k == 0    = SingletonSet a
+                  | otherwise = EmptySet
+sized (Pay a) k   | k == 0    = EmptySet
+                  | otherwise = sized a (k - 1)
+sized (a :+: b) k = DisjointSet (sized a k) (sized b k)
+sized (a :*: b) k = EmptySet -- needs change
+                    where
+                        elements    = [CartesianSet (sized a k1) (sized a k2) | k1 <- [0..k], k2 <- [0..k], k1 + k2 == k]
+                        setElememts = foldr DisjointSet EmptySet elements
+sized (f :$: a) k = EmptySet -- needs change
+                    where
+                        setA        = sized a k
+                        elements    = catMaybes [indexFin setA i | i <- [0..(card setA)]]
+                        setElements = foldr (DisjointSet . SingletonSet) EmptySet elements
 
-indexSized :: Space a -> Int -> Integer -> a
-indexSized = undefined
+-- Indexing function on spaces
+indexSized :: Space a -> Int -> Integer -> Maybe a
+indexSized s k i = indexFin (sized s k) i
