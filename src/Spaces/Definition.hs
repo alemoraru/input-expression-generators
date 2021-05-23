@@ -105,3 +105,15 @@ index p (f :$: a) k i =
         where p' = p . f
 index p _ k i = undefined -- needs check for other cases
 
+
+----------------------------------------------------
+--                 EXAMPLE SETS                   --
+----------------------------------------------------
+
+-- Set for {1} U {2} U {3}
+
+set123 :: FinSet Int 
+set123 = DisjointSet (SingletonSet 1) (DisjointSet (SingletonSet 2) (SingletonSet 3))
+
+set89 :: FinSet Int 
+set89 = DisjointSet (SingletonSet 8) (SingletonSet 9)
