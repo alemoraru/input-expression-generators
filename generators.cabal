@@ -96,6 +96,7 @@ test-suite generators-test
 
       SmallCheck.SpecArith
       SmallCheck.SpecBools
+      SmallCheck.SpecCond
 
   hs-source-dirs:
       test

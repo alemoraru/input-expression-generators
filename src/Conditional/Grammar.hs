@@ -1,8 +1,12 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module Conditional.Grammar ( Expr ( .. ), Val ( .. ), Environment ) where
 
 import Test.QuickCheck
 
 import Control.Monad
+
+import qualified Test.SmallCheck.Series as SC
 
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
   deriving ( Eq )
@@ -51,6 +55,16 @@ instance Show Expr where
 
   show (If i t e) = "(if " ++ show i ++ " then " ++ show t ++ " else " ++ show e ++ ")"
 
+-- Needed for SmallCheck enumerating
+instance (Monad m) => SC.Serial m Expr where
+  series = SC.cons1 EInt SC.\/ SC.cons1 EBool -- SC.\/ SC.cons1 Id
+           SC.\/ SC.cons2 Add SC.\/ SC.cons2 Mul
+           SC.\/ SC.cons1 Not SC.\/ SC.cons2 Or SC.\/ SC.cons2 And
+           SC.\/ SC.cons2 Eq SC.\/ SC.cons2 Lt SC.\/ SC.cons2 Gt
+           -- SC.\/ SC.cons2 Lambda SC.\/ SC.cons2 App
+           SC.\/ SC.cons3 If
+
+-- Needed for QuickCheck random sampling
 instance Arbitrary Expr where
   arbitrary = sized arbExpr
 
