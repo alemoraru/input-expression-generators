@@ -7,10 +7,12 @@ import Data.Maybe
 data Nat = Z | Suc Nat deriving (Show, Eq)
 data ListNat = Nill | Cons Nat ListNat deriving (Show, Eq)
 
+-- Count the number of constructors in a Nat expression
 sizeNat :: Nat -> Int
 sizeNat Z       = 1
 sizeNat (Suc z) = 1 + sizeNat z
 
+-- Count the number of constructors in a ListNat expression
 sizeListNat :: ListNat -> Int
 sizeListNat Nill        = 1
 sizeListNat (Cons z zs) = 1 + sizeNat z + sizeListNat zs
@@ -110,10 +112,11 @@ index p _ k i = undefined -- needs check for other cases
 --                 EXAMPLE SETS                   --
 ----------------------------------------------------
 
--- Set for {1} U {2} U {3}
 
+-- Set for {1} U {2} U {3}
 set123 :: FinSet Int 
 set123 = DisjointSet (SingletonSet 1) (DisjointSet (SingletonSet 2) (SingletonSet 3))
 
+-- Set for {8} U {9}
 set89 :: FinSet Int 
 set89 = DisjointSet (SingletonSet 8) (SingletonSet 9)
