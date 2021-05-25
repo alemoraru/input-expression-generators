@@ -19,10 +19,10 @@ prop_faulty_interp expr = I1.interp expr testEnvironment == IF1.interp expr test
 
 main :: IO ()
 main = do
-    putStrLn "Checking correct booleans interpretation:"
+    putStrLn "Checking correct conditional interpretation:"
     smallCheck 3 prop_correct_interp
 
-    putStrLn "Checking faulty booleans interpretation:"
+    putStrLn "Checking faulty conditional interpretation:"
     smallCheck 3 prop_faulty_interp    
 
     return ()
