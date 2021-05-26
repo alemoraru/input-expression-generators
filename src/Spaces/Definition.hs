@@ -4,17 +4,17 @@ module Spaces.Definition where
 
 import Data.Maybe
 
-data Nat = Z | Suc Nat deriving (Show, Eq)
-data ListNat = Nill | Cons Nat ListNat deriving (Show, Eq)
+data Nat = Zero | Suc Nat deriving (Show, Eq)
+data ListNat = Nil | Cons Nat ListNat deriving (Show, Eq)
 
 -- Count the number of constructors in a Nat expression
 sizeNat :: Nat -> Int
-sizeNat Z       = 1
+sizeNat Zero    = 1
 sizeNat (Suc z) = 1 + sizeNat z
 
 -- Count the number of constructors in a ListNat expression
 sizeListNat :: ListNat -> Int
-sizeListNat Nill        = 1
+sizeListNat Nil         = 1
 sizeListNat (Cons z zs) = 1 + sizeNat z + sizeListNat zs
 
 -- Definition of a GADT Space to represent ADTs
@@ -22,7 +22,7 @@ data Space a where
     Empty :: Space a
     Pure  :: a -> Space a
     (:+:) :: Space a -> Space a -> Space a
-    (:*:) :: Space a -> Space b -> Space (a,b)
+    (:*:) :: Space a -> Space b -> Space (a, b)
     Pay   :: Space a -> Space a
     (:$:) :: (a -> b) -> Space a -> Space b
 
@@ -32,42 +32,52 @@ s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
 
 -- Space for Nats
 spaceNat :: Space Nat
-spaceNat = Pay (Pure Z :+: (Suc :$: spaceNat))
+spaceNat = Pay (Pure Zero :+: (Suc :$: spaceNat))
 
 -- Space for list of Nats
 spaceListNat :: Space ListNat
-spaceListNat = Pay (Pure Nill :+: (Cons :$: spaceNat <∗> spaceListNat))
+spaceListNat = Pay (Pure Nil :+: (Cons :$: spaceNat <∗> spaceListNat))
 
 -- Data type for finite sets
-data FinSet a = EmptySet
-              | SingletonSet a
-              | DisjointSet (FinSet a) (FinSet a)
-              | CartesianSet (FinSet a) (FinSet a)
+data Set a where 
+    EmptySet     :: Set a
+    SingletonSet :: a -> Set a
+    DisjointSet  :: Set a -> Set a -> Set a
+    CartesianSet :: Set a -> Set a -> Set (a, a)
+    FmapSet      :: (a -> a) -> Set a -> Set a
 
-instance Show a => Show (FinSet a) where
+instance Show a => Show (Set a) where
     show EmptySet           = "{}"
     show (SingletonSet x)   = "{" ++ show x ++ "}"
     show (DisjointSet x y)  = show x ++ " U " ++ show y
-    show (CartesianSet x y) = show x ++ " x " ++ show y
+    show (CartesianSet x y) = "X"  -- needs fix --> show x ++ " X " ++ show y
+    show (FmapSet f x)      = "fmap: " ++ show x
 
 -- Comute the cardinality of a finite set
-card :: FinSet a -> Integer
+card :: Set a -> Integer
 card EmptySet           = 0
 card (SingletonSet x)   = 1
 card (DisjointSet x y)  = card x + card y
 card (CartesianSet x y) = card x * card y
 
 -- Indexing function on the finite set type
-indexFin :: FinSet a -> Integer -> Maybe a
-indexFin EmptySet           i = Nothing
-indexFin (SingletonSet x)   i | i == 0     = Just x
+indexSet :: Set a -> Integer -> Maybe a
+indexSet EmptySet           i = Nothing
+indexSet (SingletonSet x)   i | i == 0     = Just x
                               | otherwise  = Nothing
-indexFin (DisjointSet x y)  i | i < card x = indexFin x i
-                              | otherwise  = indexFin y (i - card x)
-indexFin (CartesianSet x y) i = undefined --(indexFin x (i `div` card y), indexFin y (i `mod` card y))
+indexSet (DisjointSet x y)  i | i < card x = indexSet x i
+                              | otherwise  = indexSet y (i - card x)
+indexSet (CartesianSet x y) i = 
+    case (indexSet x (i `div` card y), indexSet y (i `mod` card y)) of
+        (Just lVal, Just rVal) -> Just (lVal, rVal)
+        _                      -> Nothing 
+indexSet (FmapSet f x) i      = 
+    case indexSet x i of
+        (Just val) -> Just (f val)
+        _          -> Nothing 
 
 -- extracts the finite set of values of a given size k from a space
-sized :: Space a -> Int -> FinSet a
+sized :: Space a -> Int -> Set a
 sized Empty k     = EmptySet
 sized (Pure a) k  | k == 0    = SingletonSet a
                   | otherwise = EmptySet
@@ -81,12 +91,12 @@ sized (a :*: b) k = EmptySet -- needs change
 sized (f :$: a) k = EmptySet -- needs change
                     where
                         setA        = sized a k
-                        elements    = catMaybes [indexFin setA i | i <- [0..(card setA)]]
+                        elements    = catMaybes [indexSet setA i | i <- [0..(card setA)]]
                         setElements = foldr (DisjointSet . SingletonSet) EmptySet elements
 
 -- Indexing function on spaces
 indexSized :: Space a -> Int -> Integer -> Maybe a
-indexSized s k i = indexFin (sized s k) i
+indexSized s k i = indexSet (sized s k) i
 
 
 ----------------------------------------------------
@@ -114,9 +124,9 @@ index p _ k i = undefined -- needs check for other cases
 
 
 -- Set for {1} U {2} U {3}
-set123 :: FinSet Int 
+set123 :: Set Int 
 set123 = DisjointSet (SingletonSet 1) (DisjointSet (SingletonSet 2) (SingletonSet 3))
 
 -- Set for {8} U {9}
-set89 :: FinSet Int 
+set89 :: Set Int 
 set89 = DisjointSet (SingletonSet 8) (SingletonSet 9)
