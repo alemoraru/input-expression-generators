@@ -39,19 +39,19 @@ spaceListNat :: Space ListNat
 spaceListNat = Pay (Pure Nil :+: (Cons :$: spaceNat <∗> spaceListNat))
 
 -- Data type for finite sets
-data Set a where 
+data Set a where
     EmptySet     :: Set a
     SingletonSet :: a -> Set a
     DisjointSet  :: Set a -> Set a -> Set a
     CartesianSet :: Set a -> Set a -> Set (a, a)
-    FmapSet      :: (a -> a) -> Set a -> Set a
+    FmapSet      :: (a -> b) -> Set a -> Set b
 
 instance Show a => Show (Set a) where
     show EmptySet           = "{}"
     show (SingletonSet x)   = "{" ++ show x ++ "}"
     show (DisjointSet x y)  = show x ++ " U " ++ show y
-    show (CartesianSet x y) = "X"  -- needs fix --> show x ++ " X " ++ show y
-    show (FmapSet f x)      = "fmap: " ++ show x
+    show (CartesianSet x y) = "X"    -- needs fix --> show x ++ " X " ++ show y
+    show (FmapSet f x)      = "fmap" -- needs fix
 
 -- Comute the cardinality of a finite set
 card :: Set a -> Integer
@@ -67,14 +67,25 @@ indexSet (SingletonSet x)   i | i == 0     = Just x
                               | otherwise  = Nothing
 indexSet (DisjointSet x y)  i | i < card x = indexSet x i
                               | otherwise  = indexSet y (i - card x)
-indexSet (CartesianSet x y) i = 
+indexSet (CartesianSet x y) i =
     case (indexSet x (i `div` card y), indexSet y (i `mod` card y)) of
         (Just lVal, Just rVal) -> Just (lVal, rVal)
-        _                      -> Nothing 
-indexSet (FmapSet f x) i      = 
+        _                      -> Nothing
+indexSet (FmapSet f x) i      =
     case indexSet x i of
         (Just val) -> Just (f val)
-        _          -> Nothing 
+        _          -> Nothing
+
+-- Return a uniformly random integer in the inclusive interval (lo, hi) 
+-- uniformRange :: (Integer, Integer) -> Random Integer 
+-- uniformRange = undefined 
+
+-- Uniform sampling from finite sets
+-- uniformSet :: Set a -> Random a
+-- uniformSet s | card s == 0 = error "empty set"
+--              | otherwise = do
+--                     i <- uniformRange (0, card s − 1)
+--                     return (indexSet s i)
 
 -- extracts the finite set of values of a given size k from a space
 sized :: Space a -> Int -> Set a
@@ -88,16 +99,11 @@ sized (a :*: b) k = EmptySet -- needs change
                     where
                         elements    = [CartesianSet (sized a k1) (sized a k2) | k1 <- [0..k], k2 <- [0..k], k1 + k2 == k]
                         setElememts = foldr DisjointSet EmptySet elements
-sized (f :$: a) k = EmptySet -- needs change
-                    where
-                        setA        = sized a k
-                        elements    = catMaybes [indexSet setA i | i <- [0..(card setA)]]
-                        setElements = foldr (DisjointSet . SingletonSet) EmptySet elements
+sized (f :$: a) k = FmapSet f (sized a k)
 
 -- Indexing function on spaces
 indexSized :: Space a -> Int -> Integer -> Maybe a
 indexSized s k i = indexSet (sized s k) i
-
 
 ----------------------------------------------------
 --            PREDICATE-GUIDED INDEXING           --
@@ -106,14 +112,14 @@ indexSized s k i = indexSet (sized s k) i
 -- Determines whether a given predicate needs to investigate
 -- its argument or not in order to produce its result
 valid :: (a -> Bool) -> Maybe Bool
-valid = undefined 
+valid = undefined
 
 -- The main indexing function
 index :: (a -> Bool) -> Space a -> Int -> Integer -> Space a
-index p (f :$: a) k i = 
-    case valid p' of 
+index p (f :$: a) k i =
+    case valid p' of
         Just _  -> f :$: a
-        Nothing -> f :$: index p' a k i 
+        Nothing -> f :$: index p' a k i
         where p' = p . f
 index p _ k i = undefined -- needs check for other cases
 
@@ -124,9 +130,9 @@ index p _ k i = undefined -- needs check for other cases
 
 
 -- Set for {1} U {2} U {3}
-set123 :: Set Int 
+set123 :: Set Int
 set123 = DisjointSet (SingletonSet 1) (DisjointSet (SingletonSet 2) (SingletonSet 3))
 
 -- Set for {8} U {9}
-set89 :: Set Int 
+set89 :: Set Int
 set89 = DisjointSet (SingletonSet 8) (SingletonSet 9)
