@@ -3,10 +3,10 @@
 module Spaces.Definition where
 
 import Data.Maybe
-
 import System.Random
-
 import qualified Test.QuickCheck as QC
+
+import Booleans.Grammar
 
 data Nat = Zero | Suc Nat deriving (Show, Eq)
 data ListNat = Nil | Cons Nat ListNat deriving (Show, Eq)
@@ -34,9 +34,9 @@ data Space a where
 -- (<∗>) :: Space (a -> b) -> Space a -> Space b
 -- s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
 
--- -- Space for Nats
--- spaceNat :: Space Nat
--- spaceNat = Pay (Pure Zero :+: (Suc :$: spaceNat))
+-- Space for Nats
+spaceNat :: Space Nat
+spaceNat = Pay (Pure Zero :+: (Suc :$: spaceNat))
 
 -- -- Space for list of Nats
 -- spaceListNat :: Space ListNat
@@ -110,25 +110,32 @@ sized (f :$: a) k = FmapSet f (sized a k)
 
 -- Indexing function on spaces
 uniformSized :: Space a -> Int -> QC.Gen a
-uniformSized s k = uniformSet (sized s k) 
+uniformSized s k = uniformSet (sized s k)
 
 ----------------------------------------------------
 --            PREDICATE-GUIDED INDEXING           --
 ----------------------------------------------------
 
--- Determines whether a given predicate needs to investigate
--- its argument or not in order to produce its result
-valid :: (a -> Bool) -> Maybe Bool
-valid = undefined
+-- Rejection sampling function to generate a value that satisfies the given predicate
+uniformFilter :: (a -> Bool) -> Space a -> Int -> QC.Gen a
+uniformFilter p s k = do
+    a <- uniformSized s k
+    if p a then return a
+           else uniformFilter p s k
 
--- The main indexing function
-index :: (a -> Bool) -> Space a -> Int -> Integer -> Space a
-index p (f :$: a) k i =
-    case valid p' of
-        Just _  -> f :$: a
-        Nothing -> f :$: index p' a k i
-        where p' = p . f
-index p _ k i = undefined -- needs check for other cases
+-- -- Determines whether a given predicate needs to investigate
+-- -- its argument or not in order to produce its result
+-- valid :: (a -> Bool) -> Maybe Bool
+-- valid = undefined
+
+-- -- The main indexing function
+-- index :: (a -> Bool) -> Space a -> Int -> Integer -> Space a
+-- index p (f :$: a) k i =
+--     case valid p' of
+--         Just _  -> f :$: a
+--         Nothing -> f :$: index p' a k i
+--         where p' = p . f
+-- index p _ k i = undefined -- needs check for other cases
 
 
 ----------------------------------------------------
@@ -147,3 +154,15 @@ set2 = DisjointSet (SingletonSet 8) (SingletonSet 9)
 -- Set for set1 x set2
 set3 :: Set (Int, Int)
 set3 = CartesianSet set1 set2
+
+setExpr1 :: Set Expr 
+setExpr1 = SingletonSet (And (Val True) (Val False))
+
+----------------------------------------------------
+--               EXAMPLE PREDICATES               --
+----------------------------------------------------
+
+-- Predicate for even Nar values
+isEven :: Nat -> Bool
+isEven Zero    = True 
+isEven (Suc x) = not $ isEven x
