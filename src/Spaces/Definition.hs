@@ -49,6 +49,7 @@ data Set a where
     DisjointSet  :: Set a -> Set a -> Set a
     CartesianSet :: Set a -> Set a -> Set (a, a) -- TODO: needs check
     FmapSet      :: (a -> b) -> Set a -> Set b -- TODO: needs check
+    ReplicateSet :: Integer -> a -> Set a -- TODO: needs check
 
 instance Show a => Show (Set a) where
     show EmptySet           = "{}"
@@ -56,6 +57,7 @@ instance Show a => Show (Set a) where
     show (DisjointSet x y)  = show x ++ " U " ++ show y
     show (CartesianSet x y) = "X"    -- tODO: needs fix --> show x ++ " X " ++ show y
     show (FmapSet f x)      = "fmap" -- TODO: needs fix
+    show (ReplicateSet k x) = "replicate " ++ show x ++ show " " ++ show k ++ " times"
 
 -- Comute the cardinality of a finite set
 card :: Set a -> Integer
@@ -64,6 +66,7 @@ card (SingletonSet x)   = 1
 card (DisjointSet x y)  = card x + card y
 card (CartesianSet x y) = card x * card y
 card (FmapSet f x)      = card x
+card (ReplicateSet k x) = k
 
 -- Indexing function on the finite set type
 indexSet :: Set a -> Integer -> Maybe a -- TODO: needs check on return type
@@ -80,6 +83,8 @@ indexSet (FmapSet f x) i      =
     case indexSet x i of
         (Just val) -> Just (f val)
         _          -> Nothing
+indexSet (ReplicateSet k x) i | i < k     = Just x
+                              | otherwise = Nothing 
 
 -- Return a uniformly random integer in the inclusive interval (lo, hi) 
 uniformRange :: (Integer, Integer) -> QC.Gen Integer
@@ -122,6 +127,23 @@ uniformFilter p s k = do
     a <- uniformSized s k
     if p a then return a
            else uniformFilter p s k
+
+-- Determine whether a predicate is universally true/false/depends on argument
+universal :: (a -> Bool) -> Maybe Bool
+universal p = case p undefined of
+    True  -> Just True 
+    False -> Just False 
+    _     -> Nothing -- TODO: investigate catching errors
+
+-- Gives a reduced space if no results are found / results
+sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
+sizedP p (f :$: a) k = case universal p' of
+    Just False ->  undefined
+    _          -> undefined
+    
+    where p' = undefined
+sizedP _ _ _ = undefined 
+
 
 -- -- Determines whether a given predicate needs to investigate
 -- -- its argument or not in order to produce its result
