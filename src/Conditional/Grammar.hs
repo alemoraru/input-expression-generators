@@ -108,4 +108,5 @@ sampleEnvironment =
     ("three", VInt 3),
     ("tru", VBool True),
     ("fls", VBool False)
+    -- ("isZero", VClos "isZero" (EInt 0) [])
   ]
