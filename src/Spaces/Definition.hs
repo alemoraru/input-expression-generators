@@ -59,6 +59,7 @@ card EmptySet           = 0
 card (SingletonSet x)   = 1
 card (DisjointSet x y)  = card x + card y
 card (CartesianSet x y) = card x * card y
+card (FmapSet f x)      = card x
 
 -- Indexing function on the finite set type
 indexSet :: Set a -> Integer -> Maybe a
