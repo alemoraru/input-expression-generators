@@ -66,6 +66,7 @@ library
       , hspec >= 2.0
       , hspec-smallcheck <= 0.5.2
       , hspec-core <= 2.8.1
+      , random >= 1.1
   default-language: Haskell2010
 
 executable generators-exe
@@ -81,6 +82,7 @@ executable generators-exe
       , QuickCheck >= 2.13.2 && < 2.15
       , smallcheck <1.1.6 || >1.1.6
       , generators
+      , random >= 1.1
   default-language: Haskell2010
 
 test-suite generators-test
@@ -110,4 +112,5 @@ test-suite generators-test
       , hspec-smallcheck <= 0.5.2
       , hspec-core <= 2.8.1
       , generators
+      , random >= 1.1
   default-language: Haskell2010
