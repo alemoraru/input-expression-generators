@@ -1,4 +1,5 @@
 {-# LANGUAGE GADTs #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Spaces.Definition where
 
@@ -7,6 +8,9 @@ import System.Random
 import qualified Test.QuickCheck as QC
 
 import Booleans.Grammar
+
+import System.IO.Unsafe
+import Control.Exception
 
 data Nat = Zero | Suc Nat deriving (Show, Eq)
 data ListNat = Nil | Cons Nat ListNat deriving (Show, Eq)
@@ -130,20 +134,47 @@ uniformFilter p s k = do
 
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
-universal p = case p undefined of
-    True  -> Just True 
-    False -> Just False 
-    _     -> Nothing -- TODO: investigate catching errors
+universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed"))) (\(e :: SomeException) -> pure Nothing) 
+-- universal :: (a -> Bool) -> Maybe Bool
+-- universal p = case p undefined of
+--     True  -> Just True 
+--     False -> Just False 
+--     _     -> Nothing -- TODO: investigate catching errors
 
 -- Gives a reduced space if no results are found / results
-sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
-sizedP p (f :$: a) k = case universal p' of
-    Just False ->  undefined
-    _          -> undefined
+-- sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
+-- sizedP p (f :$: a) k = case universal p' of
+--     Just False -> ReplicateSet (card $ sized a k) (Right Empty)
+--     _          -> FmapSet (apply f) (sizedP p' a k)
     
-    where p' = undefined
-sizedP _ _ _ = undefined 
+--     where p' = undefined
+--           apply f x = undefined 
+-- sizedP p (a :*: b) k = if inspectsFst p
+--     then sizedP p (swap :$: (b *** a)) k
+--     else sizedP p (a *** b) k
+--     where swap (a, b) = (b, a)
+-- sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild a :+:) (sizedP p b k)
+--     where 
+--         rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
+--         rebuild f s = FmapSet (FmapSet f) s
+-- sizedP p (Pay a) k | k > 0 = FmapSet (FmapSet Pay) (sizedP p a (k - 1))
+-- sizedP p (Pure a) 0 | p a = SingletonSet (Left a)
+--                     | otherwise = SingletonSet (Right Empty)
+-- sizedP _ _ _ = EmptySet 
 
+-- Function used to eliminate products on spaces altogether
+(***) :: Space a -> Space a -> Space a
+a *** (b :+: c) = undefined -- (a :+: b) :+: (a :*: c) -- distributivity law
+a *** (b :*: c) = undefined -- (\((x, y), z) -> (x, (y, z))) :$: (a :*: b) -- associativity law
+a *** (Pure x)  = undefined -- (\y -> (y, x)) :$: a -- identity law
+a *** Empty     = Empty -- annihilation law 
+
+a *** (Pay b)   = undefined --Pay (a :*: b) -- lift pay
+a *** (f :$: b) = undefined --(\(x, y) -> (x, f y)) :$: (a :*: b) -- lift fmap
+
+-- Taking a predicate on pairs
+inspectsFst :: ((a, b) -> Bool) -> Bool 
+inspectsFst = undefined 
 
 -- -- Determines whether a given predicate needs to investigate
 -- -- its argument or not in order to produce its result
