@@ -30,28 +30,28 @@ data Space a where
     Empty :: Space a
     Pure  :: a -> Space a
     (:+:) :: Space a -> Space a -> Space a
-    (:*:) :: Space a -> Space a -> Space (a, a)
+    (:*:) :: Space a -> Space b -> Space (a, b)
     Pay   :: Space a -> Space a
     (:$:) :: (a -> b) -> Space a -> Space b
 
--- -- Produce a space of all applications of functions to params
--- (<∗>) :: Space (a -> b) -> Space a -> Space b
--- s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
+-- Produce a space of all applications of functions to params
+(<∗>) :: Space (a -> b) -> Space a -> Space b
+s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
 
 -- Space for Nats
 spaceNat :: Space Nat
 spaceNat = Pay (Pure Zero :+: (Suc :$: spaceNat))
 
--- -- Space for list of Nats
--- spaceListNat :: Space ListNat
--- spaceListNat = Pay (Pure Nil :+: (Cons :$: spaceNat <∗> spaceListNat))
+-- Space for list of Nats
+spaceListNat :: Space ListNat
+spaceListNat = Pay (Pure Nil :+: (Cons :$: spaceNat <∗> spaceListNat))
 
 -- Data type for finite sets
 data Set a where
     EmptySet     :: Set a
     SingletonSet :: a -> Set a
     DisjointSet  :: Set a -> Set a -> Set a
-    CartesianSet :: Set a -> Set a -> Set (a, a) -- TODO: needs check
+    CartesianSet :: Set a -> Set b -> Set (a, b) -- TODO: needs check
     FmapSet      :: (a -> b) -> Set a -> Set b -- TODO: needs check
     ReplicateSet :: Integer -> a -> Set a -- TODO: needs check
 
@@ -135,6 +135,7 @@ uniformFilter p s k = do
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
 universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed"))) (\(e :: SomeException) -> pure Nothing) 
+
 -- universal :: (a -> Bool) -> Maybe Bool
 -- universal p = case p undefined of
 --     True  -> Just True 
