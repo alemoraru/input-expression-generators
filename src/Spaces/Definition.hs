@@ -15,6 +15,16 @@ import Control.Exception
 data Nat = Zero | Suc Nat deriving (Show, Eq)
 data ListNat = Nil | Cons Nat ListNat deriving (Show, Eq)
 
+-- Transform an Int to a Nat value
+intToNat :: Int -> Nat 
+intToNat n | n > 0     = Suc $ intToNat (n - 1)
+           | otherwise = Zero
+
+-- Transform a Nat value to a Int
+natToInt :: Nat -> Int 
+natToInt Zero    = 0
+natToInt (Suc x) = 1 + natToInt x
+
 -- Count the number of constructors in a Nat expression
 sizeNat :: Nat -> Int
 sizeNat Zero    = 1
@@ -146,7 +156,7 @@ universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed
 inspectsFst :: ((a, b) -> Bool) -> Bool 
 inspectsFst p = undefined 
 
--- Improved uniform filter
+-- Improved uniform filter that reduces the space with each failed input
 uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
 uniform p s k = do
     x <- uniformSet (sizedP p s k)
