@@ -150,10 +150,10 @@ sizedP p (f :$: a) k = case universal p' of
     
     where p' = undefined
           apply f x = undefined 
--- sizedP p (a :*: b) k = if inspectsFst p
---     then sizedP p (swap :$: (b *** a)) k
---     else sizedP p (a *** b) k
---     where swap (a, b) = (b, a)
+sizedP p (a :*: b) k = if inspectsFst p
+    then sizedP p (swap :$: (b *** a)) k
+    else sizedP p (a *** b) k
+    where swap (a, b) = (b, a)
 sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild (:+: a) (sizedP p b k))
     where 
         rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
