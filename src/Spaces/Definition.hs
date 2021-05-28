@@ -143,25 +143,33 @@ universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed
 --     _     -> Nothing -- TODO: investigate catching errors
 
 -- Gives a reduced space if no results are found / results
--- sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
--- sizedP p (f :$: a) k = case universal p' of
---     Just False -> ReplicateSet (card $ sized a k) (Right Empty)
---     _          -> FmapSet (apply f) (sizedP p' a k)
+sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
+sizedP p (f :$: a) k = case universal p' of
+    Just False -> ReplicateSet (card $ sized a k) (Right Empty)
+    _          -> FmapSet (apply f) (sizedP p' a k)
     
---     where p' = undefined
---           apply f x = undefined 
+    where p' = undefined
+          apply f x = undefined 
 -- sizedP p (a :*: b) k = if inspectsFst p
 --     then sizedP p (swap :$: (b *** a)) k
 --     else sizedP p (a *** b) k
 --     where swap (a, b) = (b, a)
--- sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild a :+:) (sizedP p b k)
---     where 
---         rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
---         rebuild f s = FmapSet (FmapSet f) s
--- sizedP p (Pay a) k | k > 0 = FmapSet (FmapSet Pay) (sizedP p a (k - 1))
--- sizedP p (Pure a) 0 | p a = SingletonSet (Left a)
---                     | otherwise = SingletonSet (Right Empty)
--- sizedP _ _ _ = EmptySet 
+sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild (:+: a) (sizedP p b k))
+    where 
+        rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
+        rebuild f s = FmapSet (fmap f) s
+sizedP p (Pay a) k  | k > 0     = FmapSet (fmap Pay) (sizedP p a (k - 1))
+sizedP p (Pure a) 0 | p a       = SingletonSet (Left a)
+                    | otherwise = SingletonSet (Right Empty)
+sizedP _ _        _ = EmptySet 
+
+-- Improved uniform filter
+uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
+uniform p s k = do
+    x <- uniformSet (sizedP p s k)
+    case x of 
+        Left a   -> return a
+        Right s' -> uniform p s' k
 
 -- Function used to eliminate products on spaces altogether
 (***) :: Space a -> Space a -> Space a
