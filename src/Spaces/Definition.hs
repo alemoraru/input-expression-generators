@@ -51,16 +51,16 @@ data Set a where
     EmptySet     :: Set a
     SingletonSet :: a -> Set a
     DisjointSet  :: Set a -> Set a -> Set a
-    CartesianSet :: Set a -> Set b -> Set (a, b) -- TODO: needs check
-    FmapSet      :: (a -> b) -> Set a -> Set b -- TODO: needs check
-    ReplicateSet :: Integer -> a -> Set a -- TODO: needs check
+    CartesianSet :: Set a -> Set b -> Set (a, b)
+    FmapSet      :: (a -> b) -> Set a -> Set b
+    ReplicateSet :: Integer -> a -> Set a 
 
 instance Show a => Show (Set a) where
     show EmptySet           = "{}"
     show (SingletonSet x)   = "{" ++ show x ++ "}"
     show (DisjointSet x y)  = show x ++ " U " ++ show y
-    show (CartesianSet x y) = "X"    -- tODO: needs fix --> show x ++ " X " ++ show y
-    show (FmapSet f x)      = "fmap" -- TODO: needs fix
+    show (CartesianSet x y) = "X"    -- TODO: needs fix --> show x ++ " X " ++ show y
+    show (FmapSet f x)      = "fmap" -- TODO: needs fix --> "fmap: " ++ show x
     show (ReplicateSet k x) = "replicate " ++ show x ++ show " " ++ show k ++ " times"
 
 -- Comute the cardinality of a finite set
@@ -73,7 +73,7 @@ card (FmapSet f x)      = card x
 card (ReplicateSet k x) = k
 
 -- Indexing function on the finite set type
-indexSet :: Set a -> Integer -> Maybe a -- TODO: needs check on return type
+indexSet :: Set a -> Integer -> Maybe a
 indexSet EmptySet           i = Nothing
 indexSet (SingletonSet x)   i | i == 0     = Just x
                               | otherwise  = Nothing
@@ -90,7 +90,7 @@ indexSet (FmapSet f x) i      =
 indexSet (ReplicateSet k x) i | i < k     = Just x
                               | otherwise = Nothing 
 
--- Return a uniformly random integer in the inclusive interval (lo, hi) 
+-- Return a uniformly random integer in the inclusive interval (low, high) 
 uniformRange :: (Integer, Integer) -> QC.Gen Integer
 uniformRange = QC.chooseInteger
 
@@ -99,8 +99,8 @@ uniformSet :: Set a -> QC.Gen a
 uniformSet s | card s == 0 = error "empty set"
              | otherwise = do
                     i <- uniformRange (0, card s - 1)
-                    do case indexSet s i of
-                        Nothing  -> error "something went wrong"
+                    case indexSet s i of
+                        Nothing  -> error "something went wrong" -- TODO: Check correctness
                         Just set -> return set
 
 -- extracts the finite set of values of a given size k from a space
@@ -111,7 +111,7 @@ sized (Pure a) k  | k == 0    = SingletonSet a
 sized (Pay a) k   | k == 0    = EmptySet
                   | otherwise = sized a (k - 1)
 sized (a :+: b) k = DisjointSet (sized a k) (sized b k)
-sized (a :*: b) k = setElememts -- TODO: needs check on types
+sized (a :*: b) k = setElememts
                     where
                         elements    = [CartesianSet (sized a k1) (sized b k2) | k1 <- [0..k], k2 <- [0..k], k1 + k2 == k]
                         setElememts = foldr DisjointSet EmptySet elements
@@ -134,13 +134,34 @@ uniformFilter p s k = do
 
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
-universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed"))) (\(e :: SomeException) -> pure Nothing) 
+universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed"))) (\(e :: SomeException) -> pure Nothing) -- TODO: Check correctness when returning Nothing
 
 -- universal :: (a -> Bool) -> Maybe Bool
 -- universal p = case p undefined of
 --     True  -> Just True 
 --     False -> Just False 
 --     _     -> Nothing -- TODO: investigate catching errors
+
+-- Taking a predicate on pairs
+inspectsFst :: ((a, b) -> Bool) -> Bool 
+inspectsFst p = undefined 
+
+-- Improved uniform filter
+uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
+uniform p s k = do
+    x <- uniformSet (sizedP p s k)
+    case x of 
+        Left a   -> return a
+        Right s' -> uniform p s' k
+
+-- Function used to eliminate products on spaces altogether
+(***) :: Space a -> Space b -> Space (a, b)
+a *** (b :+: c) = (a :*: b) :+: (a :*: c) -- distributivity law
+a *** (b :*: c) = (\((x, y), z) -> (x, (y, z))) :$: ((a :*: b) :*: c) -- associativity law
+a *** (Pure x)  = (\y -> (y, x)) :$: a    -- identity law
+a *** Empty     = Empty                   -- annihilation law 
+a *** (Pay b)   = Pay (a :*: b)           -- lift pay
+a *** (f :$: b) = (\(x, y) -> (x, f y)) :$: (a :*: b) -- lift fmap
 
 -- Gives a reduced space if no results are found / results
 sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
@@ -163,42 +184,6 @@ sizedP p (Pay a) k  | k > 0     = FmapSet (fmap Pay) (sizedP p a (k - 1))
 sizedP p (Pure a) 0 | p a       = SingletonSet (Left a)
                     | otherwise = SingletonSet (Right Empty)
 sizedP _ _        _ = EmptySet 
-
--- Improved uniform filter
-uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
-uniform p s k = do
-    x <- uniformSet (sizedP p s k)
-    case x of 
-        Left a   -> return a
-        Right s' -> uniform p s' k
-
--- Function used to eliminate products on spaces altogether
-(***) :: Space a -> Space b -> Space (a, b)
-a *** (b :+: c) = (a :*: b) :+: (a :*: c) -- distributivity law
-a *** (b :*: c) = (\((x, y), z) -> (x, (y, z))) :$: ((a :*: b) :*: c) -- associativity law
-a *** (Pure x)  = (\y -> (y, x)) :$: a    -- identity law
-a *** Empty     = Empty                   -- annihilation law 
-
-a *** (Pay b)   = Pay (a :*: b) -- lift pay
-a *** (f :$: b) = (\(x, y) -> (x, f y)) :$: (a :*: b) -- lift fmap
-
--- Taking a predicate on pairs
-inspectsFst :: ((a, b) -> Bool) -> Bool 
-inspectsFst = undefined 
-
--- -- Determines whether a given predicate needs to investigate
--- -- its argument or not in order to produce its result
--- valid :: (a -> Bool) -> Maybe Bool
--- valid = undefined
-
--- -- The main indexing function
--- index :: (a -> Bool) -> Space a -> Int -> Integer -> Space a
--- index p (f :$: a) k i =
---     case valid p' of
---         Just _  -> f :$: a
---         Nothing -> f :$: index p' a k i
---         where p' = p . f
--- index p _ k i = undefined -- needs check for other cases
 
 
 ----------------------------------------------------
@@ -229,3 +214,11 @@ setExpr1 = SingletonSet (And (Val True) (Val False))
 isEven :: Nat -> Bool
 isEven Zero    = True 
 isEven (Suc x) = not $ isEven x
+
+-- Universally True predicate
+univTrue :: a -> Bool 
+univTrue _ = True
+
+-- Universally False predicate
+univFalse :: a -> Bool 
+univFalse _ = False
