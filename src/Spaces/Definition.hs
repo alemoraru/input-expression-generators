@@ -147,9 +147,10 @@ sizedP :: (a -> Bool) -> Space a -> Int -> Set (Either a (Space a))
 sizedP p (f :$: a) k = case universal p' of
     Just False -> ReplicateSet (card $ sized a k) (Right Empty)
     _          -> FmapSet (apply f) (sizedP p' a k)
-    
-    where p' = undefined
-          apply f x = undefined 
+    where p' = p . f
+          apply f x = case x of
+              Left x  -> Left  (f x)
+              Right a -> Right (f :$: a) 
 sizedP p (a :*: b) k = if inspectsFst p
     then sizedP p (swap :$: (b *** a)) k
     else sizedP p (a *** b) k
