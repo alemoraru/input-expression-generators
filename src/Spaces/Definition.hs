@@ -172,14 +172,14 @@ uniform p s k = do
         Right s' -> uniform p s' k
 
 -- Function used to eliminate products on spaces altogether
-(***) :: Space a -> Space a -> Space a
-a *** (b :+: c) = undefined -- (a :+: b) :+: (a :*: c) -- distributivity law
-a *** (b :*: c) = undefined -- (\((x, y), z) -> (x, (y, z))) :$: (a :*: b) -- associativity law
-a *** (Pure x)  = undefined -- (\y -> (y, x)) :$: a -- identity law
-a *** Empty     = Empty -- annihilation law 
+(***) :: Space a -> Space b -> Space (a, b)
+a *** (b :+: c) = (a :*: b) :+: (a :*: c) -- distributivity law
+a *** (b :*: c) = (\((x, y), z) -> (x, (y, z))) :$: ((a :*: b) :*: c) -- associativity law
+a *** (Pure x)  = (\y -> (y, x)) :$: a    -- identity law
+a *** Empty     = Empty                   -- annihilation law 
 
-a *** (Pay b)   = undefined --Pay (a :*: b) -- lift pay
-a *** (f :$: b) = undefined --(\(x, y) -> (x, f y)) :$: (a :*: b) -- lift fmap
+a *** (Pay b)   = Pay (a :*: b) -- lift pay
+a *** (f :$: b) = (\(x, y) -> (x, f y)) :$: (a :*: b) -- lift fmap
 
 -- Taking a predicate on pairs
 inspectsFst :: ((a, b) -> Bool) -> Bool 
