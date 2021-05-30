@@ -50,6 +50,8 @@ library
       Types.Generator
 
       Spaces.Definition
+      Spaces.Grammar
+      Spaces.Generator
 
       Util
 

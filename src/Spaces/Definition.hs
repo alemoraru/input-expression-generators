@@ -49,12 +49,12 @@ data Space a where
 s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
 
 -- Space for Nats
-spaceNat :: Space Nat
-spaceNat = Pay (Pure Zero :+: (Suc :$: spaceNat))
+spNat :: Space Nat
+spNat = Pay (Pure Zero :+: (Suc :$: spNat))
 
 -- Space for list of Nats
-spaceListNat :: Space ListNat
-spaceListNat = Pay (Pure Nil :+: (Cons :$: spaceNat <∗> spaceListNat))
+spListNat :: Space ListNat
+spListNat = Pay (Pure Nil :+: (Cons :$: spNat <∗> spListNat))
 
 -- Data type for finite sets
 data Set a where
