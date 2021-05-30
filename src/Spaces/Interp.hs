@@ -2,17 +2,6 @@ module Spaces.Interp where
 
 import Spaces.Grammar
 
--- Representation of a type environment
-type TEnvironment = [(Term, Type)]
-
--- Data typed used for checking type-correctness of lambda terms
-data Type = TInt | TFun Type Type
-  deriving (Eq)
-
-instance Show Type where
-    show TInt = "Int"
-    show (TFun param body) = "(" ++ show param ++ " -> " ++ show body ++ ")"
-
 -- Check that a Term is of a given type
 typeCheck :: Type -> Term -> Bool
 typeCheck TInt expr = case expr of
