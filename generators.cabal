@@ -52,6 +52,7 @@ library
       Spaces.Definition
       Spaces.Grammar
       Spaces.Generator
+      Spaces.Interp
 
       Util
 

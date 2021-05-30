@@ -12,8 +12,10 @@ import Booleans.Grammar
 import System.IO.Unsafe
 import Control.Exception
 
-data Nat = Zero | Suc Nat deriving (Show, Eq)
-data ListNat = Nil | Cons Nat ListNat deriving (Show, Eq)
+data Nat = Zero | Suc Nat
+  deriving (Show, Eq)
+data ListNat = Nil | Cons Nat ListNat
+  deriving (Show, Eq)
 
 -- Transform an Int to a Nat value
 intToNat :: Int -> Nat 
