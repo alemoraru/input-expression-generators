@@ -8,8 +8,8 @@ import qualified Test.QuickCheck as QC
 
 -- Predicate that checks if a given term is of a specified type
 predicate :: Term -> Bool
-predicate = typeCheck (TFun (TFun TInt TInt) TInt) 
+predicate = typeCheck (TFun TInt TInt) 
 
 -- Get a random lambda term 
 getLambdaTerm :: IO Term 
-getLambdaTerm = QC.generate $ uniformFilter predicate spTerm 6
+getLambdaTerm = QC.generate $ uniformFilter predicate spTerm 8
