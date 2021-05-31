@@ -50,8 +50,10 @@ library
       Types.Generator
 
       Spaces.Definition
-      Spaces.Grammar
+      Spaces.SimpleGrammar
       Spaces.Generator
+      Spaces.SimpleInterp
+      Spaces.Grammar
       Spaces.Interp
 
       Util

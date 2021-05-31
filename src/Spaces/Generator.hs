@@ -1,8 +1,8 @@
 module Spaces.Generator where
 
-import Spaces.Grammar
+import Spaces.SimpleGrammar
 import Spaces.Definition
-import Spaces.Interp
+import Spaces.SimpleInterp
 
 import qualified Test.QuickCheck as QC
 
