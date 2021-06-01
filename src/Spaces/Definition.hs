@@ -144,19 +144,23 @@ uniformFilter p s k = do
     if p a then return a
            else uniformFilter p s k
 
+universalHelper :: (a -> Bool) -> IO (Either e a)
+universalHelper p = undefined -- try $ universal p
+
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
-universal p = unsafePerformIO $ catch (pure $ Just (p (error "Variable is needed"))) (\(e :: SomeException) -> pure Nothing) -- TODO: Check correctness when returning Nothing
+universal p = unsafePerformIO $ catch (pure $ Just (p undefined)) (\(e :: SomeException) -> pure Nothing) -- TODO: Check correctness when returning Nothing
 
--- universal :: (a -> Bool) -> Maybe Bool
--- universal p = case p undefined of
---     True  -> Just True 
---     False -> Just False 
---     _     -> Nothing -- TODO: investigate catching errors
+-- Data type used for exceptions in the inspectsFst function
+data PairException = FstException | SndException
+    deriving (Eq, Show)
 
--- Taking a predicate on pairs
+instance Exception PairException
+
+-- Evaluate a predicate on a pair and see which argument is "inspected" first
 inspectsFst :: ((a, b) -> Bool) -> Bool 
 inspectsFst p = undefined 
+-- inspectsFst p = unsafePerformIO $ catch (p (error "ss", error "sdsdds")) (\(e :: PairException) -> True)
 
 -- Improved uniform filter that reduces the space with each failed input
 uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a

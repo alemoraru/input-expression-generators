@@ -25,6 +25,7 @@ check env t (App ((f, x), tx))    =
 check env (TFun (ta, tb)) (Lam e) = check (ta : env) tb e
 check _   _                _      = False
 
+-- Sample type environment to use when generating data
 sampleEnv :: TEnvironment
 sampleEnv =
     [
@@ -38,14 +39,16 @@ sampleEnv =
 -- The space of all lambda terms
 spTerm, spApp, spLam, spVar :: Space Expr
 spTerm = Pay (spApp :+: spLam :+: spVar)
-spApp  = App :$: (spTerm :*: spTerm :*: spType)
+spApp  = App :$: (spLam :*: spTerm :*: spType)
 spLam  = Lam :$: spTerm
 spVar  = Var :$: spInt
 
+-- The space for type values
 spType, spTInt, spTFun :: Space Type
 spType = Pay (spTInt :+: spTFun)
 spTInt = Pure TInt
 spTFun = TFun :$: (spType :*: spType)
 
+-- The space for ints
 spInt :: Space Int
 spInt = Pay (Pure 0 :+: (succ :$: spInt))
