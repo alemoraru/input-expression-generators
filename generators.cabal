@@ -50,8 +50,11 @@ library
       Types.Generator
 
       Spaces.Definition
-      Spaces.Grammar
+      Spaces.SimpleGrammar
       Spaces.Generator
+      Spaces.SimpleGenerator
+      Spaces.SimpleInterp
+      Spaces.Grammar
       Spaces.Interp
 
       Util
@@ -98,6 +101,7 @@ test-suite generators-test
       QuickCheck.SpecArith
       QuickCheck.SpecBools
       QuickCheck.SpecCond
+      QuickCheck.SpecSpaces
 
       SmallCheck.SpecArith
       SmallCheck.SpecBools
