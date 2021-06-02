@@ -149,7 +149,7 @@ universalHelper p = undefined -- try $ universal p
 
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
-universal f = unsafePerformIO $ catch (let x = f (error "") in x `seq` pure (Just x)) (\(e :: SomeException) -> pure Nothing) -- TODO: Check correctness when returning Nothing
+universal p = unsafePerformIO $ catch (let x = p undefined in x `seq` pure (Just x)) (\(e :: SomeException) -> pure Nothing)
 
 -- Data type used for exceptions in the inspectsFst function
 data PairException = FstException | SndException
@@ -159,8 +159,7 @@ instance Exception PairException
 
 -- Evaluate a predicate on a pair and see which argument is "inspected" first
 inspectsFst :: ((a, b) -> Bool) -> Bool 
-inspectsFst p = undefined 
--- inspectsFst p = unsafePerformIO $ catch (p (error "ss", error "sdsdds")) (\(e :: PairException) -> True)
+inspectsFst p = unsafePerformIO $ catch (let x = p (error "fst", error "snd") in x `seq` pure True) (\(e :: SomeException) -> pure False)
 
 -- Improved uniform filter that reduces the space with each failed input
 uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
