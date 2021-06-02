@@ -27,37 +27,43 @@ source-repository head
 
 library
   exposed-modules:
-      Arithmetic.Grammar
-      Arithmetic.Interp1
-      Arithmetic.Interp2
-      Arithmetic.InterpFaulty1
+    -- Arithmetic package
+    Arithmetic.Grammar
+    Arithmetic.Interp1
+    Arithmetic.Interp2
+    Arithmetic.InterpFaulty1
 
-      Conditional.Grammar
-      Conditional.Interp1
-      Conditional.Interp2
-      Conditional.InterpFaulty1
+    -- Boolean package
+    Booleans.Grammar
+    Booleans.Interp1
+    Booleans.Interp2
+    Booleans.InterpFaulty1
 
-      Booleans.Grammar
-      Booleans.Interp1
-      Booleans.Interp2
-      Booleans.InterpFaulty1
+    -- Conditional package
+    Conditional.Grammar
+    Conditional.Interp1
+    Conditional.Interp2
+    Conditional.InterpFaulty1
 
-      UntypedLambda.Grammar
-      UntypedLambda.Interp
+    -- UntypedLambda package
+    UntypedLambda.Grammar
+    UntypedLambda.Interp
 
-      Types.Grammar
-      Types.Interp
-      Types.Generator
+    -- TypedLC package
+    Types.Grammar
+    Types.Interp
+    Types.Generator
 
-      Spaces.Definition
-      Spaces.SimpleGrammar
-      Spaces.Generator
-      Spaces.SimpleGenerator
-      Spaces.SimpleInterp
-      Spaces.Grammar
-      Spaces.Interp
+    -- Spaces package
+    Spaces.Definition
+    Spaces.SimpleGrammar
+    Spaces.SimpleGenerator
+    Spaces.SimpleInterp
+    Spaces.Grammar
+    Spaces.Generator
+    Spaces.Interp
 
-      Util
+    Util
 
   other-modules:
       Paths_generators
@@ -97,12 +103,13 @@ test-suite generators-test
   other-modules:
       Paths_generators
 
-      -- Testing modules
+      -- Testing modules for QuickCheck
       QuickCheck.SpecArith
       QuickCheck.SpecBools
       QuickCheck.SpecCond
       QuickCheck.SpecSpaces
 
+      -- Testing modules for SmallCheck
       SmallCheck.SpecArith
       SmallCheck.SpecBools
       SmallCheck.SpecCond
