@@ -7,17 +7,22 @@ import qualified Booleans.InterpFaulty1 as IF1
 
 import Test.QuickCheck (quickCheck, Testable (property))
 
-import Test.Hspec
+import Test.Hspec ( hspec, describe, it, Spec )
 
+-- property for equivalent interpreters
 prop_correct_interp :: Expr -> Bool 
 prop_correct_interp expr = I1.interp expr == I2.interp expr
 
+-- property for non-equivalent interpreters
 prop_faulty_interp :: Expr -> Bool 
 prop_faulty_interp expr = I1.interp expr == IF1.interp expr
 
+-- Main driver code
 main :: IO ()
 main = hspec spec
 
+-- Auxiliary main that uses
+-- the hspec package
 spec :: Spec
 spec = do
     describe "QuickCheck Boolean Testing:" $ do

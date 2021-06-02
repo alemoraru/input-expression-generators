@@ -6,10 +6,11 @@ import qualified Conditional.Interp2 as I2
 import qualified Conditional.InterpFaulty1 as IF1
 
 import Test.QuickCheck
+    ( Testable(property), (==>), collect, Property )
 
-import Test.Hspec
+import Test.Hspec ( hspec, describe, it, Spec )
 
--- Pre-condition basically type-checks input expressions
+-- Pre-condition that "type-checks" input expressions
 preConditionInterp :: Expr -> Bool 
 preConditionInterp expr = 
     case I1.interp expr [] of 
@@ -26,25 +27,29 @@ prop_correct_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1
 prop_faulty_interp :: Expr -> Property 
 prop_faulty_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF1.interp expr []
 
+-- Function that computes the depth of an expression
 depth :: Expr -> Integer 
-depth (EInt _)  = 1
-depth (EBool _) = 1
-depth (Id _)    = 1
-depth (Add l r) = 1 + max (depth l) (depth r)
-depth (Mul l r) = 1 + max (depth l) (depth r)
-depth (Not e)   = 1 + depth e
-depth (Or l r)  = 1 + max (depth l) (depth r)
-depth (And l r) = 1 + max (depth l) (depth r)
-depth (Eq l r)  = 1 + max (depth l) (depth r)
-depth (Lt l r)  = 1 + max (depth l) (depth r)
-depth (Gt l r)  = 1 + max (depth l) (depth r)
+depth (EInt _)     = 1
+depth (EBool _)    = 1
+depth (Id _)       = 1
+depth (Add l r)    = 1 + max (depth l) (depth r)
+depth (Mul l r)    = 1 + max (depth l) (depth r)
+depth (Not e)      = 1 + depth e
+depth (Or l r)     = 1 + max (depth l) (depth r)
+depth (And l r)    = 1 + max (depth l) (depth r)
+depth (Eq l r)     = 1 + max (depth l) (depth r)
+depth (Lt l r)     = 1 + max (depth l) (depth r)
+depth (Gt l r)     = 1 + max (depth l) (depth r)
 depth (Lambda _ e) = 1 + depth e
 depth (App l r)    = 1 + max (depth l) (depth r)
 depth (If b t f)   = 1 + max (depth b) (max (depth t) (depth f))
 
+-- Main driver code
 main :: IO ()
 main = hspec spec
 
+-- Auxiliary main that uses
+-- the hspec package
 spec :: Spec
 spec = do
     describe "QuickCheck Conditional Testing:" $ do
