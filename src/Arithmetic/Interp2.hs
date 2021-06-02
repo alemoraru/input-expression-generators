@@ -2,6 +2,8 @@ module Arithmetic.Interp2 where
   
 import Arithmetic.Grammar ( Expr(..) )
 
+-- Correct interpreter for arithmetic expressions
+-- That either returns an error message or an Int result
 interp :: Expr -> Either String Int
 interp (Val x)          = Right x
 interp (Add left right) = 
