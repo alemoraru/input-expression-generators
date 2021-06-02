@@ -1,12 +1,14 @@
 module Conditional.InterpFaulty1 where
 
-import Conditional.Grammar
-import Util
+import Conditional.Grammar ( Environment, Expr(..), Val(..) )
+import Util ( Error(InterpError) )
 
+-- Search for a binding within an environment
 findId :: String -> Environment -> Either Error Val
 findId str [] = Left $ InterpError $ "Variable " ++ str ++ " not found."
 findId str ((name, val) : envRest) = if name == str then Right val else findId name envRest
 
+-- Faulty interpretation of an expression 
 interp :: Expr -> Environment -> Either Error Val
 
 -- basic building blocks

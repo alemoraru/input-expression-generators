@@ -1,16 +1,20 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+
 module Conditional.Grammar ( Expr ( .. ), Val ( .. ), Environment ) where
 
 import Test.QuickCheck
+    ( Arbitrary(arbitrary), elements, frequency, oneof, sized, Gen )
 
-import Control.Monad
+import Control.Monad ( liftM2, liftM3 )
 
 import qualified Test.SmallCheck.Series as SC
 
+-- ADT for result values
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
   deriving ( Eq )
 
+-- Used for pretty printing result values
 instance Show Val where
     show (VInt x)  = show x
     show (VBool x) = show x
@@ -18,6 +22,7 @@ instance Show Val where
 
 type Environment = [(String, Val)]
 
+-- ADT for expressions which also contains conditionals
 data Expr =
   -- basic building blocks
   EInt Int | EBool Bool | Id String
@@ -34,6 +39,7 @@ data Expr =
 
   deriving ( Eq )
 
+-- Pretty printing expressions
 instance Show Expr where
   show (EInt x)  = if x < 0 then "(" ++ show x ++ ")" else show x
   show (EBool b) = show b
@@ -68,6 +74,9 @@ instance (Monad m) => SC.Serial m Expr where
 instance Arbitrary Expr where
   arbitrary = sized arbExpr
 
+-- Function for generating data 
+-- of a particular depth 
+arbExpr :: Int -> Gen Expr
 arbExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary]
 arbExpr n = frequency
   [
@@ -99,6 +108,7 @@ arbVar nv =
     (key, val) <- elements nv
     return (Id key) 
 
+-- Environment used for testing interpretation
 sampleEnvironment :: Environment 
 sampleEnvironment = 
   [

@@ -1,8 +1,10 @@
 module Conditional.Interp2 where
 
-import Conditional.Grammar
-import Util
+import Conditional.Grammar ( Environment, Expr(..), Val(..) )
+import Util ( Error(InterpError) )
 
+-- Correct interpretation of an expression 
+-- that can either return an error message or a value
 interp :: Expr -> Environment -> Either Error Val
 interp (EInt x) nv  = Right (VInt x)
 interp (EBool b) nv = Right (VBool b)
