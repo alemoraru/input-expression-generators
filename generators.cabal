@@ -44,6 +44,8 @@ library
     Conditional.Interp1
     Conditional.Interp2
     Conditional.InterpFaulty1
+    Conditional.InterpFaulty2
+
 
     -- UntypedLambda package
     UntypedLambda.Grammar

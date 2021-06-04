@@ -4,6 +4,7 @@ import Conditional.Grammar (Expr (..))
 import qualified Conditional.Interp1 as I1
 import qualified Conditional.Interp2 as I2
 import qualified Conditional.InterpFaulty1 as IF1
+import qualified Conditional.InterpFaulty2 as IF2
 
 import Test.QuickCheck
     ( Testable(property), (==>), collect, Property )
@@ -24,8 +25,13 @@ prop_correct_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1
 
 -- Property for checking non-equivalent properties
 -- Also showcase distribution of values per depth of parse tree
-prop_faulty_interp :: Expr -> Property 
-prop_faulty_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF1.interp expr []
+prop_faulty_interp1 :: Expr -> Property 
+prop_faulty_interp1 expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF1.interp expr []
+
+-- Property for checking non-equivalent properties
+-- Also showcase distribution of values per depth of parse tree
+prop_faulty_interp2 :: Expr -> Property 
+prop_faulty_interp2 expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF2.interp expr []
 
 -- Function that computes the depth of an expression
 depth :: Expr -> Integer 
@@ -55,5 +61,7 @@ spec = do
     describe "QuickCheck Conditional Testing:" $ do
         it "Equivalent interpreters:" $
             property prop_correct_interp
-        it "Non-equivalent interpreters:" $
-            property prop_faulty_interp
+        it "Non-equivalent interpreters (1):" $
+            property prop_faulty_interp1
+        it "Non-equivalent interpreters (2):" $
+            property prop_faulty_interp2
