@@ -38,6 +38,8 @@ library
     Booleans.Interp1
     Booleans.Interp2
     Booleans.InterpFaulty1
+    Booleans.InterpFaulty2
+    Booleans.InterpFaulty3
 
     -- Conditional package
     Conditional.Grammar
