@@ -3,7 +3,7 @@
 ## **Introduction** 📖
 This repository contains the code that was written for the _**Automated Validation of Definitional Interpreters**_ research project as part of the bachelor-end thesis work at TU Delft (CSE3000). The main research question that is tackled within this project is "__*How effective are property-based testing frameworks, such as QuickCheck or SmallCheck, for automatically generating input expressions to definitional interpreters?*__".
 
-Before diving into the repository, consider reading the following papers from which the code was heavily inspired:
+Before diving into the repository, consider reading the following papers from which the code was heavily inspired/used:
 - [QuickCheck: a lightweight tool for random testing of Haskell programs](https://dl.acm.org/doi/10.1145/351240.351266) - by Koen Claessen & John Hughes
 - [Smallcheck and lazy smallcheck: automatic exhaustive testing for small values](https://dl.acm.org/doi/10.1145/1411286.1411292) - by Colin Runciman, Matthew Naylor & Fredrik Lindblad
 - [Generating Constrained Random Data with Uniform Distribution](https://link.springer.com/chapter/10.1007/978-3-319-07151-0_2) - by Koen Claessen, Jonas Duregård & Michał H. Pałka
