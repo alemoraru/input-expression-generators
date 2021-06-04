@@ -49,11 +49,11 @@ library
     Conditional.InterpFaulty2
 
 
-    -- UntypedLambda package
+    -- Untyped Lambda Calculus package
     UntypedLambda.Grammar
     UntypedLambda.Interp
 
-    -- TypedLC package
+    -- Typed Lambda Calculus package
     Types.Grammar
     Types.Interp
     Types.Generator
