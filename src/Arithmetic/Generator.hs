@@ -30,7 +30,7 @@ spMul  = Mul :$: (spExpr :*: spExpr)
 spDiv  = Div :$: (spExpr :*: spExpr)
 spVal  = Val :$: spInt
 
--- Space of int values (starts from 0)
+-- Space of int values (starts from 1 because of issues with zero)
 spInt :: Space Int
 spInt = Pay (Pure 1 :+: (succ :$: spInt))
 
