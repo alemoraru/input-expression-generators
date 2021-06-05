@@ -40,6 +40,7 @@ library
     Booleans.InterpFaulty1
     Booleans.InterpFaulty2
     Booleans.InterpFaulty3
+    Booleans.Generator
 
     -- Conditional package
     Conditional.Grammar
@@ -47,7 +48,6 @@ library
     Conditional.Interp2
     Conditional.InterpFaulty1
     Conditional.InterpFaulty2
-
 
     -- Untyped Lambda Calculus package
     UntypedLambda.Grammar

@@ -16,7 +16,7 @@ data Expr = Val Bool
 
 -- Used for custom printing
 instance Show Expr where
-  show (Val x) = show x
+  show (Val x)          = show x
   show (And left right) = "(" ++ show left ++ " && " ++ show right ++ ")"
   show (Or left right)  = "(" ++ show left ++ " || " ++ show right ++ ")"
   show (Not expr)       = "(!" ++ show expr ++ ")"
