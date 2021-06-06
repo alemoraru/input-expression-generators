@@ -4,23 +4,31 @@ import Arithmetic.Grammar (Expr (..))
 import qualified Arithmetic.Interp1 as I1
 import qualified Arithmetic.Interp2 as I2
 import qualified Arithmetic.InterpFaulty1 as IF1
+import qualified Arithmetic.InterpFaulty2 as IF2
+import qualified Arithmetic.InterpFaulty3 as IF3
+import qualified Arithmetic.InterpFaulty4 as IF4
 
 import Test.SmallCheck ( smallCheck )
-
-import Test.Hspec ()
-
-import qualified Test.Hspec.Core.Spec as H
-import qualified Test.Hspec.Runner as H
-
-import Test.Hspec.SmallCheck ()
 
 -- property for equivalent interpreters
 prop_correct_interp :: Expr -> Bool 
 prop_correct_interp expr = I1.interp expr == I2.interp expr
 
 -- property for non-equivalent interpreters
-prop_faulty_interp :: Expr -> Bool 
-prop_faulty_interp expr = I1.interp expr == IF1.interp expr
+prop_faulty_interp1 :: Expr -> Bool 
+prop_faulty_interp1 expr = I1.interp expr == IF1.interp expr
+
+-- property for non-equivalent interpreters
+prop_faulty_interp2 :: Expr -> Bool 
+prop_faulty_interp2 expr = I1.interp expr == IF2.interp expr
+
+-- property for non-equivalent interpreters
+prop_faulty_interp3 :: Expr -> Bool 
+prop_faulty_interp3 expr = I1.interp expr == IF3.interp expr
+
+-- property for non-equivalent interpreters
+prop_faulty_interp4 :: Expr -> Bool 
+prop_faulty_interp4 expr = I1.interp expr == IF4.interp expr
 
 -- Main driver code
 main :: IO ()
@@ -28,18 +36,14 @@ main = do
     putStrLn "Checking correct arithmetic interpretation:"
     smallCheck 3 prop_correct_interp
 
-    putStrLn "Checking faulty arithmetic interpretation:"
-    smallCheck 3 prop_faulty_interp    
+    putStrLn "Checking faulty arithmetic interpretation (1):"
+    smallCheck 3 prop_faulty_interp1 
 
-    return ()
+    putStrLn "Checking faulty arithmetic interpretation (2):"
+    smallCheck 3 prop_faulty_interp2 
 
--- main :: IO ()
--- main = H.hspecWith (H.defaultConfig { H.configSmallCheckDepth = 3} ) spec
+    putStrLn "Checking faulty arithmetic interpretation (3):"
+    smallCheck 3 prop_faulty_interp3  
 
--- spec :: Spec
--- spec = do
---     describe "QuickCheck Arithmetic Testing:" $ do
---         it "Equivalent interpreters:" $
---             property prop_correct_interp
---         it "Non-equivalent interpreters:" $
---             property prop_faulty_interp
+    putStrLn "Checking faulty arithmetic interpretation (4):"
+    smallCheck 3 prop_faulty_interp4   
