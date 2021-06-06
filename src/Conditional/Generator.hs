@@ -1,7 +1,7 @@
 module Conditional.Generator where
 
 import Spaces.Definition
-    ( uniformFilter, Space((:+:), (:*:), (:$:), Pay, Pure) )
+    ( uniformFilter, uniform, Space((:+:), (:*:), (:$:), Pay, Pure) )
 
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen )
 
@@ -63,7 +63,7 @@ isTypeCorrect expr = isCorrect
 -- Auxiliary function for QuickCheck arbitrary function
 -- Uses a universally true predicate (no need for type-checking)
 arbExpr :: Gen Expr
-arbExpr = uniformFilter isTypeCorrect spExpr 5
+arbExpr = uniform isTypeCorrect spExpr 5
 
 -- Needed for QuickCheck generation
 instance Arbitrary Expr where
