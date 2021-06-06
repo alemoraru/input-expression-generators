@@ -109,21 +109,22 @@ test-suite generators-test
   type: exitcode-stdio-1.0
   main-is: MainSpec.hs
   other-modules:
-      Paths_generators
+    Paths_generators
 
-      -- Testing modules for QuickCheck
-      QuickCheck.SpecArith
-      QuickCheck.SpecBools
-      QuickCheck.SpecCond
-      QuickCheck.SpecSpaces
+    -- Testing modules for QuickCheck
+    QuickCheck.SpecArith
+    QuickCheck.SpecBools
+    QuickCheck.SpecCond
+    QuickCheck.SpecSpaces
 
-      -- Testing modules for SmallCheck
-      SmallCheck.SpecArith
-      SmallCheck.SpecBools
-      SmallCheck.SpecCond
+    -- Testing modules for SmallCheck
+    SmallCheck.SpecArith
+    SmallCheck.SpecBools
+    SmallCheck.SpecCond
 
-      -- Testing modules for uniform generation
-      UniformGeneration.SpecBools
+    -- Testing modules for uniform generation
+    UniformGeneration.SpecArith
+    UniformGeneration.SpecBools
 
   hs-source-dirs:
       test
