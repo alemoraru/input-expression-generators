@@ -119,6 +119,9 @@ test-suite generators-test
       SmallCheck.SpecBools
       SmallCheck.SpecCond
 
+      -- Testing modules for uniform generation
+      UniformGeneration.SpecBools
+
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
