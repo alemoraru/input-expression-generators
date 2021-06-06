@@ -32,6 +32,9 @@ library
     Arithmetic.Interp1
     Arithmetic.Interp2
     Arithmetic.InterpFaulty1
+    Arithmetic.InterpFaulty2
+    Arithmetic.InterpFaulty3
+    Arithmetic.InterpFaulty4
     Arithmetic.Generator
 
     -- Boolean package

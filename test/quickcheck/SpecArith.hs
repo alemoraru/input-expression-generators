@@ -4,6 +4,9 @@ import Arithmetic.Grammar (Expr (..))
 import qualified Arithmetic.Interp1 as I1
 import qualified Arithmetic.Interp2 as I2
 import qualified Arithmetic.InterpFaulty1 as IF1
+import qualified Arithmetic.InterpFaulty2 as IF2
+import qualified Arithmetic.InterpFaulty3 as IF3
+import qualified Arithmetic.InterpFaulty4 as IF4
 
 import Test.QuickCheck (quickCheck, Testable (property))
 
@@ -14,20 +17,38 @@ prop_correct_interp :: Expr -> Bool
 prop_correct_interp expr = I1.interp expr == I2.interp expr
 
 -- property for non-equivalent interpreters
-prop_faulty_interp :: Expr -> Bool 
-prop_faulty_interp expr = I1.interp expr == IF1.interp expr
+prop_faulty_interp1 :: Expr -> Bool 
+prop_faulty_interp1 expr = I1.interp expr == IF1.interp expr
 
--- (quite useless) property for correct addition
-prop_addition :: Expr -> Expr -> Bool 
-prop_addition e1 e2 = I1.interp (Add e1 e2) == I2.interp (Add e1 e2)
+-- property for non-equivalent interpreters
+prop_faulty_interp2 :: Expr -> Bool 
+prop_faulty_interp2 expr = I1.interp expr == IF2.interp expr
 
--- (quite useless) property for faulty addition
-prop_incorrect_addition :: Expr -> Expr -> Bool 
-prop_incorrect_addition e1 e2 = I2.interp (Add e1 e2) == IF1.interp (Add e1 e2)
+-- property for non-equivalent interpreters
+prop_faulty_interp3 :: Expr -> Bool 
+prop_faulty_interp3 expr = I1.interp expr == IF3.interp expr
+
+-- property for non-equivalent interpreters
+prop_faulty_interp4 :: Expr -> Bool 
+prop_faulty_interp4 expr = I1.interp expr == IF4.interp expr
 
 -- Main driver code
 main :: IO ()
-main = hspec spec
+main = do
+    putStrLn "Equivalent interpreters:"
+    quickCheck prop_correct_interp
+
+    putStrLn "Non-equivalent interpreters (1):"
+    quickCheck prop_faulty_interp1
+
+    putStrLn "Non-equivalent interpreters (2):"
+    quickCheck prop_faulty_interp2
+
+    putStrLn "Non-equivalent interpreters (3):"
+    quickCheck prop_faulty_interp3
+
+    putStrLn "Non-equivalent interpreters (4):"
+    quickCheck prop_faulty_interp4
 
 -- Auxiliary main that uses
 -- the hspec package
@@ -37,4 +58,4 @@ spec = do
         it "Equivalent interpreters:" $
             property prop_correct_interp
         it "Non-equivalent interpreters:" $
-            property prop_faulty_interp
+            property prop_faulty_interp1
