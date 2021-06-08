@@ -127,6 +127,7 @@ test-suite generators-test
     -- Testing modules for uniform generation
     UniformGeneration.SpecArith
     UniformGeneration.SpecBools
+    UniformGeneration.SpecCond
 
   hs-source-dirs:
       test
