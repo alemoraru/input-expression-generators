@@ -5,9 +5,10 @@ import qualified Conditional.Interp1 as I1
 import qualified Conditional.Interp2 as I2
 import qualified Conditional.InterpFaulty1 as IF1
 import qualified Conditional.InterpFaulty2 as IF2
+import qualified Conditional.InterpFaulty2 as IF3
 
 import Test.QuickCheck
-    ( Testable(property), (==>), collect, Property )
+    ( Testable(property), (==>), collect, Property, quickCheck )
 
 import Test.Hspec ( hspec, describe, it, Spec )
 
@@ -24,14 +25,16 @@ prop_correct_interp :: Expr -> Property
 prop_correct_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == I2.interp expr []
 
 -- Property for checking non-equivalent properties
--- Also showcase distribution of values per depth of parse tree
-prop_faulty_interp1 :: Expr -> Property 
-prop_faulty_interp1 expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF1.interp expr []
+prop_faulty_interp1 :: Expr -> Property  
+prop_faulty_interp1 expr = preConditionInterp expr ==> I1.interp expr [] == IF1.interp expr []
 
 -- Property for checking non-equivalent properties
--- Also showcase distribution of values per depth of parse tree
 prop_faulty_interp2 :: Expr -> Property 
-prop_faulty_interp2 expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == IF2.interp expr []
+prop_faulty_interp2 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp3 :: Expr -> Property 
+prop_faulty_interp3 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.interp expr []
 
 -- Function that computes the depth of an expression
 depth :: Expr -> Integer 
@@ -52,7 +55,18 @@ depth (If b t f)   = 1 + max (depth b) (max (depth t) (depth f))
 
 -- Main driver code
 main :: IO ()
-main = hspec spec
+main = do
+    putStrLn "Equivalent interpreters:"
+    quickCheck prop_correct_interp
+
+    putStrLn "Non-equivalent interpreters (1):"
+    quickCheck prop_faulty_interp1
+
+    putStrLn "Non-equivalent interpreters (2):"
+    quickCheck prop_faulty_interp2
+
+    putStrLn "Non-equivalent interpreters (3):"
+    quickCheck prop_faulty_interp3
 
 -- Auxiliary main that uses
 -- the hspec package
