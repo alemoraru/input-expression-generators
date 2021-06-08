@@ -1,4 +1,4 @@
-module Conditional.InterpFaulty2 where
+module Conditional.InterpFaulty3 where
 
 import Conditional.Grammar ( Environment, Expr(..), Val(..) )
 import Util ( Error(InterpError) )
@@ -27,7 +27,7 @@ interp (And e1 e2) nv = case (interp e1 nv, interp e2 nv)  of
 
 interp (If e1 e2 e3) nv = case interp e1 nv of
                             Right (VBool True)  -> interp e2 nv
-                            Right (VBool False) -> interp e2 nv -- error here (same branch for else branch)
+                            Right (VBool False) -> interp e3 nv
                             _ -> Left $ InterpError "Cannot interpret non-boolean condition."
 
 interp (Eq e1 e2) nv = case (interp e1 nv, interp e2 nv)  of
@@ -39,7 +39,7 @@ interp (Lt e1 e2) nv = case (interp e1 nv, interp e2 nv)  of
                             _ -> Left $ InterpError "Cannot perform number comparison on non-ints."
 
 interp (Gt e1 e2) nv = case (interp e1 nv, interp e2 nv) of
-                            (Right (VInt v1), Right (VInt v2)) -> Right (VBool (v1 > v2))
+                            (Right (VInt v1), Right (VInt v2)) -> Right (VBool (v1 < v2)) -- introduced flaw here (changed gt to lt)
                             _ -> Left $ InterpError "Cannot perform number comparison on non-ints."
 
 interp (Lambda str e) nv = Right (VClos str e nv)

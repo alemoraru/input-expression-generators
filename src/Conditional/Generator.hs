@@ -230,3 +230,35 @@ interpF2 (Gt (left, right)) = case (interpF2 left, interpF2 right) of
 interpF2 (If (i, (t, e))) = case interpF2 i of
     (Right (VBool cond)) -> if cond then interpF2 t else interpF2 t -- introduced flaw here (always true branch)
     _ -> Left $ InterpError "Cannot evaluate non-boolean condition"
+
+-- Faulty interpretation of conditional expressions
+interpF3 :: Expr -> Either Error Val
+interpF3 (EInt x)  = Right (VInt x)
+interpF3 (EBool x) = Right (VBool x)
+interpF3 (Add (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VInt x), Right (VInt y)) -> Right (VInt $ x + y)
+    _ -> Left $ InterpError "Cannot perform addition on non-ints."
+interpF3 (Mul (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VInt x), Right (VInt y)) -> Right (VInt $ x * y)
+    _ -> Left $ InterpError "Cannot perform multiplication on non-ints."
+interpF3 (Not expr) = case interpF2 expr of
+    (Right (VBool x)) -> Right (VBool $ not x)
+    _ -> Left $ InterpError "Cannot perform the not operation on non-booleans."
+interpF3 (Or (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VBool x), Right (VBool y)) -> Right (VBool $ x || y)
+    _ -> Left $ InterpError "Cannot perform the or operation on non-booleans."
+interpF3 (And (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VBool x), Right (VBool y)) -> Right (VBool $ x && y)
+    _ -> Left $ InterpError "Cannot perform the and operation on non-booleans."
+interpF3 (Eq (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VInt x), Right (VInt y)) -> Right (VBool $ x == y)
+    _ -> Left $ InterpError "Cannot perform the and operation on non-booleans."
+interpF3 (Lt (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VInt x), Right (VInt y)) -> Right (VBool $ x < y)
+    _ -> Left $ InterpError "Cannot perform comparison between non-ints."
+interpF3 (Gt (left, right)) = case (interpF2 left, interpF2 right) of
+    (Right (VInt x), Right (VInt y)) -> Right (VBool $ x < y)  -- introduced flaw here (changed to lt instead of gt)
+    _ -> Left $ InterpError "Cannot perform comparison between non-ints."
+interpF3 (If (i, (t, e))) = case interpF2 i of
+    (Right (VBool cond)) -> if cond then interpF2 t else interpF2 e
+    _ -> Left $ InterpError "Cannot evaluate non-boolean condition"

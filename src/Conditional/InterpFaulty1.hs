@@ -70,5 +70,5 @@ interp (App e1 e2) nv =
 -- conditionals
 interp (If e1 e2 e3) nv =
   case interp e1 nv of
-    Right (VBool bool) -> if bool then interp e3 nv else interp e2 nv -- introduced error
+    Right (VBool bool) -> if bool then interp e3 nv else interp e2 nv -- introduced error (swapped branches)
     _ -> Left $ InterpError "Cannot interpret non-boolean condition."
