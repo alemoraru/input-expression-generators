@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
-module Conditional.Grammar ( Expr ( .. ), Val ( .. ), Environment ) where
+module Conditional.Grammar where
 
 import Test.QuickCheck
     ( Arbitrary(arbitrary), elements, frequency, oneof, sized, Gen )
@@ -14,13 +14,24 @@ import qualified Test.SmallCheck.Series as SC
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
   deriving ( Eq )
 
+-- ADT for type values
+data Type = TInt | TBool | TClos Type Type
+  deriving ( Eq )
+
+-- Used for pretty printing types
+instance Show Type where
+  show TInt  = "Int"
+  show TBool = "Bool"
+  show (TClos argTy retTy) = show argTy ++ " -> " ++ show retTy 
+
 -- Used for pretty printing result values
 instance Show Val where
     show (VInt x)  = show x
     show (VBool x) = show x
     show (VClos arg body env) = "\\" ++ arg ++ ".(" ++ show body ++ ")"
 
-type Environment = [(String, Val)]
+type Environment  = [(String, Val)]
+type TEnvironment = [(String, Type)]
 
 -- ADT for expressions which also contains conditionals
 data Expr =
@@ -33,7 +44,7 @@ data Expr =
   -- comparisons
   | Eq Expr Expr | Lt Expr Expr | Gt Expr Expr
   -- functions
-  | Lambda String Expr | App Expr Expr
+  | Lambda (String, Type) Expr | App Expr Expr
   -- conditionals
   | If Expr Expr Expr
 
@@ -56,7 +67,7 @@ instance Show Expr where
   show (Lt left right) = "(" ++ show left ++ " < " ++ show right ++ ")"
   show (Gt left right) = "(" ++ show left ++ " > " ++ show right ++ ")"
 
-  show (Lambda s e) = "(\\ (" ++ s ++ ") " ++ show e ++ ")"
+  show (Lambda s e) = "(\\ (" ++ fst s ++ ": " ++ show (snd s) ++ ") " ++ show e ++ ")"
   show (App f e)    = "(" ++ show f ++ " " ++ show e ++ ")"
 
   show (If i t e) = "(if " ++ show i ++ " then " ++ show t ++ " else " ++ show e ++ ")"
