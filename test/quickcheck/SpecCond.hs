@@ -1,6 +1,8 @@
 module QuickCheck.SpecCond where
 
 import Conditional.Grammar (Expr (..))
+import Conditional.TypeChecker ( typeCheck ) 
+
 import qualified Conditional.Interp1 as I1
 import qualified Conditional.Interp2 as I2
 import qualified Conditional.InterpFaulty1 as IF1
@@ -15,7 +17,7 @@ import Test.Hspec ( hspec, describe, it, Spec )
 -- Pre-condition that "type-checks" input expressions
 preConditionInterp :: Expr -> Bool 
 preConditionInterp expr = 
-    case I1.interp expr [] of 
+    case typeCheck expr [] of 
         Left err -> False 
         Right _  -> True
 

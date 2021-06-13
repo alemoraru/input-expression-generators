@@ -54,6 +54,7 @@ library
     Conditional.InterpFaulty2
     Conditional.InterpFaulty3
     Conditional.Generator
+    Conditional.TypeChecker
 
     -- Untyped Lambda Calculus package
     UntypedLambda.Grammar
