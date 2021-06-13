@@ -7,8 +7,6 @@ import Data.Maybe
 import System.Random
 import qualified Test.QuickCheck as QC
 
-import Booleans.Grammar
-
 import System.IO.Unsafe
 import Control.Exception
 
@@ -217,9 +215,6 @@ set2 = DisjointSet (SingletonSet 8) (SingletonSet 9)
 -- Set for set1 x set2
 set3 :: Set (Int, Int)
 set3 = CartesianSet set1 set2
-
-setExpr1 :: Set Expr 
-setExpr1 = SingletonSet (And (Val True) (Val False))
 
 ----------------------------------------------------
 --               EXAMPLE PREDICATES               --
