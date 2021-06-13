@@ -33,16 +33,16 @@ prop_faulty_interp3 expr = I1.interp expr testEnvironment == IF3.interp expr tes
 main :: IO ()
 main = do
     putStrLn "Checking correct conditional interpretation:"
-    smallCheck 3 prop_correct_interp
+    smallCheck 5 prop_correct_interp
 
     putStrLn "Checking faulty conditional interpretation (1):"
-    smallCheck 3 prop_faulty_interp1
+    smallCheck 5 prop_faulty_interp1
 
     putStrLn "Checking faulty conditional interpretation (2):"
-    smallCheck 3 prop_faulty_interp2
+    smallCheck 5 prop_faulty_interp2
 
     putStrLn "Checking faulty conditional interpretation (3):"
-    smallCheck 3 prop_faulty_interp3            
+    smallCheck 5 prop_faulty_interp3            
 
     return ()
 
