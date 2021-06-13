@@ -15,41 +15,13 @@ data Expr = Val Int
   | Div (Expr, Expr)
   deriving ( Eq )
 
--- Needed for printing
+-- Needed for pretty-printing
 instance Show Expr where
   show (Val x) = if x < 0 then "(" ++ show x ++ ")" else show x
   show (Add (left, right)) = show left ++ " + " ++ show right
   show (Sub (left, right)) = show left ++ " - " ++ show right
   show (Mul (left, right)) = show left ++ " * " ++ show right
   show (Div (left, right)) = show left ++ " / " ++ show right
-
--- Necessary for QuickCheck random sampling
-instance Arbitrary Expr where
-  arbitrary = sized arbExpr
-
--- Function for generating data 
--- of a particular depth 
-arbExpr :: Int -> Gen Expr
-arbExpr 0 = fmap Val arbitrary
-arbExpr n = frequency
-  [ (1, fmap Val arbitrary)
-  , (2, do
-          left  <- arbExpr (n `div` 2)
-          right <- arbExpr (n `div` 2)
-          return $ Add (left, right))
-  , (2, do
-          left  <- arbExpr (n `div` 2)
-          right <- arbExpr (n `div` 2)
-          return $ Sub (left, right))
-  , (2, do
-          left  <- arbExpr (n `div` 2)
-          right <- arbExpr (n `div` 2)
-          return $ Mul (left, right))
-  , (2, do
-          left  <- arbExpr (n `div` 2)
-          right <- arbExpr (n `div` 2)
-          return $ Div (left, right))
-  ]
 
 -- Necessary for SmallCheck exhaustive generation
 instance (Monad m) => SC.Serial m Expr where
