@@ -68,7 +68,7 @@ instance Show Expr where
 
 -- Needed for SmallCheck enumerating
 instance (Monad m) => SC.Serial m Expr where
-  series = SC.cons1 EInt SC.\/ SC.cons1 EBool SC.\/ SC.cons1 Id
+  series = SC.cons1 EInt SC.\/ SC.cons1 EBool -- SC.\/ SC.cons1 Id
            SC.\/ SC.cons1 Add SC.\/ SC.cons1 Mul
            SC.\/ SC.cons1 Not SC.\/ SC.cons1 Or SC.\/ SC.cons1 And
            SC.\/ SC.cons1 Eq  SC.\/ SC.cons1 Lt SC.\/ SC.cons1 Gt
