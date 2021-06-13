@@ -1,7 +1,8 @@
 module Spaces.SimpleGrammar where
 
 import Spaces.Definition
-import Util
+    ( spNat, Nat, Space((:$:), Pay, (:+:), (:*:)) )
+import Util ()
 
 -- Definition of a simple-typed lambda calculus
 data Term = App (Term , Term) 

@@ -2,14 +2,16 @@
 
 module Spaces.Interp where
 
-import Spaces.Grammar
+import Spaces.Grammar ( Expr(..), Type(..) )
 
 -- Alias for Type Environment
 type TEnvironment = [Type]
 
+-- ADT for SLC result values
 data Val = VInt Int | VClos Int Expr Environment
     deriving (Eq, Show)
 
+-- Alias for value environment
 type Environment = [Val]
 
 -- Type checker
@@ -20,6 +22,7 @@ typeCheck env t (App ((f, x), tx))    =
 typeCheck env (TFun (ta, tb)) (Lam e) = typeCheck (ta : env) tb e
 typeCheck _   _                _      = False
 
+-- Interpreter for lambda calculus
 interp :: Environment -> Expr -> Val
 interp env (Var i)            = env !! i 
 interp env (App ((f, x), tx)) =
@@ -40,6 +43,7 @@ sampleTEnv =
         TFun (TInt, TInt),
         TFun (TInt, TFun (TInt,TInt))
     ]
+    
 -- Sample environment for intepretation
 sampleEnv :: Environment
 sampleEnv =

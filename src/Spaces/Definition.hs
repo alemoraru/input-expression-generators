@@ -3,12 +3,12 @@
 
 module Spaces.Definition where
 
-import Data.Maybe
-import System.Random
+import Data.Maybe ()
+import System.Random ()
 import qualified Test.QuickCheck as QC
 
-import System.IO.Unsafe
-import Control.Exception
+import System.IO.Unsafe ( unsafePerformIO )
+import Control.Exception ( Exception, SomeException, catch )
 
 data Nat = Zero | Suc Nat
   deriving (Show, Eq)

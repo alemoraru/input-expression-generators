@@ -1,6 +1,6 @@
 module Spaces.SimpleInterp where
 
-import Spaces.SimpleGrammar
+import Spaces.SimpleGrammar ( Term(..), Type(..) )
 
 -- Check that a Term is of a given type
 typeCheck :: Type -> Term -> Bool

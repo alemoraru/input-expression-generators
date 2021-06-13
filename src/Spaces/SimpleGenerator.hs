@@ -1,8 +1,8 @@
 module Spaces.SimpleGenerator where
 
-import Spaces.SimpleGrammar
-import Spaces.Definition
-import Spaces.SimpleInterp
+import Spaces.SimpleGrammar ( spTerm, Term, Type(TInt, TFun) )
+import Spaces.Definition ( uniform, uniformFilter )
+import Spaces.SimpleInterp ( typeCheck )
 
 import qualified Test.QuickCheck as QC
 

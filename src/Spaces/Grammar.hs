@@ -1,6 +1,6 @@
 module Spaces.Grammar where
 
-import Spaces.Definition
+import Spaces.Definition ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
 import qualified Test.QuickCheck as QC
 
 -- ADT for STLC
