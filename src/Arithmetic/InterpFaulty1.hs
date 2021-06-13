@@ -4,8 +4,8 @@ import Arithmetic.Grammar ( Expr(..) )
 
 -- Faulty interpreter for arithmetic expressions
 interp :: Expr -> Either String Int
-interp (Val x)          = Right x
-interp (Add left right) = 
+interp (Val x)             = Right x
+interp (Add (left, right)) = 
   case interp left of
       Left err   -> Left err
       Right valL ->
@@ -13,7 +13,7 @@ interp (Add left right) =
                Left err   -> Left err
                Right valR -> Right (valL + valR)
           
-interp (Sub left right) = 
+interp (Sub (left, right)) = 
   case interp left of
       Left err   -> Left err
       Right valL ->
@@ -21,7 +21,7 @@ interp (Sub left right) =
                Left err   -> Left err
                Right valR -> Right (valL - valR)
 
-interp (Mul left right) = 
+interp (Mul (left, right)) = 
   case interp left of
       Left err   -> Left err
       Right valL ->
@@ -29,7 +29,7 @@ interp (Mul left right) =
                Left err   -> Left err
                Right valR -> Right (valL * valR)
 
-interp (Div left right) = 
+interp (Div (left, right)) = 
   case interp left of
       Left err   -> Left err
       Right valL ->
