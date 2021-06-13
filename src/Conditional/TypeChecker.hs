@@ -1,8 +1,7 @@
 module Conditional.TypeChecker where
 
-import Conditional.Grammar
-
-import Util
+import Conditional.Grammar ( Expr(..), TEnvironment, Type(..) )
+import Util ( Error(TypeError) )
 
 typeCheck :: Expr -> TEnvironment -> Either Error Type
 typeCheck (EInt _) nv  = Right TInt
@@ -52,7 +51,7 @@ typeCheck (Gt (left, right)) nv =
 
 -- functions
 
-typeCheck (Lambda arg body) nv = 
+typeCheck (Lambda (arg, body)) nv = 
     case typeCheck body (replace (fst arg) (snd arg) nv) of
         Right t -> Right $ TClos (snd arg) t
         _ -> Left $ TypeError "Cannot typecheck body of the lambda."

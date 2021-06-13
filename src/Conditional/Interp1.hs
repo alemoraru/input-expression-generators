@@ -58,7 +58,7 @@ interp (Gt (e1, e2)) nv =
     _ -> Left $ InterpError "Cannot perform number comparison on non-ints."
 
 -- functions
-interp (Lambda str e) nv = Right (VClos (fst str) e nv)
+interp (Lambda (str, e)) nv = Right (VClos (fst str) e nv)
 
 interp (App (e1, e2)) nv =
   case interp e1 nv of

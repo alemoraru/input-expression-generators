@@ -7,11 +7,7 @@ import qualified Conditional.InterpFaulty1 as IF1
 import qualified Conditional.InterpFaulty2 as IF2
 import qualified Conditional.InterpFaulty3 as IF3
 
-import Test.SmallCheck
-
-import Test.Hspec ()
-
-import Test.Hspec.SmallCheck ()
+import Test.SmallCheck ( smallCheck )
 
 -- property for equivalent interpreters
 prop_correct_interp :: Expr -> Bool 
