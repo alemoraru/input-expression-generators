@@ -1,7 +1,7 @@
 module Spaces.SimpleGrammar where
 
 import Spaces
-    ( spNat, Nat, Space((:$:), Pay, Pure, (:+:), (:*:)) )
+    ( Space((:$:), Pay, Pure, (:+:), (:*:)) )
 import Util ()
 
 -- Definition of a simple-typed lambda calculus
