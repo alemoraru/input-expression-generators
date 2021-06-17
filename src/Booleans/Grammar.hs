@@ -2,10 +2,9 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module Booleans.Grammar ( Expr ( .. ) ) where
 
-import Test.QuickCheck
+import Test.QuickCheck ()
 import qualified Test.SmallCheck.Series as SC
-
-import Control.Monad
+import Control.Monad ()
 
 -- Boolean ADT
 data Expr = Val Bool

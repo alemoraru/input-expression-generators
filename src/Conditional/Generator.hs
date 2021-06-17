@@ -5,10 +5,7 @@ import Conditional.Grammar
       Expr(Id, EInt, EBool, Add, Mul, Not, Or, And, Eq, Lt, Gt, If),
       Val(VBool, VInt) )
 import Conditional.TypeChecker ( typeCheck )
-
-import Spaces
-    ( uniformFilter, uniform, Space((:+:), (:*:), (:$:), Pay, Pure) )
-
+import Spaces ( uniformFilter, uniform, Space((:+:), (:*:), (:$:), Pay, Pure) )
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, elements, oneof, sized )
 
 -- Space of conditional expressions

@@ -1,10 +1,7 @@
 module Booleans.Generator where
 
-import Booleans.Grammar
-
-import Spaces
-    ( Space((:+:), (:*:), (:$:), Pay, Pure), uniformFilter )
-
+import Booleans.Grammar ( Expr(..) )
+import Spaces ( Space((:+:), (:*:), (:$:), Pay, Pure), uniformFilter )
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, sized )
 
 -- Spaces for the needed boolean constructors 

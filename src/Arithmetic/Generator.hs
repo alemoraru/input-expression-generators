@@ -1,10 +1,7 @@
 module Arithmetic.Generator where
 
 import Arithmetic.Grammar ( Expr(..) ) 
-
-import Spaces
-    ( Space((:+:), (:*:), Pay, Pure, (:$:)), uniformFilter )
-
+import Spaces ( Space((:+:), (:*:), Pay, Pure, (:$:)), uniformFilter )
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, chooseInt, sized )
 
 -- Spaces for the needed boolean constructors 

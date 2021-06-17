@@ -3,8 +3,7 @@
 
 module Arithmetic.Grammar where
 
-import Test.QuickCheck
-    ( Arbitrary(arbitrary), frequency, sized, Gen )
+import Test.QuickCheck ( Arbitrary(arbitrary), frequency, sized, Gen )
 import qualified Test.SmallCheck.Series as SC
 
 -- Arithmetic ADT

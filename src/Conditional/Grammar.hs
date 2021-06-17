@@ -3,8 +3,7 @@
 
 module Conditional.Grammar where
 
-import Test.QuickCheck
-    ( Arbitrary(arbitrary), elements, frequency, oneof, sized, Gen )
+import Test.QuickCheck ( Arbitrary(arbitrary), elements, frequency, oneof, sized, Gen )
 
 import qualified Test.SmallCheck.Series as SC
 
