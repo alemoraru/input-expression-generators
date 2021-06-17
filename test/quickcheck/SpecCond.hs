@@ -1,6 +1,7 @@
 module QuickCheck.SpecCond where
 
 import Conditional.Grammar (Expr (..))
+import Conditional.Generator ()
 import Conditional.TypeChecker ( typeCheck ) 
 
 import qualified Conditional.Interp1 as I1
@@ -40,20 +41,20 @@ prop_faulty_interp3 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.
 
 -- Function that computes the depth of an expression
 depth :: Expr -> Integer 
-depth (EInt _)     = 1
-depth (EBool _)    = 1
-depth (Id _)       = 1
-depth (Add l r)    = 1 + max (depth l) (depth r)
-depth (Mul l r)    = 1 + max (depth l) (depth r)
-depth (Not e)      = 1 + depth e
-depth (Or l r)     = 1 + max (depth l) (depth r)
-depth (And l r)    = 1 + max (depth l) (depth r)
-depth (Eq l r)     = 1 + max (depth l) (depth r)
-depth (Lt l r)     = 1 + max (depth l) (depth r)
-depth (Gt l r)     = 1 + max (depth l) (depth r)
-depth (Lambda _ e) = 1 + depth e
-depth (App l r)    = 1 + max (depth l) (depth r)
-depth (If b t f)   = 1 + max (depth b) (max (depth t) (depth f))
+depth (EInt _)         = 1
+depth (EBool _)        = 1
+depth (Id _)           = 1
+depth (Add (l, r))     = 1 + max (depth l) (depth r)
+depth (Mul (l, r))     = 1 + max (depth l) (depth r)
+depth (Not e)          = 1 + depth e
+depth (Or (l, r))      = 1 + max (depth l) (depth r)
+depth (And (l, r))     = 1 + max (depth l) (depth r)
+depth (Eq (l, r))      = 1 + max (depth l) (depth r)
+depth (Lt (l, r))      = 1 + max (depth l) (depth r)
+depth (Gt (l, r))      = 1 + max (depth l) (depth r)
+depth (Lambda (s, e))  = 1 + depth e
+depth (App (l, r))     = 1 + max (depth l) (depth r)
+depth (If (b, (t, f))) = 1 + max (depth b) (max (depth t) (depth f))
 
 -- Main driver code
 main :: IO ()

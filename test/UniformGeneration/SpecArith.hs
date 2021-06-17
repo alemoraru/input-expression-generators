@@ -1,35 +1,35 @@
 module UniformGeneration.SpecArith where
 
-import Arithmetic.Generator
-    ( Expr,
-      interpC1,
-      interpC2,
-      interpF1,
-      interpF2,
-      interpF3,
-      interpF4 )
+import Arithmetic.Grammar (Expr (..))
+import Arithmetic.Generator ()
+import qualified Arithmetic.Interp1 as I1
+import qualified Arithmetic.Interp2 as I2
+import qualified Arithmetic.InterpFaulty1 as IF1
+import qualified Arithmetic.InterpFaulty2 as IF2
+import qualified Arithmetic.InterpFaulty3 as IF3
+import qualified Arithmetic.InterpFaulty4 as IF4
 
 import Test.QuickCheck ( quickCheck )
 
 -- property for equivalent interpreters
 prop_correct_interp :: Expr -> Bool 
-prop_correct_interp expr = interpC1 expr == interpC2 expr
+prop_correct_interp expr = I1.interp expr == I2.interp expr
 
 -- property for non-equivalent interpreters
 prop_faulty_interp1 :: Expr -> Bool 
-prop_faulty_interp1 expr = interpC1 expr == interpF1 expr
+prop_faulty_interp1 expr = I1.interp expr == IF1.interp expr
 
 -- property for non-equivalent interpreters
 prop_faulty_interp2 :: Expr -> Bool 
-prop_faulty_interp2 expr = interpC1 expr == interpF2 expr
+prop_faulty_interp2 expr = I1.interp expr == IF2.interp expr
 
 -- property for non-equivalent interpreters
 prop_faulty_interp3 :: Expr -> Bool 
-prop_faulty_interp3 expr = interpC1 expr == interpF3 expr
+prop_faulty_interp3 expr = I1.interp expr == IF3.interp expr
 
 -- property for non-equivalent interpreters
 prop_faulty_interp4 :: Expr -> Bool 
-prop_faulty_interp4 expr = interpC1 expr == interpF4 expr
+prop_faulty_interp4 expr = I1.interp expr == IF4.interp expr
 
 -- Main driver code
 main :: IO ()

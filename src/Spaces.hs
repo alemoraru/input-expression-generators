@@ -1,41 +1,15 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Spaces.Definition where
+module Spaces where
 
-import Data.Maybe
-import System.Random
+import Data.Maybe ()
+import System.Random ()
 import qualified Test.QuickCheck as QC
 
-import Booleans.Grammar
+import System.IO.Unsafe ( unsafePerformIO )
+import Control.Exception ( Exception, SomeException, catch )
 
-import System.IO.Unsafe
-import Control.Exception
-
-data Nat = Zero | Suc Nat
-  deriving (Show, Eq)
-data ListNat = Nil | Cons Nat ListNat
-  deriving (Show, Eq)
-
--- Transform an Int to a Nat value
-intToNat :: Int -> Nat 
-intToNat n | n > 0     = Suc $ intToNat (n - 1)
-           | otherwise = Zero
-
--- Transform a Nat value to a Int
-natToInt :: Nat -> Int 
-natToInt Zero    = 0
-natToInt (Suc x) = 1 + natToInt x
-
--- Count the number of constructors in a Nat expression
-sizeNat :: Nat -> Int
-sizeNat Zero    = 1
-sizeNat (Suc z) = 1 + sizeNat z
-
--- Count the number of constructors in a ListNat expression
-sizeListNat :: ListNat -> Int
-sizeListNat Nil         = 1
-sizeListNat (Cons z zs) = 1 + sizeNat z + sizeListNat zs
 
 -- Definition of a GADT Space to represent ADTs
 data Space a where
@@ -49,14 +23,6 @@ data Space a where
 -- Produce a space of all applications of functions to params
 (<∗>) :: Space (a -> b) -> Space a -> Space b
 s1 <∗> s2 = (\(f ,a) -> f a) :$: (s1 :*: s2)
-
--- Space for Nats
-spNat :: Space Nat
-spNat = Pay (Pure Zero :+: (Suc :$: spNat))
-
--- Space for list of Nats
-spListNat :: Space ListNat
-spListNat = Pay (Pure Nil :+: (Cons :$: spNat <∗> spListNat))
 
 -- Data type for finite sets
 data Set a where
@@ -151,12 +117,6 @@ universalHelper p = undefined -- try $ universal p
 universal :: (a -> Bool) -> Maybe Bool
 universal p = unsafePerformIO $ catch (let x = p undefined in x `seq` pure (Just x)) (\(e :: SomeException) -> pure Nothing)
 
--- Data type used for exceptions in the inspectsFst function
-data PairException = FstException | SndException
-    deriving (Eq, Show)
-
-instance Exception PairException
-
 -- Evaluate a predicate on a pair and see which argument is "inspected" first
 inspectsFst :: ((a, b) -> Bool) -> Bool 
 inspectsFst p = unsafePerformIO $ catch (let x = p (error "fst", error "snd") in x `seq` pure True) (\(e :: SomeException) -> pure False)
@@ -199,41 +159,3 @@ sizedP p (Pay a) k  | k > 0     = FmapSet (fmap Pay) (sizedP p a (k - 1))
 sizedP p (Pure a) 0 | p a       = SingletonSet (Left a)
                     | otherwise = SingletonSet (Right Empty)
 sizedP _ _        _ = EmptySet 
-
-
-----------------------------------------------------
---                 EXAMPLE SETS                   --
-----------------------------------------------------
-
-
--- Set for {1} U {2} U {3}
-set1 :: Set Int
-set1 = DisjointSet (SingletonSet 1) (DisjointSet (SingletonSet 2) (SingletonSet 3))
-
--- Set for {8} U {9}
-set2 :: Set Int
-set2 = DisjointSet (SingletonSet 8) (SingletonSet 9)
-
--- Set for set1 x set2
-set3 :: Set (Int, Int)
-set3 = CartesianSet set1 set2
-
-setExpr1 :: Set Expr 
-setExpr1 = SingletonSet (And (Val True) (Val False))
-
-----------------------------------------------------
---               EXAMPLE PREDICATES               --
-----------------------------------------------------
-
--- Predicate for even Nar values
-isEven :: Nat -> Bool
-isEven Zero    = True 
-isEven (Suc x) = not $ isEven x
-
--- Universally True predicate
-univTrue :: a -> Bool 
-univTrue _ = True
-
--- Universally False predicate
-univFalse :: a -> Bool 
-univFalse _ = False

@@ -5,8 +5,8 @@ import Arithmetic.Grammar ( Expr(..) )
 -- Correct interpreter for arithmetic expressions
 -- That either returns an error message or an Int result
 interp :: Expr -> Either String Int
-interp (Val x)          = Right x
-interp (Add left right) = 
+interp (Val x)             = Right x
+interp (Add (left, right)) = 
   case interp right of
       Left err   -> Left err
       Right valL ->
@@ -14,7 +14,7 @@ interp (Add left right) =
                Left err   -> Left err
                Right valR -> Right (valL + valR)
           
-interp (Sub left right) = 
+interp (Sub (left, right)) = 
   case interp right of
       Left err   -> Left err
       Right valR ->
@@ -22,7 +22,7 @@ interp (Sub left right) =
                Left err   -> Left err
                Right valL -> Right (valL - valR)
 
-interp (Mul left right) = 
+interp (Mul (left, right)) = 
   case interp right of
       Left err   -> Left err
       Right valR ->
@@ -30,7 +30,7 @@ interp (Mul left right) =
                Left err   -> Left err
                Right valL -> Right (valL * valR)
 
-interp (Div left right) = 
+interp (Div (left, right)) = 
   case interp left of
       Left err   -> Left err
       Right valL ->

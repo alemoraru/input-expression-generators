@@ -1,25 +1,60 @@
 module UniformGeneration.SpecCond where
 
-import Conditional.Generator
-    ( Expr, interpF1, interpF2, interpF3, interpC2, interpC1 )
+import Conditional.Grammar (Expr (..))
+import Conditional.Generator ()
+import Conditional.TypeChecker ( typeCheck ) 
 
-import Test.QuickCheck ( quickCheck )
+import qualified Conditional.Interp1 as I1
+import qualified Conditional.Interp2 as I2
+import qualified Conditional.InterpFaulty1 as IF1
+import qualified Conditional.InterpFaulty2 as IF2
+import qualified Conditional.InterpFaulty3 as IF3
 
--- property for equivalent interpreters
-prop_correct_interp :: Expr -> Bool 
-prop_correct_interp expr = interpC1 expr == interpC2 expr
+import Test.QuickCheck
+    ( Testable(property), (==>), collect, Property, quickCheck )
 
--- property for non-equivalent interpreters
-prop_faulty_interp1 :: Expr -> Bool 
-prop_faulty_interp1 expr = interpC1 expr == interpF1 expr
+import Test.Hspec ( hspec, describe, it, Spec )
 
--- property for non-equivalent interpreters
-prop_faulty_interp2 :: Expr -> Bool 
-prop_faulty_interp2 expr = interpC1 expr == interpF2 expr
+-- Pre-condition that "type-checks" input expressions
+preConditionInterp :: Expr -> Bool 
+preConditionInterp expr = 
+    case typeCheck expr [] of 
+        Left err -> False 
+        Right _  -> True
 
--- property for non-equivalent interpreters
-prop_faulty_interp3 :: Expr -> Bool 
-prop_faulty_interp3 expr = interpC1 expr == interpF3 expr
+-- Function that computes the depth of an expression
+depth :: Expr -> Integer 
+depth (EInt _)         = 1
+depth (EBool _)        = 1
+depth (Id _)           = 1
+depth (Add (l, r))     = 1 + max (depth l) (depth r)
+depth (Mul (l, r))     = 1 + max (depth l) (depth r)
+depth (Not e)          = 1 + depth e
+depth (Or (l, r))      = 1 + max (depth l) (depth r)
+depth (And (l, r))     = 1 + max (depth l) (depth r)
+depth (Eq (l, r))      = 1 + max (depth l) (depth r)
+depth (Lt (l, r))      = 1 + max (depth l) (depth r)
+depth (Gt (l, r))      = 1 + max (depth l) (depth r)
+depth (Lambda (s, e))  = 1 + depth e
+depth (App (l, r))     = 1 + max (depth l) (depth r)
+depth (If (b, (t, f))) = 1 + max (depth b) (max (depth t) (depth f))
+
+-- Property for checking equivalent interpreters
+-- Also showcase distribution of values per depth of parse tree
+prop_correct_interp :: Expr -> Property  
+prop_correct_interp expr = preConditionInterp expr ==> collect (depth expr) $ I1.interp expr [] == I2.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp1 :: Expr -> Property  
+prop_faulty_interp1 expr = preConditionInterp expr ==> I1.interp expr [] == IF1.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp2 :: Expr -> Property 
+prop_faulty_interp2 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp3 :: Expr -> Property 
+prop_faulty_interp3 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.interp expr []
 
 -- Main driver code
 main :: IO ()

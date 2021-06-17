@@ -1,6 +1,7 @@
 module QuickCheck.SpecBools where
 
 import Booleans.Grammar (Expr (..))
+import Booleans.Generator ()
 import qualified Booleans.Interp1 as I1
 import qualified Booleans.Interp2 as I2
 import qualified Booleans.InterpFaulty1 as IF1

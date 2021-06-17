@@ -56,24 +56,19 @@ library
     Conditional.Generator
     Conditional.TypeChecker
 
-    -- Untyped Lambda Calculus package
-    UntypedLambda.Grammar
-    UntypedLambda.Interp
+    -- Simple-typed lambda calculus package
+    STLC.Grammar
+    STLC.Generator
+    STLC.TypeChecker
+    STLC.Interp
 
-    -- Typed Lambda Calculus package
-    Types.Grammar
-    Types.Interp
-    Types.Generator
+    -- Reference lambda calculus package
+    RefLC.Grammar
+    RefLC.Generator
+    RefLC.TypeChecker
 
-    -- Spaces package
-    Spaces.Definition
-    Spaces.SimpleGrammar
-    Spaces.SimpleGenerator
-    Spaces.SimpleInterp
-    Spaces.Grammar
-    Spaces.Generator
-    Spaces.Interp
-
+    -- Util files
+    Spaces
     Util
 
   other-modules:
