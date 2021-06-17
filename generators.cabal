@@ -56,6 +56,12 @@ library
     Conditional.Generator
     Conditional.TypeChecker
 
+    -- Simple-typed lambda calculus package
+    STLC.Grammar
+    STLC.Generator
+    STLC.TypeChecker
+    STLC.Interp
+
     -- Typed Lambda Calculus package
     Types.Grammar
     Types.Interp

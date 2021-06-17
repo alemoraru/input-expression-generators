@@ -1,18 +1,7 @@
-module Spaces.Grammar where
+module STLC.Generator where
 
 import Spaces.Definition ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
-
--- ADT for STLC
-data Expr
-    = App ((Expr, Expr), Type)
-    | Var Int
-    | Lam Expr
-    deriving (Eq, Show)
-
--- ADT for type values
-data Type = TInt
-          | TFun (Type, Type)
-          deriving (Eq, Show)
+import STLC.Grammar ( Type(..), Expr(..) )
 
 -- The space of all lambda terms
 spTerm, spApp, spLam, spVar :: Space Expr
