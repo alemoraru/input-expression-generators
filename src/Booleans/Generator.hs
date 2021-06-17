@@ -2,7 +2,7 @@ module Booleans.Generator where
 
 import Booleans.Grammar
 
-import Spaces.Definition
+import Spaces
     ( Space((:+:), (:*:), (:$:), Pay, Pure), uniformFilter )
 
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, sized )

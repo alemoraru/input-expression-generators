@@ -2,7 +2,7 @@ module Arithmetic.Generator where
 
 import Arithmetic.Grammar ( Expr(..) ) 
 
-import Spaces.Definition
+import Spaces
     ( Space((:+:), (:*:), Pay, Pure, (:$:)), uniformFilter )
 
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, chooseInt, sized )

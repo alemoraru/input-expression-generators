@@ -1,7 +1,7 @@
 module Spaces.Generator where
 
 import Spaces.Grammar ( spTerm, Expr, Type(TInt, TFun) )
-import Spaces.Definition ( uniform, uniformFilter )
+import Spaces ( uniform, uniformFilter )
 import Spaces.Interp ( sampleTEnv, typeCheck )
 
 import qualified Test.QuickCheck as QC

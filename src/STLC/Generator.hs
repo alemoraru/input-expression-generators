@@ -1,6 +1,6 @@
 module STLC.Generator where
 
-import Spaces.Definition ( Space((:+:), (:*:), Pay, Pure, (:$:)), uniform )
+import Spaces ( Space((:+:), (:*:), Pay, Pure, (:$:)), uniform )
 import STLC.Grammar ( Type(..), Expr(..), TEnvironment )
 import STLC.TypeChecker ( typeCheck )
 import Test.QuickCheck

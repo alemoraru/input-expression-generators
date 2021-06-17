@@ -63,7 +63,6 @@ library
     STLC.Interp
 
     -- Spaces package
-    Spaces.Definition
     Spaces.SimpleGrammar
     Spaces.SimpleGenerator
     Spaces.SimpleInterp
@@ -71,6 +70,8 @@ library
     Spaces.Generator
     Spaces.Interp
 
+    -- Util files
+    Spaces
     Util
 
   other-modules:

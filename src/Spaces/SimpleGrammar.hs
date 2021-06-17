@@ -1,6 +1,6 @@
 module Spaces.SimpleGrammar where
 
-import Spaces.Definition
+import Spaces
     ( spNat, Nat, Space((:$:), Pay, Pure, (:+:), (:*:)) )
 import Util ()
 

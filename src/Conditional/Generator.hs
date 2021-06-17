@@ -6,7 +6,7 @@ import Conditional.Grammar
       Val(VBool, VInt) )
 import Conditional.TypeChecker ( typeCheck )
 
-import Spaces.Definition
+import Spaces
     ( uniformFilter, uniform, Space((:+:), (:*:), (:$:), Pay, Pure) )
 
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, elements, oneof, sized )

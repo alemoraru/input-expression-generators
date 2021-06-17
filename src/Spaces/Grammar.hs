@@ -1,6 +1,6 @@
 module Spaces.Grammar where
 
-import Spaces.Definition ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
+import Spaces ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
 
 -- ADT for STLC
 data Expr
