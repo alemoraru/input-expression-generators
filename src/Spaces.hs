@@ -1,7 +1,7 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Spaces.Definition where
+module Spaces where
 
 import Data.Maybe ()
 import System.Random ()
