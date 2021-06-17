@@ -1,8 +1,8 @@
-module Spaces.Generator where
+module RefLC.Generator where
 
-import Spaces.Grammar ( spTerm, Expr, Type(TInt, TFun), sampleTEnv )
+import RefLC.Grammar ( spTerm, Expr, Type(TInt, TFun), sampleTEnv )
+import RefLC.TypeChecker ( typeCheck )
 import Spaces ( uniform, uniformFilter )
-import Spaces.Interp ( typeCheck )
 
 import qualified Test.QuickCheck as QC
 

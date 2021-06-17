@@ -1,6 +1,6 @@
-module Spaces.Interp where
+module RefLC.TypeChecker where
 
-import Spaces.Grammar ( Expr(..), Type(TFun), TEnvironment )
+import RefLC.Grammar ( Expr(..), Type(TFun), TEnvironment )
 
 -- Type checker
 typeCheck :: TEnvironment -> Type -> Expr -> Bool

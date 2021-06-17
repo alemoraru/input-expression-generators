@@ -62,13 +62,10 @@ library
     STLC.TypeChecker
     STLC.Interp
 
-    -- Spaces package
-    Spaces.SimpleGrammar
-    Spaces.SimpleGenerator
-    Spaces.SimpleInterp
-    Spaces.Grammar
-    Spaces.Generator
-    Spaces.Interp
+    -- Reference lambda calculus package
+    RefLC.Grammar
+    RefLC.Generator
+    RefLC.TypeChecker
 
     -- Util files
     Spaces

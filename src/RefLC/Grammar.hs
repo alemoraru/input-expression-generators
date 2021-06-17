@@ -1,4 +1,4 @@
-module Spaces.Grammar where
+module RefLC.Grammar where
 
 import Spaces ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
 
