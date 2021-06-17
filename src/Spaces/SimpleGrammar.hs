@@ -1,19 +1,14 @@
 module Spaces.SimpleGrammar where
 
 import Spaces.Definition
-    ( spNat, Nat, Space((:$:), Pay, (:+:), (:*:)) )
+    ( spNat, Nat, Space((:$:), Pay, Pure, (:+:), (:*:)) )
 import Util ()
 
 -- Definition of a simple-typed lambda calculus
 data Term = App (Term , Term) 
           | Lam Term
-          | Var Nat
+          | Var Int
           deriving (Eq, Show)
-
--- instance Show Term where
---     show (App (lam, param)) = show lam ++ " " ++ show param
---     show (Lam (var, body))  = "\\" ++ show var ++  ".(" ++ show body ++ ")"
---     show (Var x)            = show x
 
 -- Representation of a type environment
 type TEnvironment = [(Term, Type)]
@@ -29,6 +24,10 @@ instance Show Type where
 -- The space of all lambda terms
 spTerm, spApp, spLam, spVar :: Space Term
 spTerm = Pay (spApp :+: spLam :+: spVar)
-spApp  = App :$: (spLam :*: spTerm) 
+spApp  = App :$: (spTerm :*: spTerm) 
 spLam  = Lam :$: spTerm
-spVar  = Var :$: spNat   
+spVar  = Var :$: spInt
+
+-- Space of int values (start of from 0)
+spInt :: Space Int
+spInt = Pay (Pure 0 :+: (succ :$: spInt))

@@ -15,7 +15,7 @@ getTerm :: IO Term
 getTerm = QC.generate $ uniformFilter predicate spTerm 7
 
 getTermFaster :: IO Term  
-getTermFaster = QC.generate $ uniform predicate spTerm 11
+getTermFaster = QC.generate $ uniform predicate spTerm 9
 
 -- Auxiliary function for QuickCheck arbitrary function
 arbExpr :: QC.Gen Term  
