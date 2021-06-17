@@ -4,17 +4,45 @@ type TEnvironment = [Type]
 type Environment  = [Val]
 
 -- ADT for STLC
-data Expr
-    = App ((Expr, Expr), Type)
-    | Var Int
-    | Lam Expr
-    deriving (Eq, Show)
+data Expr = Var Int
+  | Lam ((Int, Type), Expr)
+  | App (Expr, Expr)
+  deriving ( Eq )
+
+-- Needed for pretty-printing
+instance Show Expr where
+  -- variables
+  show (Var i)              = "Var " ++ show i
+  -- lambda
+  show (Lam ((v, t), body)) = "Lambda (" ++ show v ++ ", " ++ show t ++ ") " ++ exprShow body
+  -- application
+  show (App (lam, param))   = "App " ++ exprShow lam ++ " " ++ exprShow param
 
 -- ADT for type values
 data Type = TInt
-          | TFun (Type, Type)
-          deriving (Eq, Show)
+  | TBool
+  | TFun (Type, Type)
+  deriving (Eq)
+
+-- Needed for pretty-printing
+instance Show Type where
+  show TInt  = "TInt"
+  show TBool = "TBool"
+  show (TFun (param, body)) = "TFun (" ++ show param ++ ") (" ++ show body ++ ")"
 
 -- ADT for STLC result values
 data Val = VInt Int | VClos Int Expr Environment
     deriving (Eq, Show)
+
+----------------------
+-- Helper functions --
+----------------------
+
+exprShow :: Expr -> String
+exprShow e
+  | singleton e = show e
+  | otherwise = "(" ++ show e ++ ")"
+   
+singleton :: Expr -> Bool
+singleton (Var _) = True
+singleton _       = False

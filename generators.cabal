@@ -62,11 +62,6 @@ library
     STLC.TypeChecker
     STLC.Interp
 
-    -- Typed Lambda Calculus package
-    Types.Grammar
-    Types.Interp
-    Types.Generator
-
     -- Spaces package
     Spaces.Definition
     Spaces.SimpleGrammar
