@@ -11,11 +11,8 @@ data Expr = Var Int
 
 -- Needed for pretty-printing
 instance Show Expr where
-  -- variables
   show (Var i)              = "Var " ++ show i
-  -- lambda
   show (Lam ((v, t), body)) = "Lambda (" ++ show v ++ ", " ++ show t ++ ") " ++ exprShow body
-  -- application
   show (App (lam, param))   = "App " ++ exprShow lam ++ " " ++ exprShow param
 
 -- ADT for type values

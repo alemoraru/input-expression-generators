@@ -2,6 +2,14 @@ module Spaces.Grammar where
 
 import Spaces ( Space((:+:), (:*:), Pay, Pure, (:$:)) )
 
+-- Alias for Type Environment
+type TEnvironment = [Type]
+type Environment  = [Val]
+
+-- ADT for SLC result values
+data Val = VInt Int | VClos Int Expr Environment
+    deriving (Eq, Show)
+
 -- ADT for STLC
 data Expr
     = App ((Expr, Expr), Type)
@@ -29,4 +37,21 @@ spTFun = TFun :$: (spType :*: spType)
 
 -- The space for ints
 spInt :: Space Int
-spInt = Pay (Pure 0 :+: (succ :$: spInt))
+spInt = Pay $ pureInts (length sampleTEnv) 
+
+pureInts :: Int -> Space Int
+pureInts 0  = Pure 0
+pureInts n  = Pure (n - 1) :+: pureInts (n - 1)
+
+
+-- Sample type environment to use when generating data
+sampleTEnv :: TEnvironment
+sampleTEnv =
+    [
+        TInt,
+        TInt,
+        TFun (TInt, TInt),
+        TFun (TInt, TInt),
+        TInt,
+        TFun (TInt, TFun (TInt,TInt))
+    ]
