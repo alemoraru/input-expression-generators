@@ -56,10 +56,6 @@ library
     Conditional.Generator
     Conditional.TypeChecker
 
-    -- Untyped Lambda Calculus package
-    UntypedLambda.Grammar
-    UntypedLambda.Interp
-
     -- Typed Lambda Calculus package
     Types.Grammar
     Types.Interp
