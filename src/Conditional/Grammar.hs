@@ -33,19 +33,12 @@ type TEnvironment = [(String, Type)]
 
 -- ADT for expressions which also contains conditionals
 data Expr =
-  -- basic building blocks
   EInt Int | EBool Bool | Id String
-  -- basic operations on ints
   | Add (Expr, Expr) | Mul (Expr, Expr)
-  -- basic operations on booleans
   | Not Expr | Or (Expr, Expr) | And (Expr, Expr)
-  -- comparisons
   | Eq (Expr, Expr) | Lt (Expr, Expr) | Gt (Expr, Expr)
-  -- functions
   | Lambda ((String, Type), Expr) | App (Expr, Expr)
-  -- conditionals
   | If (Expr, (Expr, Expr))
-
   deriving ( Eq )
 
 -- Pretty printing expressions

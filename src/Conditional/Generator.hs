@@ -2,8 +2,8 @@ module Conditional.Generator where
 
 import Conditional.Grammar
     ( Environment,
-      Expr(Id, EInt, EBool, Add, Mul, Not, Or, And, Eq, Lt, Gt, If),
-      Val(VBool, VInt) )
+      Expr(Id, EInt, EBool, Add, Mul, Not, Or, And, Eq, Lt, Gt, If, Lambda, App),
+      Val(VBool, VInt), TEnvironment, Type (TInt, TBool) )
 import Conditional.TypeChecker ( typeCheck )
 import Spaces ( uniformFilter, uniform, Space((:+:), (:*:), (:$:), Pay, Pure) )
 import Test.QuickCheck ( Arbitrary(arbitrary), Gen, frequency, elements, oneof, sized )
@@ -52,10 +52,10 @@ arbUniformExpr = uniform isTypeCorrect spExpr 5
 -- Function for generating data 
 -- of a particular depth 
 arbNaiveExpr :: Int -> Gen Expr
-arbNaiveExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary]
+arbNaiveExpr 0 = oneof [EInt <$> arbitrary, EBool <$> arbitrary, getArbVar sampleEnv]
 arbNaiveExpr n = frequency
   [
-    (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary, arbVar sampleEnvironment]) -- Leaf generation (lowest prob to generate)
+    (1, oneof [EInt <$> arbitrary, EBool <$> arbitrary, getArbVar sampleEnv]) -- Leaf generation (lowest prob to generate)
   , (4, do 
           left  <- arbNaiveExpr (n `div` 2)
           right <- arbNaiveExpr (n `div` 2)
@@ -90,18 +90,43 @@ arbNaiveExpr n = frequency
           t <- arbNaiveExpr (n `div` 2)
           e <- arbNaiveExpr (n `div` 2)
           return $ If (i, (t, e)))
+  , (4, do
+          str  <- getArbId sampleEnv
+          body <- arbNaiveExpr (n `div` 2)
+          ty   <- case lookup str sampleTEnv of
+                  Just t  -> return t
+                  Nothing -> getArbTy sampleTEnv
+          return $ Lambda ((str, ty), body))
+   , (4, do
+          lam <- arbNaiveExpr (n `div` 2)
+          arg <- arbNaiveExpr (n `div` 2)
+          return $ App (lam, arg))
   ]
 
 -- Get an arbitrary variable from the available environment
-arbVar :: Environment -> Gen Expr
-arbVar nv = 
+getArbVar :: Environment -> Gen Expr
+getArbVar nv = 
   do 
     (key, val) <- elements nv
     return (Id key) 
 
+-- Get an arbitrary identifier from the available environment
+getArbId :: Environment -> Gen String 
+getArbId nv = 
+  do
+    (key, val) <- elements nv
+    return key
+
+-- Get an arbitrary type from the available environment
+getArbTy :: TEnvironment -> Gen Type 
+getArbTy nv =
+  do
+    (key, ty) <- elements nv
+    return ty
+
 -- Environment used for testing interpretation
-sampleEnvironment :: Environment 
-sampleEnvironment = 
+sampleEnv :: Environment 
+sampleEnv = 
   [
     ("zero", VInt 0),
     ("one", VInt 1),
@@ -109,4 +134,16 @@ sampleEnvironment =
     ("three", VInt 3),
     ("tru", VBool True),
     ("fls", VBool False)
+  ]
+
+-- Type environment used for testing
+sampleTEnv :: TEnvironment 
+sampleTEnv =
+  [
+    ("zero", TInt),
+    ("one", TInt),
+    ("two", TInt),
+    ("three", TInt),
+    ("tru", TBool),
+    ("fls", TBool)
   ]
