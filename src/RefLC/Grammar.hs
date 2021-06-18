@@ -39,10 +39,10 @@ spTFun = TFun :$: (spType :*: spType)
 spInt :: Space Int
 spInt = Pay $ pureInts (length sampleTEnv) 
 
+-- Get all indices as a sum of Spaces
 pureInts :: Int -> Space Int
 pureInts 0  = Pure 0
 pureInts n  = Pure (n - 1) :+: pureInts (n - 1)
-
 
 -- Sample type environment to use when generating data
 sampleTEnv :: TEnvironment
