@@ -3,9 +3,7 @@
 
 module Conditional.Grammar where
 
-import Test.QuickCheck ( Arbitrary(arbitrary), elements, frequency, oneof, sized, Gen )
-
-import qualified Test.SmallCheck.Series as SC
+import Test.SmallCheck.Series
 
 -- ADT for result values
 data Val = VInt Int | VBool Bool | VClos String Expr Environment
@@ -59,10 +57,10 @@ instance Show Expr where
   show (If (i, (t, e)))    = "(if " ++ show i ++ " then " ++ show t ++ " else " ++ show e ++ ")"
 
 -- Needed for SmallCheck enumerating
-instance (Monad m) => SC.Serial m Expr where
-  series = SC.cons1 EInt SC.\/ SC.cons1 EBool -- SC.\/ SC.cons1 Id
-           SC.\/ SC.cons1 Add SC.\/ SC.cons1 Mul
-           SC.\/ SC.cons1 Not SC.\/ SC.cons1 Or SC.\/ SC.cons1 And
-           SC.\/ SC.cons1 Eq  SC.\/ SC.cons1 Lt SC.\/ SC.cons1 Gt
-           -- SC.\/ SC.cons1 Lambda SC.\/ SC.cons1 App
-           SC.\/ SC.cons1 If
+instance (Monad m) => Serial m Expr where
+  series = cons1 EInt \/ cons1 EBool -- \/ cons1 Id
+           \/ cons1 Add \/ cons1 Mul
+           \/ cons1 Not \/ cons1 Or \/ cons1 And
+           \/ cons1 Eq  \/ cons1 Lt \/ cons1 Gt
+           -- \/ cons1 Lambda \/ cons1 App
+           \/ cons1 If

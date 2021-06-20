@@ -2,9 +2,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module Booleans.Grammar ( Expr ( .. ) ) where
 
-import Test.QuickCheck ()
-import qualified Test.SmallCheck.Series as SC
-import Control.Monad ()
+import Test.SmallCheck.Series ( (\/), cons1, Serial(..) )
 
 -- Boolean ADT
 data Expr = Val Bool
@@ -21,5 +19,5 @@ instance Show Expr where
   show (Not expr)          = "(!" ++ show expr ++ ")"
 
 -- Necessary for SmallCheck exhaustive generation
-instance (Monad m) => SC.Serial m Expr where
-  series = SC.cons1 Val SC.\/ SC.cons1 And SC.\/ SC.cons1 Or SC.\/ SC.cons1 Not
+instance (Monad m) => Serial m Expr where
+  series = cons1 Val \/ cons1 And \/ cons1 Or \/ cons1 Not

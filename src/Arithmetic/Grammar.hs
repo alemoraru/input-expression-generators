@@ -3,8 +3,7 @@
 
 module Arithmetic.Grammar where
 
-import Test.QuickCheck ( Arbitrary(arbitrary), frequency, sized, Gen )
-import qualified Test.SmallCheck.Series as SC
+import Test.SmallCheck.Series ( (\/), cons1, Serial(..) )
 
 -- Arithmetic ADT
 data Expr = Val Int
@@ -23,5 +22,5 @@ instance Show Expr where
   show (Div (left, right)) = show left ++ " / " ++ show right
 
 -- Necessary for SmallCheck exhaustive generation
-instance (Monad m) => SC.Serial m Expr where
-  series = SC.cons1 Val SC.\/ SC.cons1 Add SC.\/ SC.cons1 Sub SC.\/ SC.cons1 Mul SC.\/ SC.cons1 Div
+instance (Monad m) => Serial m Expr where
+  series = cons1 Val \/ cons1 Add \/ cons1 Sub \/ cons1 Mul \/ cons1 Div
