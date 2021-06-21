@@ -1,33 +1,34 @@
-module Arithmetic.InterpFaulty1 where
+module Arithmetic.Suite.Interp2 where
   
 import Arithmetic.Grammar ( Expr(..) )
 
--- Faulty interpreter for arithmetic expressions
+-- Correct interpreter for arithmetic expressions
+-- That either returns an error message or an Int result
 interp :: Expr -> Either String Int
 interp (Val x)             = Right x
 interp (Add (left, right)) = 
-  case interp left of
+  case interp right of
       Left err   -> Left err
       Right valL ->
-           case interp left of  -- introduced error here
+           case interp left of
                Left err   -> Left err
                Right valR -> Right (valL + valR)
           
 interp (Sub (left, right)) = 
-  case interp left of
+  case interp right of
       Left err   -> Left err
-      Right valL ->
-           case interp right of
+      Right valR ->
+           case interp left of
                Left err   -> Left err
-               Right valR -> Right (valL - valR)
+               Right valL -> Right (valL - valR)
 
 interp (Mul (left, right)) = 
-  case interp left of
+  case interp right of
       Left err   -> Left err
-      Right valL ->
-           case interp right of
+      Right valR ->
+           case interp left of
                Left err   -> Left err
-               Right valR -> Right (valL * valR)
+               Right valL -> Right (valL * valR)
 
 interp (Div (left, right)) = 
   case interp left of

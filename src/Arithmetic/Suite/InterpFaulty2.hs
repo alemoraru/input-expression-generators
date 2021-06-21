@@ -1,4 +1,4 @@
-module Arithmetic.InterpFaulty4 where
+module Arithmetic.Suite.InterpFaulty2 where
 
 import Arithmetic.Grammar ( Expr(..) )
 
@@ -17,7 +17,7 @@ interp (Sub (left, right)) =
   case interp left of
       Left err   -> Left err
       Right valL ->
-           case interp right of
+           case interp left of -- intrpduced error here
                Left err   -> Left err
                Right valR -> Right (valL - valR)
 
@@ -33,7 +33,7 @@ interp (Div (left, right)) =
   case interp left of
       Left err   -> Left err
       Right valL ->
-           case interp left of -- introduced flaw here
+           case interp right of
                Left err   -> Left err
                Right valR -> if valR == 0 
                    then Left "Cannot divide by zero" 

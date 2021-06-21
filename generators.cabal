@@ -29,12 +29,12 @@ library
   exposed-modules:
     -- Arithmetic package
     Arithmetic.Grammar
-    Arithmetic.Interp1
-    Arithmetic.Interp2
-    Arithmetic.InterpFaulty1
-    Arithmetic.InterpFaulty2
-    Arithmetic.InterpFaulty3
-    Arithmetic.InterpFaulty4
+    Arithmetic.Suite.Interp1
+    Arithmetic.Suite.Interp2
+    Arithmetic.Suite.InterpFaulty1
+    Arithmetic.Suite.InterpFaulty2
+    Arithmetic.Suite.InterpFaulty3
+    Arithmetic.Suite.InterpFaulty4
     Arithmetic.Generator
 
     -- Boolean package

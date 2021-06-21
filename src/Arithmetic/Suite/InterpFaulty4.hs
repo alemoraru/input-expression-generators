@@ -1,9 +1,8 @@
-module Arithmetic.Interp1 where
-  
+module Arithmetic.Suite.InterpFaulty4 where
+
 import Arithmetic.Grammar ( Expr(..) )
 
--- Correct interpreter for arithmetic expressions
--- That either returns an error message or an Int result
+-- Faulty interpreter for arithmetic expressions
 interp :: Expr -> Either String Int
 interp (Val x)             = Right x
 interp (Add (left, right)) = 
@@ -34,7 +33,7 @@ interp (Div (left, right)) =
   case interp left of
       Left err   -> Left err
       Right valL ->
-           case interp right of
+           case interp left of -- introduced flaw here
                Left err   -> Left err
                Right valR -> if valR == 0 
                    then Left "Cannot divide by zero" 

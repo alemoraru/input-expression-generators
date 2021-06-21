@@ -1,12 +1,12 @@
 module SmallCheck.SpecArith where
 
 import Arithmetic.Grammar (Expr (..))
-import qualified Arithmetic.Interp1 as I1
-import qualified Arithmetic.Interp2 as I2
-import qualified Arithmetic.InterpFaulty1 as IF1
-import qualified Arithmetic.InterpFaulty2 as IF2
-import qualified Arithmetic.InterpFaulty3 as IF3
-import qualified Arithmetic.InterpFaulty4 as IF4
+import qualified Arithmetic.Suite.Interp1 as I1
+import qualified Arithmetic.Suite.Interp2 as I2
+import qualified Arithmetic.Suite.InterpFaulty1 as IF1
+import qualified Arithmetic.Suite.InterpFaulty2 as IF2
+import qualified Arithmetic.Suite.InterpFaulty3 as IF3
+import qualified Arithmetic.Suite.InterpFaulty4 as IF4
 
 import Test.SmallCheck ( smallCheck )
 
