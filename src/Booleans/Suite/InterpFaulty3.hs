@@ -1,4 +1,4 @@
-module Booleans.InterpFaulty2 where
+module Booleans.Suite.InterpFaulty3 where
 
 import Booleans.Grammar ( Expr(..) )
 
@@ -6,5 +6,5 @@ import Booleans.Grammar ( Expr(..) )
 interp :: Expr -> Bool
 interp (Val x)             = x
 interp (And (left, right)) = interp left && interp right
-interp (Or  (left, right)) = interp left && interp right -- introduced a flaw here
-interp (Not expr)          = not $ interp expr
+interp (Or  (left, right)) = interp left || interp right
+interp (Not expr)          = interp expr -- introduced flaw here

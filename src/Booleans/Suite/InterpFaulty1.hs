@@ -1,4 +1,4 @@
-module Booleans.InterpFaulty1 where
+module Booleans.Suite.InterpFaulty1 where
   
 import Booleans.Grammar ( Expr(..) )
 

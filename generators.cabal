@@ -29,23 +29,23 @@ library
   exposed-modules:
     -- Arithmetic package
     Arithmetic.Grammar
+    Arithmetic.Generator
     Arithmetic.Suite.Interp1
     Arithmetic.Suite.Interp2
     Arithmetic.Suite.InterpFaulty1
     Arithmetic.Suite.InterpFaulty2
     Arithmetic.Suite.InterpFaulty3
     Arithmetic.Suite.InterpFaulty4
-    Arithmetic.Generator
-
+    
     -- Boolean package
     Booleans.Grammar
-    Booleans.Interp1
-    Booleans.Interp2
-    Booleans.InterpFaulty1
-    Booleans.InterpFaulty2
-    Booleans.InterpFaulty3
     Booleans.Generator
-
+    Booleans.Suite.Interp1
+    Booleans.Suite.Interp2
+    Booleans.Suite.InterpFaulty1
+    Booleans.Suite.InterpFaulty2
+    Booleans.Suite.InterpFaulty3
+    
     -- Conditional package
     Conditional.Grammar
     Conditional.Interp1

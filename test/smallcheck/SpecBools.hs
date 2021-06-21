@@ -1,11 +1,11 @@
 module SmallCheck.SpecBools where
 
 import Booleans.Grammar (Expr (..))
-import qualified Booleans.Interp1 as I1
-import qualified Booleans.Interp2 as I2
-import qualified Booleans.InterpFaulty1 as IF1
-import qualified Booleans.InterpFaulty2 as IF2
-import qualified Booleans.InterpFaulty3 as IF3
+import qualified Booleans.Suite.Interp1 as I1
+import qualified Booleans.Suite.Interp2 as I2
+import qualified Booleans.Suite.InterpFaulty1 as IF1
+import qualified Booleans.Suite.InterpFaulty2 as IF2
+import qualified Booleans.Suite.InterpFaulty3 as IF3
 
 import Test.SmallCheck ( smallCheck )
 import Test.Hspec ()
