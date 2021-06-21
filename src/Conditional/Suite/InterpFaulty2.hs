@@ -1,4 +1,4 @@
-module Conditional.InterpFaulty2 where
+module Conditional.Suite.InterpFaulty2 where
 
 import Conditional.Grammar ( Environment, Expr(..), Val(..) )
 import Util ( Error(InterpError) )

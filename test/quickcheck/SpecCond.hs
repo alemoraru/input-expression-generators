@@ -4,11 +4,11 @@ import Conditional.Grammar (Expr (..))
 import Conditional.Generator ()
 import Conditional.TypeChecker ( typeCheck ) 
 
-import qualified Conditional.Interp1 as I1
-import qualified Conditional.Interp2 as I2
-import qualified Conditional.InterpFaulty1 as IF1
-import qualified Conditional.InterpFaulty2 as IF2
-import qualified Conditional.InterpFaulty3 as IF3
+import qualified Conditional.Suite.Interp1 as I1
+import qualified Conditional.Suite.Interp2 as I2
+import qualified Conditional.Suite.InterpFaulty1 as IF1
+import qualified Conditional.Suite.InterpFaulty2 as IF2
+import qualified Conditional.Suite.InterpFaulty3 as IF3
 
 import Test.QuickCheck
     ( Testable(property), (==>), collect, Property, quickCheck )

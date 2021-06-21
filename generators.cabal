@@ -48,13 +48,13 @@ library
     
     -- Conditional package
     Conditional.Grammar
-    Conditional.Interp1
-    Conditional.Interp2
-    Conditional.InterpFaulty1
-    Conditional.InterpFaulty2
-    Conditional.InterpFaulty3
     Conditional.Generator
     Conditional.TypeChecker
+    Conditional.Suite.Interp1
+    Conditional.Suite.Interp2
+    Conditional.Suite.InterpFaulty1
+    Conditional.Suite.InterpFaulty2
+    Conditional.Suite.InterpFaulty3
 
     -- Simple-typed lambda calculus package
     STLC.Grammar
@@ -113,7 +113,6 @@ test-suite generators-test
     QuickCheck.SpecArith
     QuickCheck.SpecBools
     QuickCheck.SpecCond
-    QuickCheck.SpecSpaces
 
     -- Testing modules for SmallCheck
     SmallCheck.SpecArith
