@@ -55,6 +55,14 @@ library
     Conditional.Suite.InterpFaulty1
     Conditional.Suite.InterpFaulty2
     Conditional.Suite.InterpFaulty3
+    Conditional.Suite.InterpFaulty4
+    Conditional.Suite.InterpFaulty5
+    Conditional.Suite.InterpFaulty6
+    Conditional.Suite.InterpFaulty7
+    Conditional.Suite.InterpFaulty8
+    Conditional.Suite.InterpFaulty9
+
+
 
     -- Simple-typed lambda calculus package
     STLC.Grammar

@@ -3,7 +3,7 @@ module Conditional.Suite.InterpFaulty3 where
 import Conditional.Grammar ( Environment, Expr(..), Val(..) )
 import Util ( Error(InterpError) )
 
--- Faulty interpretation of an expression 
+-- Faulty interpretation
 interp :: Expr -> Environment -> Either Error Val
 interp (EInt x) nv  = Right (VInt x)
 interp (EBool b) nv = Right (VBool b)
@@ -16,7 +16,7 @@ interp (Mul (e1, e2)) nv = case (interp e1 nv, interp e2 nv) of
                           _ -> Left $ InterpError "Cannot perform multiplication on non-ints."
 
 interp (Not e) nv = case interp e nv of
-                          (Right (VBool v)) -> Right (VBool (not v))
+                          (Right (VBool v)) -> Right (VBool v) -- introduced error here (didn't negate)
                           _ -> Left $ InterpError "Cannot perform not operation on non-booleans."
 interp (Or (e1, e2)) nv = case (interp e1 nv, interp e2 nv) of
                            (Right (VBool v1), Right (VBool v2)) -> Right (VBool (v1 || v2))
@@ -26,7 +26,7 @@ interp (And (e1, e2)) nv = case (interp e1 nv, interp e2 nv)  of
                             _ -> Left $ InterpError "Cannot perform and operation on non-booleans."
 
 interp (If (e1, (e2, e3))) nv = case interp e1 nv of
-                            Right (VBool True)  -> interp e2 nv
+                            Right (VBool True) -> interp e2 nv
                             Right (VBool False) -> interp e3 nv
                             _ -> Left $ InterpError "Cannot interpret non-boolean condition."
 
@@ -39,7 +39,7 @@ interp (Lt (e1, e2)) nv = case (interp e1 nv, interp e2 nv)  of
                             _ -> Left $ InterpError "Cannot perform number comparison on non-ints."
 
 interp (Gt (e1, e2)) nv = case (interp e1 nv, interp e2 nv) of
-                            (Right (VInt v1), Right (VInt v2)) -> Right (VBool (v1 < v2)) -- introduced flaw here (changed gt to lt)
+                            (Right (VInt v1), Right (VInt v2)) -> Right (VBool (v1 > v2))
                             _ -> Left $ InterpError "Cannot perform number comparison on non-ints."
 
 interp (Lambda (str, e)) nv = Right (VClos (fst str) e nv)

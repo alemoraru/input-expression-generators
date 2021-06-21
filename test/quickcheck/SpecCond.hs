@@ -9,6 +9,12 @@ import qualified Conditional.Suite.Interp2 as I2
 import qualified Conditional.Suite.InterpFaulty1 as IF1
 import qualified Conditional.Suite.InterpFaulty2 as IF2
 import qualified Conditional.Suite.InterpFaulty3 as IF3
+import qualified Conditional.Suite.InterpFaulty4 as IF4
+import qualified Conditional.Suite.InterpFaulty5 as IF5
+import qualified Conditional.Suite.InterpFaulty6 as IF6
+import qualified Conditional.Suite.InterpFaulty7 as IF7
+import qualified Conditional.Suite.InterpFaulty8 as IF8
+import qualified Conditional.Suite.InterpFaulty9 as IF9
 
 import Test.QuickCheck
     ( Testable(property), (==>), collect, Property, quickCheck )
@@ -37,7 +43,31 @@ prop_faulty_interp2 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.
 
 -- Property for checking non-equivalent properties
 prop_faulty_interp3 :: Expr -> Property 
-prop_faulty_interp3 expr = preConditionInterp expr ==> I1.interp expr [] == IF2.interp expr []
+prop_faulty_interp3 expr = preConditionInterp expr ==> I1.interp expr [] == IF3.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp4 :: Expr -> Property 
+prop_faulty_interp4 expr = preConditionInterp expr ==> I1.interp expr [] == IF4.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp5 :: Expr -> Property 
+prop_faulty_interp5 expr = preConditionInterp expr ==> I1.interp expr [] == IF5.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp6 :: Expr -> Property 
+prop_faulty_interp6 expr = preConditionInterp expr ==> I1.interp expr [] == IF6.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp7 :: Expr -> Property 
+prop_faulty_interp7 expr = preConditionInterp expr ==> I1.interp expr [] == IF7.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp8 :: Expr -> Property 
+prop_faulty_interp8 expr = preConditionInterp expr ==> I1.interp expr [] == IF8.interp expr []
+
+-- Property for checking non-equivalent properties
+prop_faulty_interp9 :: Expr -> Property 
+prop_faulty_interp9 expr = preConditionInterp expr ==> I1.interp expr [] == IF9.interp expr []
 
 -- Function that computes the depth of an expression
 depth :: Expr -> Integer 
@@ -71,14 +101,21 @@ main = do
     putStrLn "Non-equivalent interpreters (3):"
     quickCheck prop_faulty_interp3
 
--- Auxiliary main that uses
--- the hspec package
-spec :: Spec
-spec = do
-    describe "QuickCheck Conditional Testing:" $ do
-        it "Equivalent interpreters:" $
-            property prop_correct_interp
-        it "Non-equivalent interpreters (1):" $
-            property prop_faulty_interp1
-        it "Non-equivalent interpreters (2):" $
-            property prop_faulty_interp2
+    putStrLn "Non-equivalent interpreters (4):"
+    quickCheck prop_faulty_interp4
+
+    putStrLn "Non-equivalent interpreters (5):"
+    quickCheck prop_faulty_interp5
+
+    putStrLn "Non-equivalent interpreters (6):"
+    quickCheck prop_faulty_interp6
+
+    putStrLn "Non-equivalent interpreters (7):"
+    quickCheck prop_faulty_interp7
+
+    putStrLn "Non-equivalent interpreters (8):"
+    quickCheck prop_faulty_interp8
+
+    putStrLn "Non-equivalent interpreters (9):"
+    quickCheck prop_faulty_interp9
+    

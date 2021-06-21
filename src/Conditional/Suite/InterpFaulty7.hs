@@ -1,4 +1,4 @@
-module Conditional.Suite.InterpFaulty2 where
+module Conditional.Suite.InterpFaulty7 where
 
 import Conditional.Grammar ( Environment, Expr(..), Val(..) )
 import Util ( Error(InterpError) )
@@ -12,7 +12,7 @@ interp (Add (e1, e2)) nv = case (interp e1 nv, interp e2 nv) of
                           (Right (VInt v1), Right (VInt v2)) -> Right (VInt (v1 + v2))
                           _ -> Left $ InterpError "Cannot perform addition on non-ints."
 interp (Mul (e1, e2)) nv = case (interp e1 nv, interp e2 nv) of
-                          (Right (VInt v1), Right (VInt v2)) -> Right (VInt (v1 + v2)) -- introduced error here (+ instead of *)
+                          (Right (VInt v1), Right (VInt v2)) -> Right (VInt (v1 * v2))
                           _ -> Left $ InterpError "Cannot perform multiplication on non-ints."
 
 interp (Not e) nv = case interp e nv of
@@ -26,8 +26,8 @@ interp (And (e1, e2)) nv = case (interp e1 nv, interp e2 nv)  of
                             _ -> Left $ InterpError "Cannot perform and operation on non-booleans."
 
 interp (If (e1, (e2, e3))) nv = case interp e1 nv of
-                            Right (VBool True) -> interp e2 nv
-                            Right (VBool False) -> interp e3 nv
+                            Right (VBool True) -> interp e3 nv    -- error here (swapped branches)
+                            Right (VBool False) -> interp e2 nv   -- error here (swapped branches)
                             _ -> Left $ InterpError "Cannot interpret non-boolean condition."
 
 interp (Eq (e1, e2)) nv = case (interp e1 nv, interp e2 nv)  of
