@@ -27,19 +27,21 @@ prop_faulty_interp2 expr = I1.interp expr == IF2.interp expr
 prop_faulty_interp3 :: Expr -> Bool 
 prop_faulty_interp3 expr = I1.interp expr == IF3.interp expr
 
--- Main driver code
-main :: IO ()
-main = do
+-- Main driver code with depth parameter
+mainHelper :: Int -> IO ()
+mainHelper n = do
     putStrLn "Checking correct booleans interpretation:"
-    smallCheck 1 prop_correct_interp
+    smallCheck n prop_correct_interp
 
     putStrLn "Checking faulty booleans interpretation (1):"
-    smallCheck 1 prop_faulty_interp1  
+    smallCheck n prop_faulty_interp1  
 
     putStrLn "Checking faulty booleans interpretation (2):"
-    smallCheck 1 prop_faulty_interp2  
+    smallCheck n prop_faulty_interp2  
 
     putStrLn "Checking faulty booleans interpretation (3):"
-    smallCheck 1 prop_faulty_interp3  
+    smallCheck n prop_faulty_interp3
 
-    return ()
+-- Main driver code
+main :: IO ()
+main = mainHelper 5
