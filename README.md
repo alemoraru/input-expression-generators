@@ -25,9 +25,28 @@ The code needed to generate well-typed terms that follow a uniform distribution 
 
 ## **Running the tests** 🏃‍
 
-To run the tests, enter the terminal of your choice and run the `stack test` command. This will run all tests 
-within the `test/QuickCheck` folder. To run the SmallCheck tests, manually load the desired files and call the `main` method. 
-When modifying the relative frequencies in the `Generator` files, run `stack build` before `stack ghci`-ing the required test files.
+Before running the tests, check out the `MainSpec` file within the `test` folder. To that end, the default test suite that will be run 
+will be `SmallCheck/SpecArith.hs`. To change the test suite that will be run or the number of times it will be executed, check out the `loop` function.
+
+To actually run the tests, enter the terminal of your choice and run the `stack test` command. This will run all tests 
+within the specified test suite. 
+
+**Notes**: 
+* Alternatively, you can individiually load each test file to run specific properties with custom parameters.
+* The uniform generator and the QuickCheck generator are defined in the same file, therefore running a combination of the two requires modification in the respective `Generator.hs` file where relative frequencies are specified. 
+* When modifying the relative frequencies in the `Generator` files, run `stack build` before `stack ghci`-ing the required files.
+
+```Haskell
+-- Generates tests only with the QuickCheck generator
+instance Arbitrary Expr where
+    arbitrary = frequency [(1, sized arbNaiveExpr), (0, arbUniformExpr)]
+```
+
+```Haskell
+-- Generates tests only with the uniform distribution generator
+instance Arbitrary Expr where
+    arbitrary = frequency [(0, sized arbNaiveExpr), (1, arbUniformExpr)]
+```
 
 ## **Frameworks used** 🔨
 
