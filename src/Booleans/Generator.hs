@@ -41,4 +41,4 @@ arbNaiveExpr n = frequency
 
 -- Needed for QuickCheck properties
 instance Arbitrary Expr where
-    arbitrary = frequency [(1, sized arbNaiveExpr), (4, arbUniformExpr)]
+    arbitrary = frequency [(1, sized arbNaiveExpr), (0, arbUniformExpr)]

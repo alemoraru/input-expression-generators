@@ -1,0 +1,283 @@
+Running iteration 1:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 24 tests; 1000 discarded tests:
+71% 1
+21% 2
+ 8% 3
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 15 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Gave up! Passed only 16 tests; 1000 discarded tests.
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 13 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 16 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 15 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 24 tests; 1000 discarded tests.
+
+Running iteration 2:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 23 tests; 1000 discarded tests:
+83% 1
+13% 2
+ 4% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 25 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 6 tests):
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 24 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 15 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 26 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Failed! Falsified (after 2 tests):
+(1 > 0)
+
+Running iteration 3:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 16 tests; 1000 discarded tests:
+81% 1
+ 6% 2
+ 6% 3
+ 6% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 18 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 6 tests):  
+(not True)
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 5 tests):
+(not (not (False || True)))
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 29 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 28 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+
+Running iteration 4:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 22 tests; 1000 discarded tests:
+82% 1
+ 9% 2
+ 5% 3
+ 5% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 22 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 5 tests):
+(not False)
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 31 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 18 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 13 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 19 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 26 tests; 1000 discarded tests.
+
+Running iteration 5:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 18 tests; 1000 discarded tests:
+72% 1
+28% 2
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 14 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 9 tests):  
+(not True)
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 28 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 25 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 20 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Failed! Falsified (after 2 tests):
+(1 == 0)
+Non-equivalent interpreters (9):
+*** Failed! Falsified (after 3 tests):  
+(not ((-2) > 3))
+
+Running iteration 6:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 23 tests; 1000 discarded tests:
+87% 1
+ 9% 2
+ 4% 3
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 20 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 19 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 22 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 14 tests; 1000 discarded tests.
+
+Running iteration 7:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 17 tests; 1000 discarded tests:
+82% 1
+12% 3
+ 6% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 14 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 26 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 3 tests):  
+(not False)
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 12 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 8 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 17 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 20 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+
+Running iteration 8:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 21 tests; 1000 discarded tests:
+81% 1
+ 10% 2
+ 10% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 13 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 4 tests):
+((not (3 == 2)) || False)
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 20 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 26 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 23 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 31 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 14 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 26 tests; 1000 discarded tests.
+
+Running iteration 9:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 19 tests; 1000 discarded tests:
+74% 1
+16% 2
+ 5% 3
+ 5% 4
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 15 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 18 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Gave up! Passed only 16 tests; 1000 discarded tests.
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 28 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 18 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 19 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 13 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 30 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Failed! Falsified (after 6 tests):
+(not (not ((-5) > (-3))))
+
+Running iteration 10:
+--------------------
+
+Equivalent interpreters:
+*** Gave up! Passed only 20 tests; 1000 discarded tests:
+75% 1
+20% 2
+ 5% 3
+Non-equivalent interpreters (1):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (2):
+*** Gave up! Passed only 19 tests; 1000 discarded tests.
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 5 tests):  
+(not True)
+Non-equivalent interpreters (4):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (5):
+*** Gave up! Passed only 22 tests; 1000 discarded tests.
+Non-equivalent interpreters (6):
+*** Gave up! Passed only 21 tests; 1000 discarded tests.
+Non-equivalent interpreters (7):
+*** Gave up! Passed only 25 tests; 1000 discarded tests.
+Non-equivalent interpreters (8):
+*** Gave up! Passed only 20 tests; 1000 discarded tests.
+Non-equivalent interpreters (9):
+*** Gave up! Passed only 15 tests; 1000 discarded tests.
