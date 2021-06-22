@@ -58,16 +58,16 @@ prop_faulty_interp9 expr = I1.interp expr [] == IF9.interp expr []
 -- main driver code
 mainHelper :: Int -> IO ()
 mainHelper n = do
-    putStrLn "Checking correct conditional interpretation:"
+    putStrLn "Checking equivalent conditional interpretation:"
     smallCheck n prop_correct_interp
 
-    putStrLn "Checking faulty conditional interpretation (1):"
+    putStrLn "Non-equivalent interpreters (1):"
     smallCheck n prop_faulty_interp1
 
-    putStrLn "Checking faulty conditional interpretation (2):"
+    putStrLn "Non-equivalent interpreters (2):"
     smallCheck n prop_faulty_interp2
 
-    putStrLn "Checking faulty conditional interpretation (3):"
+    putStrLn "Non-equivalent interpreters (3):"
     smallCheck n prop_faulty_interp3
 
     putStrLn "Non-equivalent interpreters (4):"

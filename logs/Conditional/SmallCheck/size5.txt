@@ -1,0 +1,38 @@
+Checking equivalent conditional interpretation:
+Completed 3818 tests without failure.
+Non-equivalent interpreters (1):
+Failed test no. 20.
+there exists (0 + 1) such that
+  condition is false
+Non-equivalent interpreters (2):
+Failed test no. 25.
+there exists (1 * 0) such that
+  condition is false
+Non-equivalent interpreters (3):
+Failed test no. 23.
+there exists (not True) such that
+  condition is false
+Non-equivalent interpreters (4):
+Failed test no. 355.
+there exists (True || False) such that
+  condition is false
+Non-equivalent interpreters (5):
+Failed test no. 699.
+there exists (True && False) such that
+  condition is false
+Non-equivalent interpreters (6):
+Failed test no. 2570.
+there exists (if False then True else 0) such that
+  condition is false
+Non-equivalent interpreters (7):
+Failed test no. 1179.
+there exists (if True then True else 0) such that
+  condition is false
+Non-equivalent interpreters (8):
+Failed test no. 235.
+there exists (1 == 0) such that
+  condition is false
+Non-equivalent interpreters (9):
+Failed test no. 859.
+there exists (1 > 0) such that
+  condition is false

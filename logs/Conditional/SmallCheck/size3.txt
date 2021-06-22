@@ -1,0 +1,22 @@
+Checking equivalent conditional interpretation:
+Completed 20 tests without failure.
+Non-equivalent interpreters (1):
+Completed 20 tests without failure.
+Non-equivalent interpreters (2):
+Completed 20 tests without failure.
+Non-equivalent interpreters (3):
+Failed test no. 12.
+there exists (not True) such that
+  condition is false
+Non-equivalent interpreters (4):
+Completed 20 tests without failure.
+Non-equivalent interpreters (5):
+Completed 20 tests without failure.
+Non-equivalent interpreters (6):
+Completed 20 tests without failure.
+Non-equivalent interpreters (7):
+Completed 20 tests without failure.
+Non-equivalent interpreters (8):
+Completed 20 tests without failure.
+Non-equivalent interpreters (9):
+Completed 20 tests without failure.

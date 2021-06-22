@@ -22,4 +22,4 @@ loop n test =
 
 -- Main driver code
 main :: IO ()
-main = loop 10 SA.main
+main = loop 0 $ SC.mainHelper 5
