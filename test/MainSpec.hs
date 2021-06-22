@@ -8,17 +8,17 @@ import qualified SmallCheck.SpecCond as SC
 
 -- loop for executing a test suite 10 times
 loop :: Int -> IO () -> IO ()
-loop 0 fun = fun 
-loop n fun = 
+loop 0 test = test 
+loop n test = 
     do 
-        loop (n - 1) fun
+        loop (n - 1) test
 
         -- Formatting logs
         putStrLn $ "\nRunning iteration " ++ show n ++ ":"
         putStrLn "--------------------\n"
 
         -- Executing a test suite
-        fun 
+        test 
 
 -- Main driver code
 main :: IO ()

@@ -1,0 +1,14 @@
+Checking correct booleans interpretation:
+Completed 14 tests without failure.
+Checking faulty booleans interpretation (1):
+Failed test no. 5.
+there exists (False && True) such that
+  condition is false
+Checking faulty booleans interpretation (2):
+Failed test no. 8.
+there exists (False || True) such that
+  condition is false
+Checking faulty booleans interpretation (3):
+Failed test no. 6.
+there exists (!True) such that
+  condition is false

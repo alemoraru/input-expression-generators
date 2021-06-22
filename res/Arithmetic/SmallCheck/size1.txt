@@ -1,0 +1,10 @@
+Checking correct arithmetic interpretation:
+Completed 1 tests without failure.
+Checking faulty arithmetic interpretation (1):
+Completed 1 tests without failure.
+Checking faulty arithmetic interpretation (2):
+Completed 1 tests without failure.
+Checking faulty arithmetic interpretation (3):
+Completed 1 tests without failure.
+Checking faulty arithmetic interpretation (4):
+Completed 1 tests without failure.

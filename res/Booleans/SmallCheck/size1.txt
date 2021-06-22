@@ -1,0 +1,8 @@
+Checking correct booleans interpretation:
+Completed 0 tests without failure.
+Checking faulty booleans interpretation (1):
+Completed 0 tests without failure.
+Checking faulty booleans interpretation (2):
+Completed 0 tests without failure.
+Checking faulty booleans interpretation (3):
+Completed 0 tests without failure.

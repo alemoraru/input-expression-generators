@@ -1,0 +1,18 @@
+Checking correct arithmetic interpretation:
+Completed 43 tests without failure.
+Checking faulty arithmetic interpretation (1):
+Failed test no. 6.
+there exists 1 + 0 such that
+  condition is false
+Checking faulty arithmetic interpretation (2):
+Failed test no. 12.
+there exists 1 - 0 such that
+  condition is false
+Checking faulty arithmetic interpretation (3):
+Failed test no. 19.
+there exists 1 * 0 such that
+  condition is false
+Checking faulty arithmetic interpretation (4):
+Failed test no. 23.
+there exists 1 / 0 such that
+  condition is false

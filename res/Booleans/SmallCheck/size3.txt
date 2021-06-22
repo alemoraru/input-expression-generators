@@ -1,0 +1,10 @@
+Checking correct booleans interpretation:
+Completed 4 tests without failure.
+Checking faulty booleans interpretation (1):
+Completed 4 tests without failure.
+Checking faulty booleans interpretation (2):
+Completed 4 tests without failure.
+Checking faulty booleans interpretation (3):
+Failed test no. 2.
+there exists (!True) such that
+  condition is false

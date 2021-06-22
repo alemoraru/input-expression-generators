@@ -34,16 +34,16 @@ prop_faulty_interp4 expr = I1.interp expr == IF4.interp expr
 main :: IO ()
 main = do
     putStrLn "Checking correct arithmetic interpretation:"
-    smallCheck 4 prop_correct_interp
+    smallCheck 5 prop_correct_interp
 
     putStrLn "Checking faulty arithmetic interpretation (1):"
-    smallCheck 4 prop_faulty_interp1 
+    smallCheck 5 prop_faulty_interp1 
 
     putStrLn "Checking faulty arithmetic interpretation (2):"
-    smallCheck 4 prop_faulty_interp2 
+    smallCheck 5 prop_faulty_interp2 
 
     putStrLn "Checking faulty arithmetic interpretation (3):"
-    smallCheck 4 prop_faulty_interp3  
+    smallCheck 5 prop_faulty_interp3  
 
     putStrLn "Checking faulty arithmetic interpretation (4):"
-    smallCheck 4 prop_faulty_interp4   
+    smallCheck 5 prop_faulty_interp4   
