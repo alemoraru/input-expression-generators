@@ -48,6 +48,10 @@ instance Arbitrary Expr where
     arbitrary = frequency [(0, sized arbNaiveExpr), (1, arbUniformExpr)]
 ```
 
+## **Evaluation** 📊
+
+All the evaluations that were done within this project and documented in the accompanying research paper are shown in the `logs` folder.
+
 ## **Frameworks used** 🔨
 
 - [QuickCheck](https://hackage.haskell.org/package/QuickCheck) - Property-based testing library that generates random test data
