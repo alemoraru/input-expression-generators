@@ -51,6 +51,6 @@ arbNaiveExpr n = frequency
 instance Arbitrary Expr where
     arbitrary = frequency 
       [
-        (1, sized arbNaiveExpr), 
-        (0, arbUniformExpr)
+        (0, sized arbNaiveExpr), 
+        (1, arbUniformExpr)
       ]

@@ -22,4 +22,4 @@ loop n test =
 
 -- Main driver code
 main :: IO ()
-main = loop 10 QC.main 
+main = loop 10 QA.main 
