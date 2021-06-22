@@ -1,0 +1,588 @@
+Running iteration 1:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 2:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 3:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 4:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 5:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 6:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 7:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 8:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 9:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+
+Running iteration 10:
+--------------------
+
+Equivalent interpreters:
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (1):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (2):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (3):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+
+Non-equivalent interpreters (4):
+*** Failed! (after 1 test):
+Exception:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
+Exception thrown while showing test case:
+  empty set
+  CallStack (from HasCallStack):
+    error, called at src\Spaces.hs:77:30 in generators-0.1.0.0-B0SLGjdbYhXEiSodi4jdMF:Spaces
