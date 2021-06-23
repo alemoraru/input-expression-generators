@@ -1,0 +1,3 @@
+*Conditional.Generator Test.QuickCheck> generate arbitrary :: IO Expr
+True
+(0.00 secs, 518,488 bytes)

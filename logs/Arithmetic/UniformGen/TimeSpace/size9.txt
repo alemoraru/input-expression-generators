@@ -1,0 +1,3 @@
+*Arithmetic.Generator Test.QuickCheck> generate arbitrary :: IO Expr
+0 + 1 / 0
+(3284.27 secs, 811,594,017,736 bytes)
