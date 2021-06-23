@@ -20,7 +20,7 @@ spInt = Pay (Pure 0 :+: (succ :$: spInt))
 -- Auxiliary function for QuickCheck arbitrary function
 -- Uses a universally true predicate (no need for type-checking)
 arbUniformExpr :: Gen Expr
-arbUniformExpr = uniformFilter (const True) spExpr 7
+arbUniformExpr = uniformFilter (const True) spExpr 9
 
 -- Function for generating data 
 -- of a particular depth 
