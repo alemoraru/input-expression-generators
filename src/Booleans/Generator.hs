@@ -19,7 +19,7 @@ spBool = Pay (Pure True :+: Pure False)
 -- Auxiliary function for QuickCheck arbitrary function
 -- Uses a universally true predicate (no need for type-checking)
 arbUniformExpr :: Gen Expr
-arbUniformExpr = uniformFilter (const True) spExpr 9
+arbUniformExpr = uniformFilter (const True) spExpr 7
 
 -- Function for generating data 
 -- of a particular depth 
@@ -41,4 +41,4 @@ arbNaiveExpr n = frequency
 
 -- Needed for QuickCheck properties
 instance Arbitrary Expr where
-    arbitrary = frequency [(1, sized arbNaiveExpr), (0, arbUniformExpr)]
+    arbitrary = frequency [(0, sized arbNaiveExpr), (1, arbUniformExpr)]

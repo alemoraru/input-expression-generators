@@ -1,0 +1,255 @@
+Running iteration 1:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 2:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 3:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 4:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 5:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 6:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 7:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 8:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 9:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 10:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+generators> Test suite generators-test passed
+Completed 2 action(s).
+PS C:\Users\Alexandru\Documents\GitHub\input-expression-generators> stack test
+C:\Users\Alexandru\Documents\GitHub\input-expression-generators\generators.cabal was modified manually. Ignoring C:\Users\Alexandru\Documents\GitHub\input-expression-generators\package.yaml in favor of the cabal file.
+If you want to use the package.yaml file instead of the cabal file,
+then please delete the cabal file.
+generators> test (suite: generators-test)
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 1:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 2:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 3:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 4:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 5:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 6:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 7:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 8:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 9:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
+
+Running iteration 10:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests.
+Non-equivalent interpreters (1):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (2):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (3):
++++ OK, passed 100 tests.
