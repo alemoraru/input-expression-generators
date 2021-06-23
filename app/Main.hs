@@ -1,6 +1,4 @@
 module Main where
 
-import Util
-
 main :: IO ()
-main = someFunc
+main = putStrLn "This command is not used at all"

@@ -1,4 +1,4 @@
-module Util ( someFunc, Error ( .. ) ) where
+module Util ( Error ( .. ) ) where
 
 data Error = TypeError String
            | InterpError String 
@@ -7,6 +7,3 @@ data Error = TypeError String
 instance Show Error where
   show (TypeError err)   = "Type Error: " ++ err
   show (InterpError err) = "Interp Error: " ++ err
-  
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"

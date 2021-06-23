@@ -42,12 +42,12 @@ isTypeCorrect expr = isCorrect
 -- Needed for QuickCheck generation
 -- Weight 1 for naive generation and 4 for uniform generation
 instance Arbitrary Expr where
-    arbitrary = frequency [(1, sized arbNaiveExpr), (0, arbUniformExpr)]
+    arbitrary = frequency [(0, sized arbNaiveExpr), (1, arbUniformExpr)]
 
 -- Auxiliary function for QuickCheck arbitrary function
 -- Uses a universally true predicate (no need for type-checking)
 arbUniformExpr :: Gen Expr
-arbUniformExpr = uniform isTypeCorrect spExpr 5
+arbUniformExpr = uniform isTypeCorrect spExpr 1
 
 -- Function for generating data 
 -- of a particular depth 
