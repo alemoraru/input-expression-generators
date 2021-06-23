@@ -1,0 +1,2 @@
+((!False) || False)
+(0.14 secs, 34,108,896 bytes)

@@ -1,0 +1,3 @@
+*Booleans.Generator Test.QuickCheck> generate arbitrary :: IO Expr
+(!False)
+(0.00 secs, 578,600 bytes)
