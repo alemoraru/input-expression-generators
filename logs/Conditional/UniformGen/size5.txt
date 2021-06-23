@@ -1,0 +1,309 @@
+Running iteration 1:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+76% 2
+14% 4
+10% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 11 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 15 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 5 tests):  
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 1 test):  
+(False || True)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 2:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+76% 2
+17% 4
+ 7% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 37 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 2 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 8 tests):  
+(not (not (not False)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 9 tests):  
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 3:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+71% 2
+19% 4
+10% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 12 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 23 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 2 tests):  
+(not (not (not False)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 1 test):  
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 4:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+73% 2
+18% 4
+ 9% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 23 tests):
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 17 tests):
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 2 tests):
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 5 tests):
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 5:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+77% 2
+12% 1
+11% 4
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 20 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 10 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 9 tests):  
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 12 tests):  
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 6:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+73% 2
+17% 4
+10% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 9 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 13 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 5 tests):  
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 1 test):  
+(False || True)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 7:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+82% 2
+11% 4
+ 7% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 19 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 15 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 4 tests):  
+(not (not (not False)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 4 tests):  
+(False || True)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 8:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+68% 2
+23% 4
+ 9% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 3 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 2 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 2 tests):  
+(not (not (not False)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 3 tests):  
+(False || True)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 9:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+74% 2
+21% 4
+ 5% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 3 tests):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 4 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 20 tests):  
+(not (not (not False)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 1 test):  
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
+
+Running iteration 10:
+--------------------
+
+Equivalent interpreters:
++++ OK, passed 100 tests:
+83% 2
+ 9% 4
+ 8% 1
+Non-equivalent interpreters (1):
+*** Failed! Falsified (after 1 test):  
+(1 + 1)
+Non-equivalent interpreters (2):
+*** Failed! Falsified (after 19 tests):  
+(1 * 1)
+Non-equivalent interpreters (3):
+*** Failed! Falsified (after 16 tests):  
+(not (not (not True)))
+Non-equivalent interpreters (4):
+*** Failed! Falsified (after 1 test):  
+(True || False)
+Non-equivalent interpreters (5):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (6):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (7):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (8):
++++ OK, passed 100 tests.
+Non-equivalent interpreters (9):
++++ OK, passed 100 tests.
