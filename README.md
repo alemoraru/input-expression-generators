@@ -51,7 +51,7 @@ instance Arbitrary Expr where
 ## **Evaluation** 📊
 
 All the evaluations that were done within this project and documented in the accompanying research paper are shown in the `logs` folder.
-To this end, see a more detailed explanation [here](logs\log.md) to fully what each log file entails.
+To this end, see a more detailed explanation [here](logs/log.md) to fully what each log file entails.
 
 ## **Frameworks used** 🔨
 
