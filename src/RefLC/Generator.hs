@@ -4,23 +4,24 @@ import RefLC.Grammar ( spTerm, Expr, Type(TInt, TFun), sampleTEnv )
 import RefLC.TypeChecker ( typeCheck )
 import Spaces ( uniform, uniformFilter )
 
-import qualified Test.QuickCheck as QC
+import Test.QuickCheck ( Gen, generate, Arbitrary(arbitrary) )
 
 -- Predicate that checks if a given term is of a specified type
 predicate :: Expr -> Bool
-predicate = typeCheck sampleTEnv (TInt) 
+predicate = typeCheck sampleTEnv (TFun (TInt , TInt)) 
 
 -- Get a random lambda term 
 getTerm :: IO Expr 
-getTerm = QC.generate $ uniformFilter predicate spTerm 7
+getTerm = generate $ uniformFilter predicate spTerm 7
 
+-- Get a random lambda term but faster
 getTermFaster :: IO Expr 
-getTermFaster = QC.generate $ uniform predicate spTerm 8
+getTermFaster = generate $ uniform predicate spTerm 12
 
 -- Auxiliary function for QuickCheck arbitrary function
-arbExpr :: QC.Gen Expr 
-arbExpr = uniformFilter predicate spTerm 7
+arbExpr :: Gen Expr 
+arbExpr = uniform predicate spTerm 7
 
 -- Useful for QuickCheck properties
-instance QC.Arbitrary Expr where
+instance Arbitrary Expr where
     arbitrary = arbExpr

@@ -1,0 +1,3 @@
+*RefLC.Generator Test.QuickCheck> getTermFaster 
+App ((Lam (Var 3),Var 4),TInt)    
+(0.15 secs, 31,508,160 bytes) 

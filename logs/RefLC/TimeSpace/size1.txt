@@ -1,0 +1,4 @@
+*RefLC.Generator Test.QuickCheck> getTermFaster 
+*** Exception: empty set
+CallStack (from HasCallStack):
+  error, called at C:\\Users\\Alexandru\\Documents\\GitHub\\input-expression-generators\\src\Spaces.hs:77:30 in main:Spaces
