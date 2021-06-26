@@ -10,14 +10,13 @@ import qualified Test.QuickCheck as QC
 import System.IO.Unsafe ( unsafePerformIO )
 import Control.Exception ( Exception, SomeException, catch )
 
-
 -- Definition of a GADT Space to represent ADTs
 data Space a where
     Empty :: Space a
     Pure  :: a -> Space a
-    (:+:) :: Space a -> Space a -> Space a
-    (:*:) :: Space a -> Space b -> Space (a, b)
-    Pay   :: Space a -> Space a
+    (:+:) :: Space a  -> Space a -> Space a
+    (:*:) :: Space a  -> Space b -> Space (a, b)
+    Pay   :: Space a  -> Space a
     (:$:) :: (a -> b) -> Space a -> Space b
 
 -- Produce a space of all applications of functions to params
@@ -33,12 +32,13 @@ data Set a where
     FmapSet      :: (a -> b) -> Set a -> Set b
     ReplicateSet :: Integer -> a -> Set a 
 
+-- Used for pretty printing Sets (Debugging)
 instance Show a => Show (Set a) where
     show EmptySet           = "{}"
     show (SingletonSet x)   = "{" ++ show x ++ "}"
     show (DisjointSet x y)  = show x ++ " U " ++ show y
-    show (CartesianSet x y) = "X"    -- TODO: needs fix --> show x ++ " X " ++ show y
-    show (FmapSet f x)      = "fmap" -- TODO: needs fix --> "fmap: " ++ show x
+    show (CartesianSet x y) = "X"    -- Just an example
+    show (FmapSet f x)      = "fmap" -- Just an example
     show (ReplicateSet k x) = "replicate " ++ show x ++ show " " ++ show k ++ " times"
 
 -- Comute the cardinality of a finite set
@@ -78,7 +78,7 @@ uniformSet s | card s == 0 = error "empty set"
              | otherwise = do
                     i <- uniformRange (0, card s - 1)
                     case indexSet s i of
-                        Nothing  -> error "something went wrong" -- TODO: Check correctness
+                        Nothing  -> error "something went wrong"
                         Just set -> return set
 
 -- extracts the finite set of values of a given size k from a space
