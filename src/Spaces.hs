@@ -163,7 +163,8 @@ sizedP p (a :*: b) k = if inspectsFst p
     then sizedP p (swap :$: (b *** a)) k
     else sizedP p (a *** b) k
     where swap (a, b) = (b, a)
-sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild (a :+:) (sizedP p b k))
+sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) 
+                                   (rebuild (a :+:) (sizedP p b k))
     where 
         rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
         rebuild f s = FmapSet (fmap f) s
