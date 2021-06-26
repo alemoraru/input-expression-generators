@@ -1,5 +1,6 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE LambdaCase #-}
 
 module Spaces where
 
@@ -7,8 +8,9 @@ import Data.Maybe ()
 import System.Random ()
 import qualified Test.QuickCheck as QC
 
+import Data.Typeable
 import System.IO.Unsafe ( unsafePerformIO )
-import Control.Exception ( Exception, SomeException, catch )
+import Control.Exception
 
 -- Definition of a GADT Space to represent ADTs
 data Space a where
@@ -110,16 +112,26 @@ uniformFilter p s k = do
     if p a then return a
            else uniformFilter p s k
 
-universalHelper :: (a -> Bool) -> IO (Either e a)
-universalHelper p = undefined -- try $ universal p
-
 -- Determine whether a predicate is universally true/false/depends on argument
 universal :: (a -> Bool) -> Maybe Bool
 universal p = unsafePerformIO $ catch (let x = p undefined in x `seq` pure (Just x)) (\(e :: SomeException) -> pure Nothing)
 
+
+-- Own defined errors for InspectsFst checking
+data InspectsException = FstException | SndException
+    deriving Show
+
+instance Exception InspectsException
+
 -- Evaluate a predicate on a pair and see which argument is "inspected" first
 inspectsFst :: ((a, b) -> Bool) -> Bool 
-inspectsFst p = unsafePerformIO $ catch (let x = p (error "fst", error "snd") in x `seq` pure True) (\(e :: SomeException) -> pure False)
+inspectsFst p = unsafePerformIO $ catch (let x = p (undefined, undefined) in x `seq` pure True) (\(e :: SomeException) -> pure False)
+
+-- Evaluate a predicate on a pair and see which argument is "inspected" first
+inspectsFstExp :: ((a, b) -> Bool) -> Bool 
+inspectsFstExp p = unsafePerformIO $ catch (let x = p (throw FstException, throw SndException) in x `seq` pure True) (\case
+    FstException -> pure True 
+    SndException -> pure False)
 
 -- Improved uniform filter that reduces the space with each failed input
 uniform :: (a -> Bool) -> Space a -> Int -> QC.Gen a
@@ -151,7 +163,7 @@ sizedP p (a :*: b) k = if inspectsFst p
     then sizedP p (swap :$: (b *** a)) k
     else sizedP p (a *** b) k
     where swap (a, b) = (b, a)
-sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild (:+: a) (sizedP p b k))
+sizedP p (a :+: b) k = DisjointSet (rebuild (:+: b) (sizedP p a k)) (rebuild (a :+:) (sizedP p b k))
     where 
         rebuild :: (Space a -> Space a) -> Set (Either a (Space a)) -> Set (Either a (Space a))
         rebuild f s = FmapSet (fmap f) s
