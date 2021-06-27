@@ -53,6 +53,10 @@ instance Arbitrary Expr where
 All the evaluations that were done within this project and documented in the accompanying research paper are shown in the `logs` folder.
 To this end, see a more detailed explanation [here](logs/log.md) to fully what each log file entails.
 
+## **Paper** 📘
+
+The research paper for this project can be found [here]().
+
 ## **Frameworks used** 🔨
 
 - [QuickCheck](https://hackage.haskell.org/package/QuickCheck) - Property-based testing library that generates random test data
