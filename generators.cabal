@@ -62,8 +62,6 @@ library
     Conditional.Suite.InterpFaulty8
     Conditional.Suite.InterpFaulty9
 
-
-
     -- Simple-typed lambda calculus package
     STLC.Grammar
     STLC.Generator
@@ -74,6 +72,10 @@ library
     RefLC.Grammar
     RefLC.Generator
     RefLC.TypeChecker
+
+    -- Demo package for presentation
+    DemoExample.Grammar
+    DemoExample.Test
 
     -- Util files
     Spaces
