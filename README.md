@@ -55,7 +55,7 @@ To this end, see a more detailed explanation [here](logs/log.md) to fully what e
 
 ## **Paper** 📘
 
-The research paper for this project can be found [here]().
+The research paper for this project can be found [here](https://repository.tudelft.nl/islandora/object/uuid%3A29a5b7ce-895f-4853-b996-1ee659dbc4a0?collection=education).
 
 ## **Frameworks used** 🔨
 
