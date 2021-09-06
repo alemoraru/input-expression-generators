@@ -12,7 +12,7 @@ Before diving into the repository, consider reading the following papers from wh
 ## **Repository structure** 💻
 
 All logic code is within the files located under the `src` package. The packages `Arithmetic`, `Booleans`, `Conditional`, `RefLC` & `STLC` have roughtly the following structure:
-* A `Grammar.hs` file which contains the corresponding ADT definition and the needed instances to generate data with SmallCheck
+* A `Grammar.hs` file which contains the corresponding ADT definition and the needed instances to generate data with SmallCheck.
 * A `Generator.hs` file which contains the generators for QuickCheck, the uniform generation approach and a function that one can modify to adjust the relative weights of the generation method that will be used to create test.
 * A `TypeChecker.hs` file which can type-check the ADT defined in the same folder.
 * A `Suite` folder which contains the following:
